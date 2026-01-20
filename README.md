@@ -1,35 +1,32 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# Curso de Kotlin Multiplatform desde cero
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
+En este primer video del Curso de Kotlin Multiplatform desde cero, hacemos una introducción rápida y directa a qué es KMP y cuáles son sus principales casos de uso en el mundo real 🚀
 
-* [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+Durante el video:
+- Explicamos cuándo vale la pena usar Kotlin Multiplatform y para qué tipo de proyectos
+- Presentamos el ejemplo práctico que desarrollaremos a lo largo del curso
+- Mostramos la arquitectura general del proyecto
 
-### Build and Run Android Application
+## 📱 Proyecto del curso
 
-To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:assembleDebug
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:assembleDebug
-  ```
+A lo largo de esta serie construiremos una app usando la API de Rick and Morty, aplicando:
+- **Ktor** para consumo de APIs
+- **Koin** para inyección de dependencias
+- **Compose Multiplatform** para la UI
+- Código compartido entre Android, iOS y otras plataformas
 
-### Build and Run iOS Application
+## ⚙️ Setup del entorno
 
-To build and run the development version of the iOS app, use the run configuration from the run widget
-in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+Al final del video se explica cómo configurar Kotlin Multiplatform en tu máquina, siguiendo la guía oficial de Kotlin:
+[Guía oficial de setup](https://kotlinlang.org/docs/multiplatform/quickstart.html#set-up-the-environment)
 
----
+## 📌 Para quién es este curso
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+Este curso está pensado para developers que ya conocen Kotlin y quieren dar el salto a multiplataforma de forma profesional, usando buenas prácticas desde el inicio.
+
+## 👉 Únete a la comunidad
+
+- Suscríbete para no perderte los siguientes videos: https://www.youtube.com/@carlosgub
+- Deja tus preguntas o sugerencias en los comentarios
+
+#Kotlin #KotlinMultiplatform #KMP #ComposeMultiplatform #Ktor #Koin #Android #iOS #Multiplatform
