@@ -2,9 +2,9 @@
 
 En este primer video del Curso de Kotlin Multiplatform desde cero, hacemos una introducción rápida y directa a qué es KMP y cuáles son sus principales casos de uso en el mundo real 🚀
 
-Durante el video:
+Durante los videos:
 - Explicamos cuándo vale la pena usar Kotlin Multiplatform y para qué tipo de proyectos
-- Presentamos el ejemplo práctico que desarrollaremos a lo largo del curso
+- Presentamos el ejemplo práctico que desarrollaremos a lo largo del curso implementando el API de rick and morty.
 - Mostramos la arquitectura general del proyecto
 
 ## 📱 Proyecto del curso
@@ -13,7 +13,7 @@ A lo largo de esta serie construiremos una app usando la API de Rick and Morty, 
 - **Ktor** para consumo de APIs
 - **Koin** para inyección de dependencias
 - **Compose Multiplatform** para la UI
-- Código compartido entre Android, iOS y otras plataformas
+- Código compartido entre Android, iOS.
 
 ## ⚙️ Setup del entorno
 
