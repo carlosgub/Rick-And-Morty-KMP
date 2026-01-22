@@ -65,7 +65,9 @@ kotlin {
             // Coil
             implementation(libs.coil.compose)
             implementation(libs.coil.network.ktor)
-            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
+
+            // Kotlin Serialization
+            implementation(libs.kotlinx.serialization.json)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
