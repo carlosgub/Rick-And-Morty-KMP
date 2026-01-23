@@ -16,9 +16,16 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavDestination.Companion.hasRoute
+import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
+
+
+
 import coil3.ImageLoader
 import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.setSingletonImageLoaderFactory
@@ -61,7 +68,9 @@ fun App() {
         )
 
         val navController = rememberNavController()
-        var selectedItem by remember { mutableStateOf(items.first().route) }
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentDestination = navBackStackEntry?.destination
+
 
         Scaffold(
             modifier = Modifier.fillMaxSize(),
@@ -70,11 +79,17 @@ fun App() {
                 NavigationBar {
                     items.forEach { item ->
                         NavigationBarItem(
-                            selected = item.route == selectedItem,
+                            selected = currentDestination?.hierarchy?.any { it.hasRoute(item.route::class) } == true,
+
                             label = { Text(item.label) },
                             onClick = {
-                                selectedItem = item.route
-                                navController.navigate(item.route)
+                                navController.navigate(item.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
                             },
                             icon = {
                                 Icon(item.icon, contentDescription = null)

@@ -9,7 +9,7 @@ composeMultiplatform = "1.10.0"
 androidx-navigation = "2.9.1"
 kotlin = "2.3.0"
 materialIconsExtended = "1.7.3"
-orbit = "11.0.0"
+orbit = "6.1.0"
 koin = "4.1.1"
 ktor = "3.3.3"
 coil = "3.0.0"
@@ -34,6 +34,8 @@ androidx-navigation = { module = "org.jetbrains.androidx.navigation:navigation-c
 
 # Orbit
 orbit_core = { module = "org.orbit-mvi:orbit-core", version.ref = "orbit" }
+orbit_viewmodel = { module = "org.orbit-mvi:orbit-viewmodel", version.ref = "orbit" }
+orbit_compose = { module = "org.orbit-mvi:orbit-compose", version.ref = "orbit" }
 orbit_testing = { module = "org.orbit-mvi:orbit-test", version.ref = "orbit" }
 
 # Koin
