@@ -1,4 +1,4 @@
-package org.carlosgub.yt.rick.and.morty.presentation.screen
+package org.carlosgub.yt.rick.and.morty.presentation.screen.character
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,7 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import org.carlosgub.yt.rick.and.morty.presentation.components.CharacterItem
+import org.carlosgub.yt.rick.and.morty.presentation.screen.character.content.CharacterItem
 import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.CharacterViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
