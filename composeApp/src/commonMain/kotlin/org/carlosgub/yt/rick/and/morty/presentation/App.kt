@@ -33,7 +33,7 @@ import coil3.network.ktor3.KtorNetworkFetcherFactory
 import org.carlosgub.yt.rick.and.morty.presentation.model.NavigationBarItemModel
 import org.carlosgub.yt.rick.and.morty.presentation.navigation.Screen
 import org.carlosgub.yt.rick.and.morty.presentation.screen.character.CharacterScreen
-import org.carlosgub.yt.rick.and.morty.presentation.screen.EpisodeScreen
+import org.carlosgub.yt.rick.and.morty.presentation.screen.episode.EpisodeScreen
 import org.carlosgub.yt.rick.and.morty.presentation.screen.location.LocationScreen
 
 @OptIn(ExperimentalCoilApi::class)
