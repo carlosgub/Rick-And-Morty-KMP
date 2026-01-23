@@ -58,6 +58,8 @@ kotlin {
 
             // Orbit MVI
             api(libs.orbit.core)
+            implementation(libs.orbit.viewmodel)
+            implementation(libs.orbit.compose)
 
             // Koin
             api(libs.koin.core)
