@@ -1,5 +1,6 @@
 package org.carlosgub.yt.rick.and.morty.presentation.screen.character
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -14,9 +15,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.carlosgub.yt.rick.and.morty.presentation.screen.character.content.CharacterItem
+import org.carlosgub.yt.rick.and.morty.presentation.screen.character.preview.CharacterStateParameterProvider
+import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.CharacterState
 import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.CharacterViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -24,9 +30,16 @@ import org.koin.compose.viewmodel.koinViewModel
 fun CharacterScreen() {
     val viewModel = koinViewModel<CharacterViewModel>()
     val state by viewModel.container.stateFlow.collectAsStateWithLifecycle()
+    CharacterContent(state = state)
+}
 
+@Composable
+fun CharacterContent(
+    state: CharacterState
+) {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize()
+            .background(Color.White),
         contentAlignment = Alignment.Center
     ) {
         if (state.isLoading) {
@@ -60,5 +73,15 @@ fun CharacterScreen() {
                 }
             }
         }
+    }
+}
+
+@Preview
+@Composable
+fun CharacterScreenPreview(
+    @PreviewParameter(CharacterStateParameterProvider::class) state: CharacterState
+) {
+    MaterialTheme {
+        CharacterContent(state = state)
     }
 }
