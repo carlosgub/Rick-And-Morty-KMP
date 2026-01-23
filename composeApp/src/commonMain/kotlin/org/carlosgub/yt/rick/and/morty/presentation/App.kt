@@ -29,11 +29,19 @@ import org.carlosgub.yt.rick.and.morty.presentation.screen.CharacterScreen
 import org.carlosgub.yt.rick.and.morty.presentation.screen.EpisodeScreen
 import org.carlosgub.yt.rick.and.morty.presentation.screen.LocationScreen
 
+import org.carlosgub.yt.rick.and.morty.di.initKoin
+import org.koin.compose.KoinApplication
+import org.koin.compose.KoinContext
+
 @OptIn(ExperimentalCoilApi::class)
 @Composable
 @Preview
 fun App() {
-    MaterialTheme {
+    KoinApplication(application = {
+        // initKoin is now called in platform-specific entry points
+    }) {
+        MaterialTheme {
+
         setSingletonImageLoaderFactory { context ->
             ImageLoader.Builder(context)
                 .components {
@@ -102,4 +110,5 @@ fun App() {
             }
         }
     }
+}
 }
