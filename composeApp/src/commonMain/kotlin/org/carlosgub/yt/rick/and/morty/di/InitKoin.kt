@@ -8,6 +8,7 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
         appDeclaration()
         modules(
             networkModule,
-            repositoryModule
+            repositoryModule,
+            viewModelModule
         )
     }
