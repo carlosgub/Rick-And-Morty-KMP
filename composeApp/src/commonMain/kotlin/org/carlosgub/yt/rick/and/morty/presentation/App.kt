@@ -34,7 +34,7 @@ import org.carlosgub.yt.rick.and.morty.presentation.model.NavigationBarItemModel
 import org.carlosgub.yt.rick.and.morty.presentation.navigation.Screen
 import org.carlosgub.yt.rick.and.morty.presentation.screen.character.CharacterScreen
 import org.carlosgub.yt.rick.and.morty.presentation.screen.EpisodeScreen
-import org.carlosgub.yt.rick.and.morty.presentation.screen.LocationScreen
+import org.carlosgub.yt.rick.and.morty.presentation.screen.location.LocationScreen
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
