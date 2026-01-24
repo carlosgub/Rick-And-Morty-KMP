@@ -1,5 +1,6 @@
 package org.carlosgub.yt.rick.and.morty.presentation.screen.character
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -10,10 +11,14 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import org.carlosgub.yt.rick.and.morty.domain.model.Character
 import org.carlosgub.yt.rick.and.morty.presentation.screen.character.content.CharacterItem
+import org.carlosgub.yt.rick.and.morty.presentation.screen.character.preview.CharacterStateParameterProvider
+import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.character.CharacterState
 import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.character.CharacterViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -22,10 +27,14 @@ fun CharacterScreen() {
     val viewModel = koinViewModel<CharacterViewModel>()
     val state = viewModel.container.stateFlow.collectAsStateWithLifecycle().value
 
+    CharacterContent(state)
+}
 
-
+@Composable
+private fun CharacterContent(state: CharacterState) {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize()
+            .background(Color.White),
     ) {
         if (state.isLoading) {
             CircularProgressIndicator(
@@ -47,5 +56,15 @@ fun CharacterScreen() {
             }
         }
     }
+}
+
+@Preview
+@Composable
+private fun CharacterContentPreview(
+    @PreviewParameter(CharacterStateParameterProvider::class) state: CharacterState,
+) {
+    CharacterContent(
+        state = state
+    )
 }
 
