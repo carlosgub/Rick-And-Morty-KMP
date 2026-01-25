@@ -7,7 +7,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.toRoute
 import coil3.ImageLoader
 import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.setSingletonImageLoaderFactory
@@ -40,9 +39,8 @@ fun App() {
                 composable<Screen.Home> {
                     HomeScreen()
                 }
-                composable<Screen.CharacterDetail> { backStackEntry ->
-                    val characterDetail: Screen.CharacterDetail = backStackEntry.toRoute()
-                    CharacterDetailScreen(id = characterDetail.id)
+                composable<Screen.CharacterDetail> {
+                    CharacterDetailScreen()
                 }
             }
         }

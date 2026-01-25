@@ -28,4 +28,8 @@ class RickAndMortyApi(
             parameter("page", page)
         }.body()
     }
+
+    suspend fun getCharacter(id: Int): CharacterResponse.CharacterData {
+        return httpClient.get("/api/character/$id").body()
+    }
 }

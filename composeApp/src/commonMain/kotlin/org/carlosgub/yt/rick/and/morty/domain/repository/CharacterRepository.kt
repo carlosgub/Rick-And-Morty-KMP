@@ -4,4 +4,5 @@ import org.carlosgub.yt.rick.and.morty.domain.model.Character
 
 interface CharacterRepository {
     suspend fun getCharacters(page:Int):List<Character>
+    suspend fun getCharacter(id: Int): Character
 }
