@@ -25,13 +25,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import androidx.compose.foundation.clickable
 import org.carlosgub.yt.rick.and.morty.domain.model.Character
 
 @Composable
-fun CharacterItem(character: Character) {
+fun CharacterItem(
+    character: Character,
+    onItemClick: (Int) -> Unit
+) {
     Card(
         modifier = Modifier.fillMaxSize()
-            .padding(4.dp),
+            .padding(4.dp)
+            .clickable {
+                onItemClick(character.id)
+            },
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
