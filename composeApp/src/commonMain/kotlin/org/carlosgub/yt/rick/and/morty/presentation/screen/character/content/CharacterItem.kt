@@ -1,6 +1,7 @@
 package org.carlosgub.yt.rick.and.morty.presentation.screen.character.content
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,10 +29,16 @@ import coil3.compose.AsyncImage
 import org.carlosgub.yt.rick.and.morty.domain.model.Character
 
 @Composable
-fun CharacterItem(character: Character) {
+fun CharacterItem(
+    character: Character,
+    onClick: (Int) -> Unit
+) {
     Card(
         modifier = Modifier.fillMaxSize()
-            .padding(4.dp),
+            .padding(4.dp)
+            .clickable {
+                onClick(character.id)
+            },
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
@@ -67,7 +74,7 @@ fun CharacterItem(character: Character) {
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()
                         .padding(top = 4.dp)
-                ){
+                ) {
                     val statusColor = when (character.status.lowercase()) {
                         "alive" -> Color(0XFF4CAF50)
                         "dead" -> Color.Red
