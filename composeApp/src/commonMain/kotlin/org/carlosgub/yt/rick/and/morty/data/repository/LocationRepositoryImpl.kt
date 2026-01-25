@@ -9,7 +9,7 @@ class LocationRepositoryImpl(
     private val api: RickAndMortyApi,
 ) : LocationRepository {
 
-    override suspend fun getLocation(page: Int): List<Location> {
-        return api.getLocation(page).results.map { it.toLocation() }
+    override suspend fun getLocations(page: Int): List<Location> {
+        return api.getLocations(page).results.map { it.toLocation() }
     }
 }

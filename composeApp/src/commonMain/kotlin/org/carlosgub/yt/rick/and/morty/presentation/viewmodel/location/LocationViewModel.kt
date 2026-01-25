@@ -20,7 +20,7 @@ class LocationViewModel(
 
     private fun getLocations() = intent{
         reduce { state.copy(isLoading = true) }
-        val location = locationRepository.getLocation(1)
+        val location = locationRepository.getLocations(1)
         reduce {
             state.copy(
                 isLoading = false,

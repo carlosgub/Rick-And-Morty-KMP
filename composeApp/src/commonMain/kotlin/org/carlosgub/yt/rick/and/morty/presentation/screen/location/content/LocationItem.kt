@@ -44,27 +44,7 @@ fun LocationItem(location: Location) {
                 fontWeight = FontWeight.SemiBold
             )
 
-            Text(
-                text = buildAnnotatedString {
-                    withStyle(
-                        style = SpanStyle(
-                            color = MaterialTheme.colorScheme.primary,
-                            fontWeight = FontWeight.Normal
-                        )
-                    ) {
-                        append("Type: ")
-                    }
-                    withStyle(
-                        style = SpanStyle(
-                            color = Color.DarkGray,
-                            fontWeight = FontWeight.Normal
-                        )
-                    ) {
-                        append(location.type)
-                    }
-                },
-                modifier = Modifier.padding(top = 6.dp)
-            )
+            LocationType(location.type)
             Row(
                 modifier = Modifier.fillMaxWidth()
                     .padding(top = 2.dp),
@@ -85,4 +65,29 @@ fun LocationItem(location: Location) {
             }
         }
     }
+}
+
+@Composable
+private fun LocationType(type: String) {
+    Text(
+        text = buildAnnotatedString {
+            withStyle(
+                style = SpanStyle(
+                    color = MaterialTheme.colorScheme.primary,
+                    fontWeight = FontWeight.Normal
+                )
+            ) {
+                append("Type: ")
+            }
+            withStyle(
+                style = SpanStyle(
+                    color = Color.DarkGray,
+                    fontWeight = FontWeight.Normal
+                )
+            ) {
+                append(type)
+            }
+        },
+        modifier = Modifier.padding(top = 6.dp)
+    )
 }
