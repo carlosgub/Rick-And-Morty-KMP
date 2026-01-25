@@ -4,16 +4,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CharacterResponse(
-    val info: Info,
+    val info: InfoResponse,
     val results: List<CharacterData>
 ) {
-    @Serializable
-    data class Info(
-        val count: Int,
-        val pages: Int,
-        val next: String?,
-        val prev: String?
-    )
 
     @Serializable
     data class CharacterData(
