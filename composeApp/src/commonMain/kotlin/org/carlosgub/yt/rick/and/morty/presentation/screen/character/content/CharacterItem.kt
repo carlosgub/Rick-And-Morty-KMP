@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import org.carlosgub.yt.rick.and.morty.domain.model.Character
+import org.carlosgub.yt.rick.and.morty.presentation.utils.statusColor
 
 @Composable
 fun CharacterItem(
@@ -75,17 +76,11 @@ fun CharacterItem(
                     modifier = Modifier.fillMaxWidth()
                         .padding(top = 4.dp)
                 ) {
-                    val statusColor = when (character.status.lowercase()) {
-                        "alive" -> Color(0XFF4CAF50)
-                        "dead" -> Color.Red
-                        else -> Color.Gray
-                    }
-
                     Box(
                         modifier = Modifier
                             .size(8.dp)
                             .clip(CircleShape)
-                            .background(statusColor)
+                            .background(character.statusColor())
                     )
                     Text(
                         text = "${character.status} - ${character.species}",

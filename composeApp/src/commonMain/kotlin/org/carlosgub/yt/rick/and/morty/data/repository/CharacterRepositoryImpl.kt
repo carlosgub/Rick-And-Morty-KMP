@@ -10,4 +10,7 @@ class CharacterRepositoryImpl(
 ) : CharacterRepository {
     override suspend fun getCharacters(page: Int): List<Character> =
         api.getCharacters(page).results.map { it.toCharacter() }
+
+    override suspend fun getCharacter(id: Int): Character =
+        api.getCharacter(id).toCharacter()
 }

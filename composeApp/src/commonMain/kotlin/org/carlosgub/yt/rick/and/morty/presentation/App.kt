@@ -39,9 +39,8 @@ fun App() {
                 composable<Screen.Home> {
                     HomeScreen()
                 }
-                composable<Screen.CharacterDetail> { backStackEntry ->
-                    val characterDetail: Screen.CharacterDetail = backStackEntry.toRoute()
-                    CharacterDetailScreen(characterDetail.id)
+                composable<Screen.CharacterDetail> {
+                    CharacterDetailScreen()
                 }
             }
         }

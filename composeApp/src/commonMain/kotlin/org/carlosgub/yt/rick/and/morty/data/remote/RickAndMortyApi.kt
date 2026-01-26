@@ -16,6 +16,9 @@ class RickAndMortyApi(
             parameter("page", page)
         }.body()
     }
+    suspend fun getCharacter(id: Int): CharacterResponse.CharacterData {
+        return httpClient.get("/api/character/$id").body()
+    }
 
     suspend fun getLocations(page: Int): LocationResponse {
         return httpClient.get("/api/location") {
