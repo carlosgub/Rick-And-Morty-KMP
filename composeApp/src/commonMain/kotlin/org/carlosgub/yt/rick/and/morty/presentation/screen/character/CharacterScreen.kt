@@ -11,6 +11,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -37,20 +41,30 @@ import org.orbitmvi.orbit.compose.collectSideEffect
 fun CharacterScreen() {
     val viewModel = koinViewModel<CharacterViewModel>()
     val state = viewModel.container.stateFlow.collectAsStateWithLifecycle().value
+    val snackbarHostState = remember { SnackbarHostState() }
 
-    CharacterObserver(viewModel = viewModel)
-    CharacterContent(
-        state = state,
-        onCharacterClicked = viewModel::onCharacterClicked,
-        onLoadNextPage = viewModel::loadNextPage
+    CharacterObserver(
+        viewModel = viewModel,
+        snackbarHostState = snackbarHostState
     )
+    Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) }
+    ) { paddingValues ->
+        CharacterContent(
+            state = state,
+            onCharacterClicked = viewModel::onCharacterClicked,
+            onLoadNextPage = viewModel::loadNextPage,
+            modifier = Modifier.padding(paddingValues)
+        )
+    }
 }
 
 @Composable
 private fun CharacterContent(
     state: CharacterState,
     onCharacterClicked: (Int) -> Unit,
-    onLoadNextPage: () -> Unit
+    onLoadNextPage: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val listState = rememberLazyListState()
 
@@ -70,7 +84,7 @@ private fun CharacterContent(
     }
 
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize()
             .background(Color.White),
     ) {
         if (state.isLoading) {
@@ -78,6 +92,14 @@ private fun CharacterContent(
                 modifier = Modifier.align(Alignment.Center)
             )
         }
+        
+        if (state.characters.isEmpty() && state.error != null) {
+             Text(
+                 text = state.error,
+                 modifier = Modifier.align(Alignment.Center)
+             )
+        }
+        
         if (state.characters.isNotEmpty()) {
             LazyColumn(
                 state = listState,
