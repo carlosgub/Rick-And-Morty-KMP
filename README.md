@@ -1,32 +1,49 @@
-# Curso de Kotlin Multiplatform desde cero
+# Curso de Kotlin Multiplatform desde cero 🚀
 
-En este primer video del Curso de Kotlin Multiplatform desde cero, hacemos una introducción rápida y directa a qué es KMP y cuáles son sus principales casos de uso en el mundo real 🚀
+Este repositorio contiene el proyecto práctico del **Curso de Kotlin Multiplatform (KMP) desde cero** disponible en mi canal de YouTube. A lo largo del curso, construimos una aplicación completa de Rick and Morty utilizando las últimas tecnologías y mejores prácticas de desarrollo multiplataforma.
 
-Durante los videos:
-- Explicamos cuándo vale la pena usar Kotlin Multiplatform y para qué tipo de proyectos
-- Presentamos el ejemplo práctico que desarrollaremos a lo largo del curso implementando el API de rick and morty.
-- Mostramos la arquitectura general del proyecto
+## 📱 Funcionalidades Implementadas
 
-## 📱 Proyecto del curso
+- **Listado de Personajes**: Visualización de todos los personajes con scroll infinito (paginación).
+- **Detalle de Personaje**: Información detallada de cada personaje, incluyendo episodios en los que aparece.
+- **Listado de Episodios**: Exploración de los episodios de la serie.
+- **Listado de Ubicaciones**: Exploración de las diferentes localizaciones.
+- **Navegación**: Implementación de Bottom Navigation con Jetpack Compose Navigation.
+- **Diseño Premium**: UI moderna y reactiva usando Compose Multiplatform.
 
-A lo largo de esta serie construiremos una app usando la API de Rick and Morty, aplicando:
-- **Ktor** para consumo de APIs
-- **Koin** para inyección de dependencias
-- **Compose Multiplatform** para la UI
-- Código compartido entre Android, iOS.
+## 🛠️ Tecnologías y Librerías
 
-## ⚙️ Setup del entorno
+El proyecto utiliza un stack tecnológico moderno para KMP:
 
-Al final del video se explica cómo configurar Kotlin Multiplatform en tu máquina, siguiendo la guía oficial de Kotlin:
-[Guía oficial de setup](https://kotlinlang.org/docs/multiplatform/quickstart.html#set-up-the-environment)
+- **[Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html)**: Compartición de lógica de negocio entre Android e iOS.
+- **[Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/)**: UI compartida con Jetpack Compose.
+- **[Orbit MVI](https://github.com/orbit-mvi/orbit-mvi)**: Patrón de arquitectura para el manejo de estado y efectos secundarios.
+- **[Koin](https://insert-koin.io/)**: Inyección de dependencias multiplataforma.
+- **[Ktor](https://ktor.io/)**: Cliente HTTP para el consumo de la API de Rick and Morty.
+- **[Coil 3](https://coil-kt.github.io/coil/)**: Carga de imágenes optimizada para multiplataforma.
+- **[Jetpack Navigation](https://developer.android.com/guide/navigation)**: Navegación nativa de Compose adaptada a KMP.
+- **[Kotlinx Serialization](https://github.com/Kotlin/kotlinx.serialization)**: Serialización de datos JSON.
 
-## 📌 Para quién es este curso
+## 🏗️ Arquitectura
 
-Este curso está pensado para developers que ya conocen Kotlin y quieren dar el salto a multiplataforma de forma profesional, usando buenas prácticas desde el inicio.
+El proyecto sigue los principios de **Clean Architecture**:
 
-## 👉 Únete a la comunidad
+- **Data Layer**: Repositorios, Mappers y Data Sources (Ktor).
+- **Domain Layer**: Modelos de dominio y casos de uso (opcional según complejidad).
+- **Presentation Layer**: ViewModels (Orbit MVI) y Screens (Compose Multiplatform).
 
-- Suscríbete para no perderte los siguientes videos: https://www.youtube.com/@carlosgub
-- Deja tus preguntas o sugerencias en los comentarios
+## 🚀 Cómo empezar
 
-#Kotlin #KotlinMultiplatform #KMP #ComposeMultiplatform #Ktor #Koin #Android #iOS #Multiplatform
+1. Clonar el repositorio.
+2. Asegurarte de tener instalado **Android Studio** (Koala o superior) y **Xcode** (para iOS).
+3. Configurar el entorno siguiendo la [guía oficial de KMP](https://kotlinlang.org/docs/multiplatform-quickstart.html#set-up-the-environment).
+4. Ejecutar la app en Android o iOS desde Android Studio.
+
+## 📌 Sobre el curso
+
+Este curso está pensado para developers que ya conocen Kotlin y quieren dominar el desarrollo multiplataforma de forma profesional.
+
+- **YouTube**: [CarlosGub - Suscríbete](https://www.youtube.com/@carlosgub)
+
+---
+#Kotlin #KotlinMultiplatform #KMP #ComposeMultiplatform #Ktor #Koin #OrbitMVI #Android #iOS #RickAndMorty
