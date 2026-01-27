@@ -15,15 +15,21 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Transgender
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,31 +39,62 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import org.carlosgub.yt.rick.and.morty.domain.model.Character
+import org.carlosgub.yt.rick.and.morty.presentation.screen.characterdetail.preview.CharacterDetailStateParameterProvider
 import org.carlosgub.yt.rick.and.morty.presentation.utils.statusColor
 import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.characterdetail.CharacterDetailState
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CharacterDetailContent(
     state: CharacterDetailState,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBackClick: () -> Unit,
 ) {
-    Box(
-        modifier = modifier.fillMaxSize()
-            .background(Color.White),
-    ) {
-        if (state.isLoading) {
-            CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        state.character?.name.orEmpty(),
+                        fontWeight = FontWeight.Bold
+                    )
+                },
+                navigationIcon = {
+                    IconButton(onClick = onBackClick) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back"
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color.White
+                )
             )
         }
-        state.character?.let { character ->
-            CharacterDetail(character = character)
+    ) { paddingValues ->
+        Box(
+            modifier = modifier.fillMaxSize()
+                .padding(paddingValues = paddingValues)
+                .background(Color.White),
+        ) {
+            if (state.isLoading) {
+                CircularProgressIndicator(
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
+            state.character?.let { character ->
+                CharacterDetail(character = character)
+            }
         }
     }
+
 }
 
 @Composable
@@ -186,4 +223,15 @@ private fun InfoCard(
             }
         }
     }
+}
+
+@Preview
+@Composable
+private fun CharacterDetailScreenPreview(
+    @PreviewParameter(CharacterDetailStateParameterProvider::class) state: CharacterDetailState
+) {
+    CharacterDetailContent(
+        state = state,
+        onBackClick = {}
+    )
 }
