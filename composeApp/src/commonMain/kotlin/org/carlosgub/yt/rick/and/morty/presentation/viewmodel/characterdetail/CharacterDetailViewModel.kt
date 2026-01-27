@@ -17,7 +17,9 @@ class CharacterDetailViewModel(
     private val characterId: Int = savedStateHandle.toRoute<Screen.CharacterDetail>().id
 
     override val container =
-        viewModelScope.container<CharacterDetailState, CharacterDetailSideEffect>(CharacterDetailState())
+        viewModelScope.container<CharacterDetailState, CharacterDetailSideEffect>(
+            CharacterDetailState()
+        )
 
     init {
         getCharacter()
@@ -25,14 +27,24 @@ class CharacterDetailViewModel(
 
     private fun getCharacter() = intent {
         reduce { state.copy(isLoading = true) }
-        val character = characterRepository.getCharacter(characterId)
-        println(character.toString())
-        reduce {
-            state.copy(
-                isLoading = false,
-                character = character
-            )
-        }
+        characterRepository.getCharacter(characterId)
+            .onSuccess { character ->
+                reduce {
+                    state.copy(
+                        isLoading = false,
+                        character = character
+                    )
+                }
+            }
+            .onFailure { error ->
+                println(error.toString())
+                reduce {
+                    state.copy(
+                        isLoading = false,
+                        error = error.message ?: "Ocurrió un error inesperado"
+                    )
+                }
+            }
     }
 
     fun navigateBack() = intent {

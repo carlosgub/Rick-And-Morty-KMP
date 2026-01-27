@@ -14,22 +14,20 @@ class RickAndMortyApi(
     private val httpClient: HttpClient
 ) {
     suspend fun getCharacters(page: Int): Result<CharacterResponse> {
-        return runCatching {
-            safeApiCall {
-                httpClient.get("/api/character") {
-                    parameter("page", page)
-                }
+        return safeApiCall {
+            httpClient.get("/api/character") {
+                parameter("page", page)
             }
         }
     }
 
-    suspend fun getCharacter(id: Int): CharacterResponse.CharacterData {
+    suspend fun getCharacter(id: Int): Result<CharacterResponse.CharacterData> {
         return safeApiCall {
             httpClient.get("/api/character/$id")
         }
     }
 
-    suspend fun getLocations(page: Int): LocationResponse {
+    suspend fun getLocations(page: Int): Result<LocationResponse> {
         return safeApiCall {
             httpClient.get("/api/location") {
                 parameter("page", page)
@@ -37,7 +35,7 @@ class RickAndMortyApi(
         }
     }
 
-    suspend fun getEpisodes(page: Int): EpisodeResponse {
+    suspend fun getEpisodes(page: Int): Result<EpisodeResponse> {
         return safeApiCall {
             httpClient.get("/api/episode") {
                 parameter("page", page)
@@ -45,11 +43,13 @@ class RickAndMortyApi(
         }
     }
 
-    private suspend inline fun <reified T> safeApiCall(block: () -> HttpResponse): T {
-        val response = block()
-        if (response.status.value == 429) {
-            throw Exception("Se realizaron muchas peticiones, intente más tarde nuevamente")
+    private suspend inline fun <reified T> safeApiCall(block: () -> HttpResponse): Result<T> {
+        return runCatching {
+            val response = block()
+            if (response.status.value == 429) {
+                throw Exception("Se realizaron muchas peticiones, intente más tarde nuevamente")
+            }
+            response.body()
         }
-        return response.body()
     }
 }
