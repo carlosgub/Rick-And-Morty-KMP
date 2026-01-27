@@ -5,4 +5,5 @@ import org.carlosgub.yt.rick.and.morty.domain.model.Location
 data class LocationState(
     val isLoading: Boolean = false,
     val locations: List<Location> = emptyList(),
+    val error: String? = null,
 )

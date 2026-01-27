@@ -89,6 +89,11 @@ fun CharacterDetailContent(
                     modifier = Modifier.align(Alignment.Center)
                 )
             }
+
+            state.error?.let { error ->
+                CharacterDetailError(error)
+            }
+
             state.character?.let { character ->
                 CharacterDetail(character = character)
             }
@@ -222,6 +227,19 @@ private fun InfoCard(
                 )
             }
         }
+    }
+}
+
+@Composable
+fun CharacterDetailError(error: String) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp)
+    ) {
+        Text(
+            text = error,
+        )
     }
 }
 

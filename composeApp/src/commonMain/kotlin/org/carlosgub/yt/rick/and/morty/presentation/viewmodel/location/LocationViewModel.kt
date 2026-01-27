@@ -18,14 +18,25 @@ class LocationViewModel(
         getLocations()
     }
 
-    private fun getLocations() = intent{
+    private fun getLocations() = intent {
         reduce { state.copy(isLoading = true) }
-        val location = locationRepository.getLocations(1)
-        reduce {
-            state.copy(
-                isLoading = false,
-                locations = location
-            )
-        }
+        locationRepository.getLocations(1)
+            .onSuccess { location ->
+                reduce {
+                    state.copy(
+                        isLoading = false,
+                        locations = location
+                    )
+                }
+            }
+            .onFailure { error ->
+                reduce {
+                    state.copy(
+                        isLoading = false,
+                        error = error.message ?: "Ocurrió un error inesperado"
+                    )
+                }
+            }
+
     }
 }
