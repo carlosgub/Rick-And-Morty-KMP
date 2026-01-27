@@ -21,31 +21,42 @@ class CharacterViewModel(
         if (!state.canLoadMore || state.isLoading || state.isPaginating) return@intent
 
         if (state.characters.isEmpty()) {
-            reduce { state.copy(isLoading = true) }
+            reduce { state.copy(isLoading = true, error = null) }
         } else {
-            reduce { state.copy(isPaginating = true) }
+            reduce { state.copy(isPaginating = true, error = null) }
         }
 
-        try {
-            val characterPaging = characterRepository.getCharacters(state.page)
-            reduce {
-                state.copy(
-                    isLoading = false,
-                    isPaginating = false,
-                    characters = state.characters + characterPaging.results,
-                    page = state.page + 1,
-                    canLoadMore = characterPaging.canLoadMore
-                )
+        characterRepository.getCharacters(state.page)
+            .onSuccess { characterPaging ->
+                reduce {
+                    state.copy(
+                        isLoading = false,
+                        isPaginating = false,
+                        characters = state.characters + characterPaging.results,
+                        page = state.page + 1,
+                        canLoadMore = characterPaging.canLoadMore
+                    )
+                }
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            reduce {
-                state.copy(
-                    isLoading = false,
-                    isPaginating = false
-                )
+            .onFailure { error ->
+                if (state.characters.isNotEmpty()) {
+                    reduce {
+                        state.copy(
+                            isLoading = false,
+                            isPaginating = false
+                        )
+                    }
+                    postSideEffect(CharacterSideEffect.ShowSnackbar(error.message ?: "Ocurrió un error inesperado"))
+                } else {
+                    reduce {
+                        state.copy(
+                            isLoading = false,
+                            isPaginating = false,
+                            error = error.message ?: "Ocurrió un error inesperado"
+                        )
+                    }
+                }
             }
-        }
     }
 
     fun loadNextPage() {

@@ -8,4 +8,5 @@ data class CharacterState(
     val page: Int = 1,
     val canLoadMore: Boolean = true,
     val isPaginating: Boolean = false,
+    val error: String? = null,
 )
