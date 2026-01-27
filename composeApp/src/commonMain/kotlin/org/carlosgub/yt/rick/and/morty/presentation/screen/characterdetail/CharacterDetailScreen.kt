@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.carlosgub.yt.rick.and.morty.presentation.screen.characterdetail.content.CharacterDetailContent
 import org.carlosgub.yt.rick.and.morty.presentation.screen.characterdetail.observer.CharacterDetailObserver
@@ -28,33 +29,8 @@ fun CharacterDetailScreen() {
 
     CharacterDetailObserver(viewModel)
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        state.character?.name.orEmpty(),
-                        fontWeight = FontWeight.Bold
-                    )
-                },
-                navigationIcon = {
-                    IconButton(onClick = viewModel::navigateBack) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back"
-                        )
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.White
-                )
-            )
-        }
-    ) { paddingValues ->
-        CharacterDetailContent(
-            state = state,
-            modifier = Modifier.padding(paddingValues)
-        )
-    }
-
+    CharacterDetailContent(
+        state = state,
+        onNavigateBack = viewModel::navigateBack
+    )
 }
