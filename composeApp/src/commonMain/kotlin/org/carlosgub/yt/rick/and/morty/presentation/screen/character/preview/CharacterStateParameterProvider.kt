@@ -34,6 +34,33 @@ class CharacterStateParameterProvider: PreviewParameterProvider<CharacterState> 
                     image = ""
                 ),
             )
+        ),
+
+        CharacterState(
+            isLoading = false,
+            characters = listOf(
+                Character(
+                    id = 1,
+                    name = "Rick Sanchez",
+                    status = "Alive",
+                    species = "Humano",
+                    type = "",
+                    gender = "Male",
+                    location = "Earth",
+                    image = ""
+                ),
+                Character(
+                    id = 2,
+                    name = "Morty Smith",
+                    status = "Alive",
+                    species = "Humano",
+                    type = "",
+                    gender = "Male",
+                    location = "Earth",
+                    image = ""
+                ),
+            ),
+            isLoadingNextPage = true
         )
 
     )
