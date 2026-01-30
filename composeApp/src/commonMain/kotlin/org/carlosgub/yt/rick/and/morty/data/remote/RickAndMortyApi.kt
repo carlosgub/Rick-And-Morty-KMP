@@ -23,25 +23,31 @@ class RickAndMortyApi(
         }
     }
 
-    suspend fun getCharacter(id: Int): CharacterResponse.CharacterData {
-        return httpClient.get("/api/character/$id").body()
+    suspend fun getCharacter(id: Int): Result<CharacterResponse.CharacterData> {
+        return safeApiCall {
+            httpClient.get("/api/character/$id").body()
+        }
     }
 
-    suspend fun getLocations(page: Int): LocationResponse {
-        return httpClient.get("/api/location") {
-            parameter("page", page)
-        }.body()
+    suspend fun getLocations(page: Int): Result<LocationResponse> {
+        return safeApiCall {
+            httpClient.get("/api/location") {
+                parameter("page", page)
+            }.body()
+        }
     }
 
-    suspend fun getEpisodes(page: Int): EpisodeResponse {
-        return httpClient.get("/api/episode") {
-            parameter("page", page)
-        }.body()
+    suspend fun getEpisodes(page: Int): Result<EpisodeResponse> {
+        return safeApiCall {
+            httpClient.get("/api/episode") {
+                parameter("page", page)
+            }.body()
+        }
     }
 
     suspend inline fun <reified T> safeApiCall(crossinline body: suspend () -> HttpResponse): Result<T> {
         return runCatching {
-            withContext(Dispatchers.IO){
+            withContext(Dispatchers.IO) {
                 val response = body()
                 if (response.status.value == 429) {
                     throw Exception("Hubo un error, realizaste muchas llamadas al servidor. Espera un momento y vuelve a intentarlo")

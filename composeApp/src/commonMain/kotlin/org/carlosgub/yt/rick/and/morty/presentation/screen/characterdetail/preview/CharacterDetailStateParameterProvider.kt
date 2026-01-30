@@ -23,7 +23,12 @@ class CharacterDetailStateParameterProvider : PreviewParameterProvider<Character
                 location = "Earth",
                 image = ""
             )
-        )
+        ),
+        CharacterDetailState(
+            isLoading = false,
+            character = null,
+            errorMessage = "Hubo un error"
+        ),
 
     )
 

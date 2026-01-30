@@ -12,6 +12,11 @@ class CharacterStateParameterProvider: PreviewParameterProvider<CharacterState> 
         ),
         CharacterState(
             isLoading = false,
+            characters = emptyList(),
+            errorMessage = "Hubo un error",
+        ),
+        CharacterState(
+            isLoading = false,
             characters = listOf(
                 Character(
                     id = 1,

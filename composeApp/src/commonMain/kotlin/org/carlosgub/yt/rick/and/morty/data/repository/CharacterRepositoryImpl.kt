@@ -20,6 +20,6 @@ class CharacterRepositoryImpl(
         }
     }
 
-    override suspend fun getCharacter(id: Int): Character =
-        api.getCharacter(id).toCharacter()
+    override suspend fun getCharacter(id: Int): Result<Character> =
+        api.getCharacter(id).map { it.toCharacter() }
 }

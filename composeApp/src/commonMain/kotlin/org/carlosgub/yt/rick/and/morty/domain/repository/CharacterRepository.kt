@@ -6,5 +6,5 @@ import org.carlosgub.yt.rick.and.morty.domain.model.CharacterPaging
 interface CharacterRepository {
     suspend fun getCharacters(page: Int): Result<CharacterPaging>
 
-    suspend fun getCharacter(id: Int): Character
+    suspend fun getCharacter(id: Int): Result<Character>
 }

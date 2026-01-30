@@ -76,6 +76,13 @@ fun CharacterDetailContent(
             state.character?.let { character ->
                 CharacterDetail(character = character)
             }
+            state.errorMessage?.let { message ->
+                Text(
+                    message,
+                    modifier = Modifier.align(Alignment.Center)
+                        .padding(16.dp)
+                )
+            }
         }
     }
 

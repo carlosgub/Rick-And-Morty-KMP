@@ -25,8 +25,13 @@ class EpisodeStateParameterProvider : PreviewParameterProvider<EpisodeState> {
                     airDate = "Deciembre",
                     episode = "S01E02",
                 ),
-            )
-        )
+            ),
+        ),
+        EpisodeState(
+            isLoading = false,
+            episodes = emptyList(),
+            errorMessage = "Hubo un error"
+        ),
 
     )
 

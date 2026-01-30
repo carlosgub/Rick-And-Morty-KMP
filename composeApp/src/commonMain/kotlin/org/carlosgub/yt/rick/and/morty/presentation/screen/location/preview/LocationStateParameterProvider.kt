@@ -34,7 +34,12 @@ class LocationStateParameterProvider : PreviewParameterProvider<LocationState> {
                     dimension = "Desconocida asdasdasdasdasd 123123123123123123",
                 ),
             )
-        )
+        ),
+        LocationState(
+            isLoading = false,
+            locations = emptyList(),
+            errorMessage = "Hubo un error"
+        ),
 
     )
 

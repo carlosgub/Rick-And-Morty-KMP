@@ -20,12 +20,24 @@ class EpisodeViewModel(
 
     private fun getEpisodes() = intent {
         reduce { state.copy(isLoading = true) }
-        val episodes = episodeRepository.getEpisodes(1)
-        reduce {
-            state.copy(
-                isLoading = false,
-                episodes = episodes
-            )
-        }
+        episodeRepository.getEpisodes(1)
+            .onSuccess { episodes ->
+                reduce {
+                    state.copy(
+                        isLoading = false,
+                        episodes = episodes,
+                        errorMessage = null,
+                    )
+                }
+            }
+            .onFailure { error ->
+                reduce {
+                    state.copy(
+                        isLoading = false,
+                        episodes = emptyList(),
+                        errorMessage = error.message ?: "Hubo un error",
+                    )
+                }
+            }
     }
 }
