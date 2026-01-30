@@ -9,6 +9,9 @@ import org.carlosgub.yt.rick.and.morty.data.model.EpisodeResponse
 import org.carlosgub.yt.rick.and.morty.data.model.LocationResponse
 
 import io.ktor.client.statement.HttpResponse
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.withContext
 
 class RickAndMortyApi(
     private val httpClient: HttpClient
@@ -43,13 +46,15 @@ class RickAndMortyApi(
         }
     }
 
-    private suspend inline fun <reified T> safeApiCall(block: () -> HttpResponse): Result<T> {
+    private suspend inline fun <reified T> safeApiCall(crossinline block: suspend () -> HttpResponse): Result<T> {
         return runCatching {
-            val response = block()
-            if (response.status.value == 429) {
-                throw Exception("Se realizaron muchas peticiones, intente más tarde nuevamente")
+            withContext(Dispatchers.IO) {
+                val response = block()
+                if (response.status.value == 429) {
+                    throw Exception("Se realizaron muchas peticiones, intente más tarde nuevamente")
+                }
+                response.body()
             }
-            response.body()
         }
     }
 }
