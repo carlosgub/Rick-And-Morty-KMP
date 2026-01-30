@@ -6,10 +6,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -33,11 +35,14 @@ import org.koin.compose.viewmodel.koinViewModel
 import org.orbitmvi.orbit.compose.collectSideEffect
 
 @Composable
-fun CharacterScreen() {
+fun CharacterScreen(showSnackBar: (String) -> Unit) {
     val viewModel = koinViewModel<CharacterViewModel>()
     val state = viewModel.container.stateFlow.collectAsStateWithLifecycle().value
 
-    CharacterObserver(viewModel = viewModel)
+    CharacterObserver(
+        viewModel = viewModel,
+        showSnackBar = showSnackBar
+    )
     CharacterContent(
         state = state,
         onCharacterClicked = viewModel::onCharacterClicked,
@@ -77,6 +82,13 @@ private fun CharacterContent(
                 modifier = Modifier.align(Alignment.Center)
             )
         }
+        state.errorMessage?.let { message ->
+            Text(
+                message,
+                modifier = Modifier.align(Alignment.Center)
+                    .padding(16.dp)
+            )
+        }
         if (state.characters.isNotEmpty()) {
             LazyColumn(
                 state = listState,
@@ -93,9 +105,9 @@ private fun CharacterContent(
                         onClick = onCharacterClicked
                     )
                 }
-                if(state.isLoadingNextPage){
+                if (state.isLoadingNextPage) {
                     item {
-                        Box(modifier = Modifier.fillMaxWidth()){
+                        Box(modifier = Modifier.fillMaxWidth()) {
                             CircularProgressIndicator(
                                 modifier = Modifier.align(Alignment.Center)
                             )

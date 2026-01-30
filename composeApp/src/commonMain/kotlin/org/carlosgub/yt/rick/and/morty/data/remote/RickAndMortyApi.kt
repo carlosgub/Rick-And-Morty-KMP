@@ -11,11 +11,18 @@ import org.carlosgub.yt.rick.and.morty.data.model.LocationResponse
 class RickAndMortyApi(
     private val httpClient: HttpClient
 ) {
-    suspend fun getCharacters(page: Int): CharacterResponse {
-        return httpClient.get("/api/character") {
-            parameter("page", page)
-        }.body()
+    suspend fun getCharacters(page: Int): Result<CharacterResponse> {
+        return runCatching {
+            val client = httpClient.get("/api/character") {
+                parameter("page", page)
+            }
+            if(client.status.value == 429){
+                throw Exception("Hubo un error, realizaste muchas llamadas al servidor. Espera un momento y vuelve a intentarlo")
+            }
+            client.body()
+        }
     }
+
     suspend fun getCharacter(id: Int): CharacterResponse.CharacterData {
         return httpClient.get("/api/character/$id").body()
     }

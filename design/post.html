@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>KMP Masterclass Instagram Post</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00bdc7",
+                        "background-light": "#f2f5f8",
+                        "background-dark": "#181e2a",
+                        "kotlin-violet": "#7F52FF",
+                        "kotlin-orange": "#E44857",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "sans": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        .ide-blur {
+            backdrop-filter: blur(12px);
+            background: rgba(24, 30, 42, 0.88);
+        }
+        .glow-effect {
+            box-shadow: 0 0 50px rgba(0, 189, 199, 0.4);
+        }
+        .badge-glow {
+            box-shadow: 0 0 30px rgba(228, 72, 87, 0.6);
+        }
+        .logo-cluster-item {
+            @apply flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-xl;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display flex items-center justify-center min-h-screen p-4">
+<div class="relative aspect-square w-full max-w-[800px] overflow-hidden rounded-2xl border-[12px] border-white dark:border-gray-800 shadow-2xl bg-background-dark flex flex-col items-center justify-between py-12 px-8">
+    <div class="absolute inset-0 z-0 bg-cover bg-center opacity-30 grayscale" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3CFiHBZ9mQjWbsVTO006dmu8zbNn5lFH2pzpiuQXP_XEVCI5_OXrWxNTSvxI9N4Zcy7klqgg-Kk2pIMQdMdHx4J34dgg9pQhd2DYh0WjJanpv0G_geEp8nX-H_Hxq0wG7Q0v-F1rxkMpGk_2L7phtJzj86CPc3DzQ0aKpg4x793Haz0uf97V3yZSvs3eC7zK741DZV-j-P2EoRoRZMI0WCAIkwDMEGTOgONOZr5u7wl4XyrdyD6hev3ACv6E-xhztucYSaha8q_SX");'></div>
+    <div class="absolute inset-0 z-10 ide-blur"></div>
+    <div class="absolute top-0 right-0 size-80 bg-primary/20 rounded-full blur-[100px]"></div>
+    <div class="absolute bottom-0 left-0 size-80 bg-kotlin-violet/20 rounded-full blur-[100px]"></div>
+    <div class="relative z-20 transform -rotate-2">
+        <div class="bg-kotlin-orange text-white px-10 py-3 rounded-xl font-black text-4xl tracking-tighter shadow-2xl border-4 border-white badge-glow">
+            PARTE 11
+        </div>
+    </div>
+    <div class="relative z-20 flex flex-wrap justify-center items-center gap-4 py-4">
+        <div class="size-28 rounded-3xl bg-gradient-to-tr from-kotlin-violet to-kotlin-orange flex items-center justify-center shadow-2xl glow-effect ring-4 ring-white/10 mx-2">
+            <svg class="text-white size-16" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 24H0V0h24L12 12z"></path>
+            </svg>
+        </div>
+        <div class="flex flex-col gap-3">
+            <div class="logo-cluster-item size-16">
+                <span class="material-symbols-outlined text-primary text-4xl">android</span>
+            </div>
+            <div class="logo-cluster-item size-16">
+                <span class="material-symbols-outlined text-white text-4xl">ios</span>
+            </div>
+        </div>
+    </div>
+    <div class="relative z-20 flex flex-col items-center text-center">
+        <div class="bg-primary/20 border border-primary/30 text-primary px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-[0.4em] mb-4">
+            Masterclass 2026
+        </div>
+        <h1 class="text-white text-[5.5rem] font-bold leading-[0.85] tracking-tighter">
+            TODO <span class="text-primary">EN UNO</span>
+        </h1>
+        <div class="mt-8 bg-white text-background-dark px-10 py-3 font-black text-5xl transform -skew-x-6 shadow-2xl">
+            CURSO KMP
+        </div>
+    </div>
+    <div class="relative z-20 w-full max-w-lg mt-8 items-center text-center">
+<span class="text-white font-bold text-2xl tracking-tight block uppercase">
+                    Detalle del Personaje y Llamada al API por ID
+                </span>
+    </div>
+    <div class="relative z-20 flex justify-center gap-10 mt-6">
+        <div class="bg-kotlin-violet text-white font-bold py-2 px-6 rounded-lg shadow-xl text-xl flex items-center gap-2 border-2 border-white/20">
+            <span class="material-symbols-outlined">play_circle</span>
+            VER AHORA
+        </div>
+    </div>
+</div>
+
+</body></html>

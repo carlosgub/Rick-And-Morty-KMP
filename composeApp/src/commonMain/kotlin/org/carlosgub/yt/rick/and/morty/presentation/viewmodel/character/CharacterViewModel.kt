@@ -27,30 +27,39 @@ class CharacterViewModel(
             reduce { state.copy(isLoadingNextPage = true) }
         }
 
+        characterRepository.getCharacters(state.page)
+            .onSuccess { result ->
+                reduce {
+                    state.copy(
+                        isLoading = false,
+                        isLoadingNextPage = false,
+                        characters = state.characters + result.characters,
+                        canLoadMore = result.canLoadMore,
+                        page = state.page + 1,
+                        errorMessage = null
+                    )
+                }
+            }
+            .onFailure { error ->
+                if(state.characters.isEmpty()){
+                    reduce {
+                        state.copy(
+                            isLoading = false,
+                            isLoadingNextPage = false,
+                            errorMessage = error.message ?: "Hubo un error"
+                        )
+                    }
+                }else{
+                    reduce {
+                        state.copy(
+                            isLoading = false,
+                            isLoadingNextPage = false,
+                        )
+                    }
+                    postSideEffect(CharacterSideEffect.ShowSnackBar(error.message ?: "Hubo un error"))
+                }
 
-        try {
-            val result = characterRepository.getCharacters(state.page)
-            reduce {
-                state.copy(
-                    isLoading = false,
-                    isLoadingNextPage = false,
-                    characters = state.characters + result.characters,
-                    canLoadMore = result.canLoadMore,
-                    page = state.page + 1,
-                    errorMessage = null
-                )
             }
-        }catch (e: Exception){
-            println(e.toString())
-            reduce {
-                state.copy(
-                    isLoading = false,
-                    isLoadingNextPage = false,
-                    page = state.page + 1,
-                    errorMessage = e.message?:"Hubo un error"
-                )
-            }
-        }
     }
 
     fun loadNextPage() = intent {

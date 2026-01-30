@@ -10,9 +10,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavDestination.Companion.hasRoute
@@ -22,6 +26,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import kotlinx.coroutines.launch
 import org.carlosgub.yt.rick.and.morty.presentation.model.NavigationBarItemModel
 import org.carlosgub.yt.rick.and.morty.presentation.navigation.Screen
 import org.carlosgub.yt.rick.and.morty.presentation.screen.character.CharacterScreen
@@ -33,6 +38,8 @@ fun HomeScreen() {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
+    val snackBarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
 
     val items = listOf(
         NavigationBarItemModel(
@@ -55,6 +62,7 @@ fun HomeScreen() {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         containerColor = Color.White,
+        snackbarHost = { SnackbarHost(snackBarHostState) },
         bottomBar = {
             NavigationBar {
                 items.forEach { item ->
@@ -85,7 +93,11 @@ fun HomeScreen() {
             modifier = Modifier.padding(paddingValues)
         ) {
             composable<Screen.Characters> {
-                CharacterScreen()
+                CharacterScreen(showSnackBar = { message ->
+                    scope.launch {
+                        snackBarHostState.showSnackbar(message)
+                    }
+                })
             }
             composable<Screen.Locations> {
                 LocationScreen()
