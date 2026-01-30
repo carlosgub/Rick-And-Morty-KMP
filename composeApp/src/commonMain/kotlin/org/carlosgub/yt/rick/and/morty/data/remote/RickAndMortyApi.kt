@@ -4,6 +4,10 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
+import io.ktor.client.statement.HttpResponse
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.withContext
 import org.carlosgub.yt.rick.and.morty.data.model.CharacterResponse
 import org.carlosgub.yt.rick.and.morty.data.model.EpisodeResponse
 import org.carlosgub.yt.rick.and.morty.data.model.LocationResponse
@@ -12,14 +16,10 @@ class RickAndMortyApi(
     private val httpClient: HttpClient
 ) {
     suspend fun getCharacters(page: Int): Result<CharacterResponse> {
-        return runCatching {
-            val client = httpClient.get("/api/character") {
+        return safeApiCall {
+            httpClient.get("/api/character") {
                 parameter("page", page)
             }
-            if(client.status.value == 429){
-                throw Exception("Hubo un error, realizaste muchas llamadas al servidor. Espera un momento y vuelve a intentarlo")
-            }
-            client.body()
         }
     }
 
@@ -38,4 +38,18 @@ class RickAndMortyApi(
             parameter("page", page)
         }.body()
     }
+
+    suspend inline fun <reified T> safeApiCall(crossinline body: suspend () -> HttpResponse): Result<T> {
+        return runCatching {
+            withContext(Dispatchers.IO){
+                val response = body()
+                if (response.status.value == 429) {
+                    throw Exception("Hubo un error, realizaste muchas llamadas al servidor. Espera un momento y vuelve a intentarlo")
+                }
+                response.body<T>()
+            }
+        }
+    }
+
+
 }
