@@ -5,6 +5,7 @@ import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.HttpResponse
+import io.ktor.http.HttpStatusCode
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
@@ -45,16 +46,22 @@ class RickAndMortyApi(
         }
     }
 
-    suspend inline fun <reified T> safeApiCall(crossinline body: suspend () -> HttpResponse): Result<T> {
+    private suspend inline fun <reified T> safeApiCall(crossinline body: suspend () -> HttpResponse): Result<T> {
         return runCatching {
             withContext(Dispatchers.IO) {
                 val response = body()
-                if (response.status.value == 429) {
-                    throw Exception("Hubo un error, realizaste muchas llamadas al servidor. Espera un momento y vuelve a intentarlo")
+                if (response.status == HttpStatusCode.TooManyRequests) {
+                    throw Exception(TOO_MANY_REQUESTS_MESSAGE)
                 }
                 response.body<T>()
             }
         }
+    }
+
+    companion object {
+        const val TOO_MANY_REQUESTS_MESSAGE =
+            "Hubo un error, realizaste muchas llamadas al servidor. Espera un momento y vuelve a intentarlo"
+
     }
 
 
