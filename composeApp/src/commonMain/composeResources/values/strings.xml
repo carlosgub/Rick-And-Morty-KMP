@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Rick and Morty KMP</string>
+
+    <!-- Generic -->
+    <string name="too_many_requests_message">Hubo un error, realizaste muchas llamadas al servidor. Espera un momento y vuelve a intentarlo</string>
+
+    <!--region Home Screen -->
+    <string name="home_screen_characters">Personajes</string>
+    <string name="home_screen_locations">Lugares</string>
+    <string name="home_screen_episodes">Episodios</string>
+    <!--endregion-->
+
+    <!--region Character Detail Screen -->
+    <string name="character_detail_screen_toolbar_navigation_back">Botón hacia atras</string>
+    <string name="character_detail_screen_gender">Gender</string>
+    <string name="character_detail_screen_species">Species</string>
+    <string name="character_detail_screen_location">Last Known Location</string>
+    <!--endregion-->
+</resources>
