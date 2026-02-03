@@ -10,7 +10,7 @@ import io.ktor.http.headersOf
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.Json
-import org.carlosgub.yt.rick.and.morty.data.remote.RickAndMortyApi.Companion.TOO_MANY_REQUESTS_MESSAGE
+import org.carlosgub.yt.rick.and.morty.data.remote.RickAndMortyApiImpl.Companion.TOO_MANY_REQUESTS_MESSAGE
 import org.carlosgub.yt.rick.and.morty.data.remote.responses.MockResponses
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -34,7 +34,7 @@ class RickAndMortyApiTest {
                 json(Json { ignoreUnknownKeys = true })
             }
         }
-        return RickAndMortyApi(httpClient)
+        return RickAndMortyApiImpl(httpClient)
     }
 
     @Test
