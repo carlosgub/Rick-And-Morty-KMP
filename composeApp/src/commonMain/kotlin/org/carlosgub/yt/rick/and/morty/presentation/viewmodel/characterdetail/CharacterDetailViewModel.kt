@@ -14,16 +14,15 @@ class CharacterDetailViewModel(
     savedStateHandle: SavedStateHandle,
 ) : ViewModel(), ContainerHost<CharacterDetailState, CharacterDetailSideEffect> {
 
-    private val characterId: Int = savedStateHandle.toRoute<Screen.CharacterDetail>().id
+    private val characterId: Int = checkNotNull(savedStateHandle["id"]) {
+        "Character id is required"
+    }
 
     override val container =
         viewModelScope.container<CharacterDetailState, CharacterDetailSideEffect>(
-            CharacterDetailState()
+            initialState = CharacterDetailState(),
+            onCreate = { getCharacter() }
         )
-
-    init {
-        getCharacter()
-    }
 
     private fun getCharacter() = intent {
         reduce { state.copy(isLoading = true) }

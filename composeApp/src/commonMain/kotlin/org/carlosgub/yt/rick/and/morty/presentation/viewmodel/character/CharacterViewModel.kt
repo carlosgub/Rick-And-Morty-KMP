@@ -11,11 +11,9 @@ class CharacterViewModel(
 ) : ViewModel(), ContainerHost<CharacterState, CharacterSideEffect> {
 
     override val container =
-        viewModelScope.container<CharacterState, CharacterSideEffect>(CharacterState())
-
-    init {
-        getCharacters()
-    }
+        viewModelScope.container<CharacterState, CharacterSideEffect>(CharacterState(), onCreate = {
+            getCharacters()
+        })
 
     private fun getCharacters() = intent {
         println(state.toString())
@@ -41,7 +39,7 @@ class CharacterViewModel(
                 }
             }
             .onFailure { error ->
-                if(state.characters.isEmpty()){
+                if (state.characters.isEmpty()) {
                     reduce {
                         state.copy(
                             isLoading = false,
@@ -49,14 +47,18 @@ class CharacterViewModel(
                             errorMessage = error.message ?: "Hubo un error"
                         )
                     }
-                }else{
+                } else {
                     reduce {
                         state.copy(
                             isLoading = false,
                             isLoadingNextPage = false,
                         )
                     }
-                    postSideEffect(CharacterSideEffect.ShowSnackBar(error.message ?: "Hubo un error"))
+                    postSideEffect(
+                        CharacterSideEffect.ShowSnackBar(
+                            error.message ?: "Hubo un error"
+                        )
+                    )
                 }
 
             }

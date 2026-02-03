@@ -21,7 +21,7 @@ class EpisodeRepositoryTest {
         assertTrue(result.isSuccess)
         result.onSuccess { episodes ->
             assertEquals(1, episodes.size)
-            assertEquals("Pilot", episodes.first()?.name)
+            assertEquals("Pilot", episodes.first().name)
         }
     }
 
