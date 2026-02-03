@@ -36,6 +36,9 @@ kotlin {
 
             // Koin
             implementation(libs.koin.android)
+
+            // Splash
+            implementation(libs.androidx.core.splashscreen)
         }
         commonMain.dependencies {
             // Jetbrains Compose
