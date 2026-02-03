@@ -48,6 +48,12 @@ import org.carlosgub.yt.rick.and.morty.domain.model.Character
 import org.carlosgub.yt.rick.and.morty.presentation.screen.characterdetail.preview.CharacterDetailStateParameterProvider
 import org.carlosgub.yt.rick.and.morty.presentation.utils.statusColor
 import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.characterdetail.CharacterDetailState
+import org.jetbrains.compose.resources.stringResource
+import rickandmortykmp.composeapp.generated.resources.Res
+import rickandmortykmp.composeapp.generated.resources.character_detail_screen_gender
+import rickandmortykmp.composeapp.generated.resources.character_detail_screen_location
+import rickandmortykmp.composeapp.generated.resources.character_detail_screen_species
+import rickandmortykmp.composeapp.generated.resources.character_detail_screen_toolbar_back_navigation
 
 @Composable
 fun CharacterDetailContent(
@@ -105,7 +111,7 @@ private fun CharacterDetailTopBar(
             IconButton(onClick = onNavigateBack) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Back"
+                    contentDescription = stringResource(Res.string.character_detail_screen_toolbar_back_navigation)
                 )
             }
         },
@@ -181,17 +187,17 @@ private fun CharacterDetail(character: Character) {
         ) {
             InfoCard(
                 icon = Icons.Default.Transgender,
-                title = "Gender",
+                title = stringResource(Res.string.character_detail_screen_gender),
                 description = character.gender
             )
             InfoCard(
                 icon = Icons.Default.Person,
-                title = "Species",
+                title = stringResource(Res.string.character_detail_screen_species),
                 description = character.species
             )
             InfoCard(
                 icon = Icons.Default.LocationOn,
-                title = "Last Known Location",
+                title = stringResource(Res.string.character_detail_screen_location),
                 description = character.location
             )
         }

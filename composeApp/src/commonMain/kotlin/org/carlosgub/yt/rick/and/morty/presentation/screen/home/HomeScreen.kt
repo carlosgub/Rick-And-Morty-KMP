@@ -32,6 +32,11 @@ import org.carlosgub.yt.rick.and.morty.presentation.navigation.Screen
 import org.carlosgub.yt.rick.and.morty.presentation.screen.character.CharacterScreen
 import org.carlosgub.yt.rick.and.morty.presentation.screen.episode.EpisodeScreen
 import org.carlosgub.yt.rick.and.morty.presentation.screen.location.LocationScreen
+import org.jetbrains.compose.resources.stringResource
+import rickandmortykmp.composeapp.generated.resources.Res
+import rickandmortykmp.composeapp.generated.resources.home_screen_characters
+import rickandmortykmp.composeapp.generated.resources.home_screen_episodes
+import rickandmortykmp.composeapp.generated.resources.home_screen_locations
 
 @Composable
 fun HomeScreen() {
@@ -44,17 +49,17 @@ fun HomeScreen() {
     val items = listOf(
         NavigationBarItemModel(
             icon = Icons.Default.Person,
-            label = "Personajes",
+            label = stringResource(Res.string.home_screen_characters),
             route = Screen.Characters
         ),
         NavigationBarItemModel(
             icon = Icons.Default.LocationOn,
-            label = "Lugares",
+            label = stringResource(Res.string.home_screen_locations),
             route = Screen.Locations
         ),
         NavigationBarItemModel(
             icon = Icons.Default.Movie,
-            label = "Episodios",
+            label = stringResource(Res.string.home_screen_episodes),
             route = Screen.Episodes
         )
     )

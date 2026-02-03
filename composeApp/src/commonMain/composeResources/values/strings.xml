@@ -1,0 +1,14 @@
+<resources>
+    <!--region Home Screen-->
+    <string name="home_screen_characters">Personajes</string>
+    <string name="home_screen_locations">Locaciones</string>
+    <string name="home_screen_episodes">Episodios</string>
+    <!--endregion-->
+
+    <!--region Character Detail Screen-->
+    <string name="character_detail_screen_gender">Gender</string>
+    <string name="character_detail_screen_species">Species</string>
+    <string name="character_detail_screen_location">Last Know Location</string>
+    <string name="character_detail_screen_toolbar_back_navigation">Boton hacia atras</string>
+    <!--endregion-->
+</resources>
