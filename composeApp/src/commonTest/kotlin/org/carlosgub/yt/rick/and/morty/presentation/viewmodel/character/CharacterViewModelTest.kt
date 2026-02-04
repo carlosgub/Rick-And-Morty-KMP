@@ -67,6 +67,22 @@ class CharacterViewModelTest {
     }
 
     @Test
+    fun `initial load failure with default error`() = runTest {
+        repository.charactersResult = Result.failure(Exception())
+
+        viewModel.test(this) {
+            runOnCreate()
+            expectState { copy(isLoading = true) }
+            expectState {
+                copy(
+                    isLoading = false,
+                    errorMessage = "Hubo un error"
+                )
+            }
+        }
+    }
+
+    @Test
     fun `load next page success`() = runTest {
         val characters = listOf(TestData.characterData.toCharacter())
         val paging = CharacterPaging(
@@ -120,6 +136,75 @@ class CharacterViewModelTest {
         viewModel.test(this) {
             containerHost.onCharacterClicked(1)
             expectSideEffect(CharacterSideEffect.NavigateToCharacterDetail(1))
+        }
+    }
+
+    @Test
+    fun `load next page failure emits snackbar`() = runTest {
+        // Init with success
+        val characters = listOf(TestData.characterData.toCharacter())
+        val paging = CharacterPaging(
+            characters = characters,
+            canLoadMore = true
+        )
+        repository.charactersResult = Result.success(paging)
+
+        viewModel.test(this) {
+            runOnCreate()
+            expectState { copy(isLoading = true) }
+            expectState {
+                copy(
+                    isLoading = false,
+                    characters = characters,
+                    canLoadMore = true,
+                    page = 2
+                )
+            }
+
+            // Simulate next page failure
+            val errorMessage = "Network error"
+            repository.charactersResult = Result.failure(Exception(errorMessage))
+
+            containerHost.loadNextPage()
+
+            expectState { copy(isLoadingNextPage = true) }
+            expectState { copy(isLoadingNextPage = false) }
+            expectSideEffect(CharacterSideEffect.ShowSnackBar(errorMessage))
+        }
+    }
+
+
+
+    @Test
+    fun `load next page failure emits snackbar default error`() = runTest {
+        // Init with success
+        val characters = listOf(TestData.characterData.toCharacter())
+        val paging = CharacterPaging(
+            characters = characters,
+            canLoadMore = true
+        )
+        repository.charactersResult = Result.success(paging)
+
+        viewModel.test(this) {
+            runOnCreate()
+            expectState { copy(isLoading = true) }
+            expectState {
+                copy(
+                    isLoading = false,
+                    characters = characters,
+                    canLoadMore = true,
+                    page = 2
+                )
+            }
+
+            // Simulate next page failure
+            repository.charactersResult = Result.failure(Exception())
+
+            containerHost.loadNextPage()
+
+            expectState { copy(isLoadingNextPage = true) }
+            expectState { copy(isLoadingNextPage = false) }
+            expectSideEffect(CharacterSideEffect.ShowSnackBar("Hubo un error"))
         }
     }
 }
