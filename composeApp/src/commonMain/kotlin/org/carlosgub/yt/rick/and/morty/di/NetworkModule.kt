@@ -6,6 +6,7 @@ import io.ktor.client.plugins.defaultRequest
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.carlosgub.yt.rick.and.morty.data.remote.RickAndMortyApi
+import org.carlosgub.yt.rick.and.morty.data.remote.impl.RickAndMortyApiImpl
 import org.koin.dsl.module
 
 val networkModule = module {
@@ -24,5 +25,5 @@ val networkModule = module {
             }
         }
     }
-    single { RickAndMortyApi(get()) }
+    single<RickAndMortyApi> { RickAndMortyApiImpl(get()) }
 }

@@ -10,7 +10,8 @@ import io.ktor.http.headersOf
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.Json
-import org.carlosgub.yt.rick.and.morty.data.remote.RickAndMortyApi.Companion.TOO_MANY_REQUEST_MESSAGE
+import org.carlosgub.yt.rick.and.morty.data.remote.impl.RickAndMortyApiImpl
+import org.carlosgub.yt.rick.and.morty.data.remote.impl.RickAndMortyApiImpl.Companion.TOO_MANY_REQUEST_MESSAGE
 import org.carlosgub.yt.rick.and.morty.data.remote.responses.MockResponses
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -21,7 +22,7 @@ class RickAndMortyApiTest {
     private fun provideRickAndMortyApi(
         response: String,
         status: HttpStatusCode = HttpStatusCode.OK
-    ): RickAndMortyApi {
+    ): RickAndMortyApiImpl {
         val mockEngine = MockEngine { _ ->
             respond(
                 content = response,
@@ -39,7 +40,7 @@ class RickAndMortyApiTest {
                 )
             }
         }
-        return RickAndMortyApi(httpClient)
+        return RickAndMortyApiImpl(httpClient)
     }
 
     @Test
