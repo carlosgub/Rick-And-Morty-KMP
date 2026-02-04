@@ -76,6 +76,8 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.kotlin.test)
             implementation(libs.orbit.testing)
+            implementation(libs.kotlin.coroutines.test)
+            implementation(libs.ktor.client.mock)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
