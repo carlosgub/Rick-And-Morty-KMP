@@ -58,7 +58,7 @@ object TestData {
                 id = 1,
                 name = "Pilot",
                 airDate = "",
-                episode = "",
+                episode = "S0102",
             )
         )
     )

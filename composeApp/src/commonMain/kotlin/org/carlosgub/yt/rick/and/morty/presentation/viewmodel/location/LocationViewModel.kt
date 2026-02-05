@@ -11,12 +11,11 @@ class LocationViewModel(
 ) : ViewModel(), ContainerHost<LocationState, LocationSideEffect> {
 
     override val container = viewModelScope.container<LocationState, LocationSideEffect>(
-        LocationState()
+        LocationState(),
+        onCreate = {
+            getLocations()
+        }
     )
-
-    init {
-        getLocations()
-    }
 
     private fun getLocations() = intent {
         reduce { state.copy(isLoading = true) }

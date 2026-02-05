@@ -22,7 +22,7 @@ class EpisodeRepositoryImplTest {
         result.onSuccess { locations ->
             assertEquals(1, locations.size)
             assertEquals("Pilot", locations.first().name)
-            assertEquals("", locations.first().episode)
+            assertEquals("S0102", locations.first().episode)
         }
     }
 
