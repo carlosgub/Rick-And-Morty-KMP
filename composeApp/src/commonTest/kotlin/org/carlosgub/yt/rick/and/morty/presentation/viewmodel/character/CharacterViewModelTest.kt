@@ -83,6 +83,35 @@ class CharacterViewModelTest {
     }
 
     @Test
+    fun `not load next page`() = runTest {
+        val characters = listOf(TestData.characterData.toCharacter())
+        val paging = CharacterPaging(characters, false)
+        repository.charactersResult = Result.success(paging)
+
+        viewModel.test(
+            this, CharacterState()
+        ) {
+            runOnCreate()
+            expectState {
+                copy(
+                    isLoading = true,
+                )
+            }
+            expectState {
+                copy(
+                    isLoading = false,
+                    characters = characters,
+                    canLoadMore = false,
+                    page = 2,
+                    errorMessage = null
+                )
+            }
+            viewModel.loadNextPage()
+            expectNoItems()
+        }
+    }
+
+    @Test
     fun `initial load fails`() = runTest {
         val errorMessage = "Network error"
         repository.charactersResult = Result.failure(Exception(errorMessage))
@@ -102,6 +131,108 @@ class CharacterViewModelTest {
                     errorMessage = errorMessage
                 )
             }
+        }
+    }
+
+    @Test
+    fun `initial load fails with null exception`() = runTest {
+        repository.charactersResult = Result.failure(Exception())
+
+        viewModel.test(
+            this, CharacterState()
+        ) {
+            runOnCreate()
+            expectState {
+                copy(
+                    isLoading = true,
+                )
+            }
+            expectState {
+                copy(
+                    isLoading = false,
+                    errorMessage = "Hubo un error"
+                )
+            }
+        }
+    }
+
+    @Test
+    fun `load next page is error`() = runTest {
+        val characters = listOf(TestData.characterData.toCharacter())
+        val paging = CharacterPaging(characters, true)
+        repository.charactersResult = Result.success(paging)
+
+        viewModel.test(
+            this, CharacterState()
+        ) {
+            runOnCreate()
+            expectState {
+                copy(
+                    isLoading = true,
+                )
+            }
+            expectState {
+                copy(
+                    isLoading = false,
+                    characters = characters,
+                    canLoadMore = true,
+                    page = 2,
+                    errorMessage = null
+                )
+            }
+            val errorMessage = "Network error"
+            repository.charactersResult = Result.failure(Exception(errorMessage))
+            viewModel.loadNextPage()
+            expectState {
+                copy(
+                    isLoadingNextPage = true,
+                )
+            }
+            expectState {
+                copy(isLoadingNextPage = false)
+            }
+            expectSideEffect(CharacterSideEffect.ShowSnackBar(errorMessage))
+        }
+    }
+
+
+
+
+    @Test
+    fun `load next page is error with null exception`() = runTest {
+        val characters = listOf(TestData.characterData.toCharacter())
+        val paging = CharacterPaging(characters, true)
+        repository.charactersResult = Result.success(paging)
+
+        viewModel.test(
+            this, CharacterState()
+        ) {
+            runOnCreate()
+            expectState {
+                copy(
+                    isLoading = true,
+                )
+            }
+            expectState {
+                copy(
+                    isLoading = false,
+                    characters = characters,
+                    canLoadMore = true,
+                    page = 2,
+                    errorMessage = null
+                )
+            }
+            repository.charactersResult = Result.failure(Exception())
+            viewModel.loadNextPage()
+            expectState {
+                copy(
+                    isLoadingNextPage = true,
+                )
+            }
+            expectState {
+                copy(isLoadingNextPage = false)
+            }
+            expectSideEffect(CharacterSideEffect.ShowSnackBar("Hubo un error"))
         }
     }
 
