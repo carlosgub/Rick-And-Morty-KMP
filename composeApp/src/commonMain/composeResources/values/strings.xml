@@ -2,7 +2,7 @@
     <!--region Home Screen-->
     <string name="home_screen_characters">Personajes</string>
     <string name="home_screen_locations">Locaciones</string>
-    <string name="home_screen_episodes">Episodios</string>
+    <string name="home_screen_episodes">Episodios prueba</string>
     <!--endregion-->
 
     <!--region Character Detail Screen-->

@@ -8,6 +8,16 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.kover)
+    alias(libs.plugins.roborazzi)
+}
+
+roborazzi {
+    outputDir.set(file("screenshots"))
+    generateComposePreviewRobolectricTests {
+        enable = false
+        packages = listOf("org.carlosgub.yt.rick.and.morty")
+        includePrivatePreviews = true
+    }
 }
 
 kotlin {
@@ -80,6 +90,19 @@ kotlin {
             implementation(libs.kotlin.coroutines.test)
             implementation(libs.ktor.client.mock)
         }
+        val androidUnitTest by getting {
+            dependencies {
+                implementation(libs.robolectric)
+                implementation(libs.roborazzi.compose)
+                implementation(libs.roborazzi.compose.preview.scanner.support)
+                implementation(libs.roborazzi.junit.rule)
+                implementation(libs.composable.preview.scanner.android)
+                implementation(libs.androidx.compose.ui.test.junit4)
+                implementation(libs.androidx.test.ext.junit)
+                implementation(libs.koin.test)
+                implementation(libs.koin.test.junit4)
+            }
+        }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
         }
@@ -111,9 +134,18 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+            all {
+                it.systemProperties["robolectric.pixelCopyRenderMode"] = "hardware"
+            }
+        }
+    }
 }
 
 dependencies {
     debugImplementation(compose.uiTooling)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
 
