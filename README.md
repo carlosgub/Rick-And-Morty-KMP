@@ -9,7 +9,9 @@ Este repositorio contiene el proyecto práctico del **Curso de Kotlin Multiplatf
 - **Listado de Episodios**: Exploración de los episodios de la serie.
 - **Listado de Ubicaciones**: Exploración de las diferentes localizaciones.
 - **Navegación**: Implementación de Bottom Navigation con Jetpack Compose Navigation.
-- **Diseño Premium**: UI moderna y reactiva usando Compose Multiplatform.
+- **Screenshot Testing**: Pruebas visuales automatizadas para asegurar la consistencia de la UI usando Roborazzi y Composable Preview Scanner.
+- **Unit Testing**: Pruebas unitarias robustas utilizando Fakes para los repositorios y Ktor Mock Engine para simular las respuestas de la API.
+- **Splash Screen**: Implementación de pantalla de inicio nativa para Android e iOS.
 
 ## 🛠️ Tecnologías y Librerías
 
@@ -23,19 +25,29 @@ El proyecto utiliza un stack tecnológico moderno para KMP:
 - **[Coil 3](https://coil-kt.github.io/coil/)**: Carga de imágenes optimizada para multiplataforma.
 - **[Jetpack Navigation](https://developer.android.com/guide/navigation)**: Navegación nativa de Compose adaptada a KMP.
 - **[Kotlinx Serialization](https://github.com/Kotlin/kotlinx.serialization)**: Serialización de datos JSON.
+- **[Roborazzi](https://github.com/takahirom/roborazzi)**: Librería para Screenshot Testing.
+- **[Composable Preview Scanner](https://github.com/sergio-sastre/ComposablePreviewScanner)**: Escaneo automático de Previews para tests visuales.
 
 ## 🏗️ Arquitectura
 
 El proyecto sigue los principios de **Clean Architecture**:
 
 - **Data Layer**: Repositorios, Mappers y Data Sources (Ktor).
-- **Domain Layer**: Modelos de dominio y casos de uso (opcional según complejidad).
+- **Domain Layer**: Modelos de dominio.
 - **Presentation Layer**: ViewModels (Orbit MVI) y Screens (Compose Multiplatform).
+
+## 🧪 Testing
+
+El proyecto incluye pruebas de captura de pantalla para verificar la interfaz de usuario:
+
+- **Grabar capturas (Golden Images)**: `./gradlew :composeApp:recordRoborazziDebug`
+- **Verificar cambios (Regresiones)**: `./gradlew :composeApp:verifyRoborazziDebug`
+- **Comparar y generar reportes**: `./gradlew :composeApp:compareRoborazziDebug`
 
 ## 🚀 Cómo empezar
 
 1. Clonar el repositorio.
-2. Asegurarte de tener instalado **Android Studio** (Koala o superior) y **Xcode** (para iOS).
+2. Asegurarte de tener instalado **Android Studio** (Ladybug o superior) y **Xcode** (para iOS).
 3. Configurar el entorno siguiendo la [guía oficial de KMP](https://kotlinlang.org/docs/multiplatform-quickstart.html#set-up-the-environment).
 4. Ejecutar la app en Android o iOS desde Android Studio.
 
@@ -46,4 +58,4 @@ Este curso está pensado para developers que ya conocen Kotlin y quieren dominar
 - **YouTube**: [CarlosGub - Suscríbete](https://www.youtube.com/@carlosgub)
 
 ---
-#Kotlin #KotlinMultiplatform #KMP #ComposeMultiplatform #Ktor #Koin #OrbitMVI #Android #iOS #RickAndMorty
+#Kotlin #KotlinMultiplatform #KMP #ComposeMultiplatform #Ktor #Koin #OrbitMVI #Roborazzi #Android #iOS #RickAndMorty
