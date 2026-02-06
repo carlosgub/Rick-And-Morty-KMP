@@ -23,16 +23,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import org.carlosgub.yt.rick.and.morty.presentation.navigation.LocalNavController
-import org.carlosgub.yt.rick.and.morty.presentation.navigation.Screen
 import org.carlosgub.yt.rick.and.morty.presentation.screen.character.content.CharacterItem
 import org.carlosgub.yt.rick.and.morty.presentation.screen.character.observer.CharacterObserver
 import org.carlosgub.yt.rick.and.morty.presentation.screen.character.preview.CharacterStateParameterProvider
-import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.character.CharacterSideEffect
 import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.character.CharacterState
 import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.character.CharacterViewModel
 import org.koin.compose.viewmodel.koinViewModel
-import org.orbitmvi.orbit.compose.collectSideEffect
 
 @Composable
 fun CharacterScreen(showSnackBar: (String) -> Unit) {
