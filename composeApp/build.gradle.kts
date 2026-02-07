@@ -149,26 +149,10 @@ android {
             }
         }
     }
-    lint {
-        abortOnError = true
-        checkOnly +=
-            listOf(
-                "ComposeModifierMissing",
-                "ComposeViewModelForwarding",
-                "ComposeRememberMissing",
-                "ComposeMultipleContentEmitters",
-                "ComposePreviewNaming",
-                "ComposeParameterOrder",
-                "ComposeViewModelInjection",
-                "ComposePreviewPublic",
-                "ComposeModifierReused",
-                "ComposeModifierWithoutDefault",
-            )
-    }
 }
 
 dependencies {
     debugImplementation(compose.uiTooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-    lintChecks(libs.slack.compose.lints)
+    ktlintRuleset("io.nlopez.compose.rules:ktlint:0.5.6")
 }

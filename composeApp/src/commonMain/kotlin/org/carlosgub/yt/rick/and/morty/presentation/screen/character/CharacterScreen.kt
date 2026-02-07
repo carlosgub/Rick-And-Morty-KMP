@@ -15,7 +15,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,7 +46,7 @@ fun CharacterScreen(showSnackBar: (String) -> Unit) {
     )
     CharacterContent(
         state = state,
-        onCharacterClicked = viewModel::onCharacterClicked,
+        onCharacterClick = viewModel::onCharacterClicked,
         onLoadNextPage = viewModel::loadNextPage,
     )
 }
@@ -52,10 +54,12 @@ fun CharacterScreen(showSnackBar: (String) -> Unit) {
 @Composable
 private fun CharacterContent(
     state: CharacterState,
-    onCharacterClicked: (Int) -> Unit,
+    onCharacterClick: (Int) -> Unit,
     onLoadNextPage: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val listState = rememberLazyListState()
+    val currentOnLoadNextPage by rememberUpdatedState(onLoadNextPage)
 
     val shouldLoadMore =
         remember {
@@ -70,15 +74,14 @@ private fun CharacterContent(
 
     LaunchedEffect(shouldLoadMore.value) {
         if (shouldLoadMore.value) {
-            onLoadNextPage()
+            currentOnLoadNextPage()
         }
     }
 
     Box(
-        modifier =
-            Modifier
-                .fillMaxSize()
-                .background(Color.White),
+        modifier = modifier
+            .fillMaxSize()
+            .background(Color.White),
     ) {
         if (state.isLoading) {
             CircularProgressIndicator(
@@ -107,7 +110,7 @@ private fun CharacterContent(
                 ) { character ->
                     CharacterItem(
                         character = character,
-                        onClick = onCharacterClicked,
+                        onClick = onCharacterClick,
                     )
                 }
                 if (state.isLoadingNextPage) {
@@ -131,12 +134,7 @@ private fun CharacterContentPreview(
 ) {
     CharacterContent(
         state = state,
-        onCharacterClicked = {},
+        onCharacterClick = {},
         onLoadNextPage = {},
     )
-}
-
-@Composable
-fun dummyComposable() {
-    Text("Hello")
 }

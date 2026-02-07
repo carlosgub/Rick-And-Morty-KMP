@@ -22,12 +22,14 @@ import androidx.compose.ui.unit.sp
 import org.carlosgub.yt.rick.and.morty.domain.model.Location
 
 @Composable
-fun LocationItem(location: Location) {
+fun LocationItem(
+    location: Location,
+    modifier: Modifier = Modifier,
+) {
     Card(
-        modifier =
-            Modifier
-                .fillMaxSize()
-                .padding(4.dp),
+        modifier = modifier
+            .fillMaxSize()
+            .padding(4.dp),
         shape = RoundedCornerShape(16.dp),
         colors =
             CardDefaults.cardColors(

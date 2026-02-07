@@ -39,7 +39,7 @@ import rickandmortykmp.composeapp.generated.resources.home_screen_episodes
 import rickandmortykmp.composeapp.generated.resources.home_screen_locations
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
@@ -66,7 +66,7 @@ fun HomeScreen() {
         )
 
     Scaffold(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         containerColor = Color.White,
         snackbarHost = { SnackbarHost(snackBarHostState) },
         bottomBar = {

@@ -12,9 +12,9 @@ import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.location.LocationV
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun LocationScreen() {
+fun LocationScreen(modifier: Modifier = Modifier) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {

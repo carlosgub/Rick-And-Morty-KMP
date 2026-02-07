@@ -33,15 +33,15 @@ import org.carlosgub.yt.rick.and.morty.presentation.utils.statusColor
 fun CharacterItem(
     character: Character,
     onClick: (Int) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Card(
-        modifier =
-            Modifier
-                .fillMaxSize()
-                .padding(4.dp)
-                .clickable {
-                    onClick(character.id)
-                },
+        modifier = modifier
+            .fillMaxSize()
+            .padding(4.dp)
+            .clickable {
+                onClick(character.id)
+            },
         shape = RoundedCornerShape(16.dp),
         colors =
             CardDefaults.cardColors(

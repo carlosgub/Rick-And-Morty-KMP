@@ -19,12 +19,14 @@ import androidx.compose.ui.unit.sp
 import org.carlosgub.yt.rick.and.morty.domain.model.Episode
 
 @Composable
-fun EpisodeItem(episode: Episode) {
+fun EpisodeItem(
+    episode: Episode,
+    modifier: Modifier = Modifier,
+) {
     Card(
-        modifier =
-            Modifier
-                .fillMaxSize()
-                .padding(4.dp),
+        modifier = modifier
+            .fillMaxSize()
+            .padding(4.dp),
         shape = RoundedCornerShape(16.dp),
         colors =
             CardDefaults.cardColors(

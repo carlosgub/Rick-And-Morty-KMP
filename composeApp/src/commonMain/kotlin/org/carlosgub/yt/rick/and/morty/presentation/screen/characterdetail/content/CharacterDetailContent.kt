@@ -59,8 +59,10 @@ import rickandmortykmp.composeapp.generated.resources.character_detail_screen_to
 fun CharacterDetailContent(
     state: CharacterDetailState,
     onNavigateBack: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Scaffold(
+        modifier = modifier,
         topBar = {
             CharacterDetailTopBar(
                 title = state.character?.name.orEmpty(),
