@@ -23,19 +23,21 @@ import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.location.LocationS
 @Composable
 internal fun LocationContent(state: LocationState) {
     Box(
-        modifier = Modifier.fillMaxSize()
-            .background(Color.White),
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .background(Color.White),
     ) {
         if (state.isLoading) {
             CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
+                modifier = Modifier.align(Alignment.Center),
             )
         }
         if (state.locations.isNotEmpty()) {
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(6.dp)
+                verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
                 items(
                     items = state.locations,
@@ -48,8 +50,10 @@ internal fun LocationContent(state: LocationState) {
         state.errorMessage?.let { message ->
             Text(
                 message,
-                modifier = Modifier.align(Alignment.Center)
-                    .padding(16.dp)
+                modifier =
+                    Modifier
+                        .align(Alignment.Center)
+                        .padding(16.dp),
             )
         }
     }
@@ -61,6 +65,6 @@ private fun LocationContentPreview(
     @PreviewParameter(LocationStateParameterProvider::class) state: LocationState,
 ) {
     LocationContent(
-        state = state
+        state = state,
     )
 }

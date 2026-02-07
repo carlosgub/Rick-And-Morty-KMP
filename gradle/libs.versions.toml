@@ -23,6 +23,8 @@ roborazzi = "1.58.0"
 robolectric = "4.14.1"
 junit = "4.13.2"
 composable-preview-scanner = "0.8.1"
+ktlint = "14.0.1"
+slack-compose-lints = "1.4.2"
 
 [libraries]
 # Jetbrains Compose
@@ -78,6 +80,7 @@ roborazzi-junit-rule = { module = "io.github.takahirom.roborazzi:roborazzi-junit
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 junit = { module = "junit:junit", version.ref = "junit" }
 composable-preview-scanner-android = { module = "io.github.sergio-sastre.ComposablePreviewScanner:android", version.ref = "composable-preview-scanner" }
+slack-compose-lints = { module = "com.slack.lint.compose:compose-lint-checks", version.ref = "slack-compose-lints" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -88,3 +91,4 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }

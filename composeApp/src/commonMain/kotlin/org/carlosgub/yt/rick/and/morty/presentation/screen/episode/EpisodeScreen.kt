@@ -9,7 +9,10 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun EpisodeScreen() {
     val viewModel = koinViewModel<EpisodeViewModel>()
-    val state = viewModel.container.stateFlow.collectAsStateWithLifecycle().value
+    val state =
+        viewModel.container.stateFlow
+            .collectAsStateWithLifecycle()
+            .value
 
     EpisodeContent(state)
 }

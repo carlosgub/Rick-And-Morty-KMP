@@ -8,14 +8,15 @@ import org.carlosgub.yt.rick.and.morty.domain.repository.EpisodeRepository
 import org.carlosgub.yt.rick.and.morty.domain.repository.LocationRepository
 import org.koin.dsl.module
 
-val repositoryModule = module {
-    single<CharacterRepository> {
-        CharacterRepositoryImpl(get())
+val repositoryModule =
+    module {
+        single<CharacterRepository> {
+            CharacterRepositoryImpl(get())
+        }
+        single<LocationRepository> {
+            LocationRepositoryImpl(get())
+        }
+        single<EpisodeRepository> {
+            EpisodeRepositoryImpl(get())
+        }
     }
-    single<LocationRepository> {
-        LocationRepositoryImpl(get())
-    }
-    single<EpisodeRepository> {
-        EpisodeRepositoryImpl(get())
-    }
-}

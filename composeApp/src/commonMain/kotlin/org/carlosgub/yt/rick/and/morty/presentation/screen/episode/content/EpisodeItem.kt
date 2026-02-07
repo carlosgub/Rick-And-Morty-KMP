@@ -13,10 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.carlosgub.yt.rick.and.morty.domain.model.Episode
@@ -24,17 +21,22 @@ import org.carlosgub.yt.rick.and.morty.domain.model.Episode
 @Composable
 fun EpisodeItem(episode: Episode) {
     Card(
-        modifier = Modifier.fillMaxSize()
-            .padding(4.dp),
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(4.dp),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = Color.White
-        ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        colors =
+            CardDefaults.cardColors(
+                containerColor = Color.White,
+            ),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth()
-                .padding(16.dp)
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
         ) {
             EpisodeName(episode.name)
             EpisodeSeasonDetail(episode.episode)
@@ -49,28 +51,30 @@ private fun EpisodeName(name: String) {
         text = name,
         color = Color.Black,
         fontSize = 18.sp,
-        fontWeight = FontWeight.SemiBold
+        fontWeight = FontWeight.SemiBold,
     )
 }
 
 @Composable
-private fun EpisodeSeasonDetail(episode:String) {
+private fun EpisodeSeasonDetail(episode: String) {
     Row(
-        modifier = Modifier.fillMaxWidth()
-            .padding(top = 6.dp),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(top = 6.dp),
     ) {
         Text(
             text = "Episode:",
             color = MaterialTheme.colorScheme.primary,
             fontSize = 12.sp,
-            fontWeight = FontWeight.Normal
+            fontWeight = FontWeight.Normal,
         )
         Text(
             text = episode,
             color = Color.DarkGray,
             fontSize = 14.sp,
             fontWeight = FontWeight.Normal,
-            modifier = Modifier.padding(start = 4.dp)
+            modifier = Modifier.padding(start = 4.dp),
         )
     }
 }
@@ -78,21 +82,23 @@ private fun EpisodeSeasonDetail(episode:String) {
 @Composable
 private fun EpisodeAirDate(airDate: String) {
     Row(
-        modifier = Modifier.fillMaxWidth()
-            .padding(top = 4.dp),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(top = 4.dp),
     ) {
         Text(
             text = "Air date:",
             color = MaterialTheme.colorScheme.primary,
             fontSize = 12.sp,
-            fontWeight = FontWeight.Normal
+            fontWeight = FontWeight.Normal,
         )
         Text(
             text = airDate,
             color = Color.DarkGray,
             fontSize = 14.sp,
             fontWeight = FontWeight.Normal,
-            modifier = Modifier.padding(start = 4.dp)
+            modifier = Modifier.padding(start = 4.dp),
         )
     }
 }

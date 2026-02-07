@@ -8,12 +8,10 @@ import org.carlosgub.yt.rick.and.morty.domain.repository.LocationRepository
 class LocationRepositoryImpl(
     private val api: RickAndMortyApi,
 ) : LocationRepository {
-
-    override suspend fun getLocations(page: Int): Result<List<Location>>{
-        return api.getLocations(page).map { locationResponse ->
+    override suspend fun getLocations(page: Int): Result<List<Location>> =
+        api.getLocations(page).map { locationResponse ->
             locationResponse.results.map { locationData ->
                 locationData.toLocation()
             }
         }
-    }
 }

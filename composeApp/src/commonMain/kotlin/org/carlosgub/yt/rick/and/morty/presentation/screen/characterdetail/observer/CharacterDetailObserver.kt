@@ -7,11 +7,11 @@ import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.characterdetail.Ch
 import org.orbitmvi.orbit.compose.collectSideEffect
 
 @Composable
-fun CharacterDetailObserver(viewModel: CharacterDetailViewModel){
+fun CharacterDetailObserver(viewModel: CharacterDetailViewModel) {
     val navController = LocalNavController.current
 
     viewModel.collectSideEffect { sideEffect ->
-        when (sideEffect){
+        when (sideEffect) {
             CharacterDetailSideEffect.NavigateBack -> navController.popBackStack()
         }
     }

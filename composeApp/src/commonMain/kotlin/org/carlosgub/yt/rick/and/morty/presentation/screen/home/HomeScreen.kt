@@ -46,23 +46,24 @@ fun HomeScreen() {
     val snackBarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
 
-    val items = listOf(
-        NavigationBarItemModel(
-            icon = Icons.Default.Person,
-            label = stringResource(Res.string.home_screen_characters),
-            route = Screen.Characters
-        ),
-        NavigationBarItemModel(
-            icon = Icons.Default.LocationOn,
-            label = stringResource(Res.string.home_screen_locations),
-            route = Screen.Locations
-        ),
-        NavigationBarItemModel(
-            icon = Icons.Default.Movie,
-            label = stringResource(Res.string.home_screen_episodes),
-            route = Screen.Episodes
+    val items =
+        listOf(
+            NavigationBarItemModel(
+                icon = Icons.Default.Person,
+                label = stringResource(Res.string.home_screen_characters),
+                route = Screen.Characters,
+            ),
+            NavigationBarItemModel(
+                icon = Icons.Default.LocationOn,
+                label = stringResource(Res.string.home_screen_locations),
+                route = Screen.Locations,
+            ),
+            NavigationBarItemModel(
+                icon = Icons.Default.Movie,
+                label = stringResource(Res.string.home_screen_episodes),
+                route = Screen.Episodes,
+            ),
         )
-    )
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -85,17 +86,16 @@ fun HomeScreen() {
                         },
                         icon = {
                             Icon(item.icon, contentDescription = null)
-                        }
+                        },
                     )
                 }
-
             }
-        }
+        },
     ) { paddingValues ->
         NavHost(
             navController = navController,
             startDestination = Screen.Characters,
-            modifier = Modifier.padding(paddingValues)
+            modifier = Modifier.padding(paddingValues),
         ) {
             composable<Screen.Characters> {
                 CharacterScreen(showSnackBar = { message ->

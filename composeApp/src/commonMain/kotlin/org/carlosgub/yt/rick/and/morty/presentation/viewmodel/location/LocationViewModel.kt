@@ -7,36 +7,38 @@ import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.container
 
 class LocationViewModel(
-    private val locationRepository: LocationRepository
-) : ViewModel(), ContainerHost<LocationState, LocationSideEffect> {
+    private val locationRepository: LocationRepository,
+) : ViewModel(),
+    ContainerHost<LocationState, LocationSideEffect> {
+    override val container =
+        viewModelScope.container<LocationState, LocationSideEffect>(
+            LocationState(),
+            onCreate = {
+                getLocations()
+            },
+        )
 
-    override val container = viewModelScope.container<LocationState, LocationSideEffect>(
-        LocationState(),
-        onCreate = {
-            getLocations()
+    private fun getLocations() =
+        intent {
+            reduce { state.copy(isLoading = true) }
+            locationRepository
+                .getLocations(1)
+                .onSuccess { locations ->
+                    reduce {
+                        state.copy(
+                            isLoading = false,
+                            locations = locations,
+                            errorMessage = null,
+                        )
+                    }
+                }.onFailure { error ->
+                    reduce {
+                        state.copy(
+                            isLoading = false,
+                            locations = emptyList(),
+                            errorMessage = error.message ?: "Hubo un error",
+                        )
+                    }
+                }
         }
-    )
-
-    private fun getLocations() = intent {
-        reduce { state.copy(isLoading = true) }
-        locationRepository.getLocations(1)
-            .onSuccess { locations ->
-                reduce {
-                    state.copy(
-                        isLoading = false,
-                        locations = locations,
-                        errorMessage = null,
-                    )
-                }
-            }
-            .onFailure { error ->
-                reduce {
-                    state.copy(
-                        isLoading = false,
-                        locations = emptyList(),
-                        errorMessage = error.message ?: "Hubo un error",
-                    )
-                }
-            }
-    }
 }

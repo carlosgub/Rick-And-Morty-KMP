@@ -15,17 +15,16 @@ import org.robolectric.annotation.GraphicsMode
 import sergio.sastre.composable.preview.scanner.android.AndroidComposablePreviewScanner
 import sergio.sastre.composable.preview.scanner.android.AndroidPreviewInfo
 import sergio.sastre.composable.preview.scanner.core.preview.ComposablePreview
-import kotlin.test.Test
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
+import kotlin.test.Test
 
 @RunWith(ParameterizedRobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(sdk = [33], qualifiers = RobolectricDeviceQualifiers.Pixel4a)
 class PreviewScreenshotTest(
-    private val preview: ComposablePreview<AndroidPreviewInfo>
+    private val preview: ComposablePreview<AndroidPreviewInfo>,
 ) : KoinTest {
-
     @get:Rule
     val composeTestRule = createComposeRule()
 
@@ -48,11 +47,13 @@ class PreviewScreenshotTest(
         composeTestRule.setContent {
             preview()
         }
-        val fileName = preview.toString()
-            .replace(" ", "_")
-            .replace("(", "[")
-            .replace(")", "]")
-            .replace(".", "_")
+        val fileName =
+            preview
+                .toString()
+                .replace(" ", "_")
+                .replace("(", "[")
+                .replace(")", "]")
+                .replace(".", "_")
         composeTestRule.onRoot().captureRoboImage("screenshots/$fileName.png")
     }
 

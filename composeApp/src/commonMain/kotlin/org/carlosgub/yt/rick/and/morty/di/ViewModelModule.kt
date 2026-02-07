@@ -7,14 +7,15 @@ import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.location.LocationV
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
-val viewModelModule = module {
-    viewModel { CharacterViewModel(get()) }
-    viewModel { LocationViewModel(get()) }
-    viewModel { EpisodeViewModel(get()) }
-    viewModel {
-        CharacterDetailViewModel(
-            characterRepository = get(),
-            savedStateHandle = get(),
-        )
+val viewModelModule =
+    module {
+        viewModel { CharacterViewModel(get()) }
+        viewModel { LocationViewModel(get()) }
+        viewModel { EpisodeViewModel(get()) }
+        viewModel {
+            CharacterDetailViewModel(
+                characterRepository = get(),
+                savedStateHandle = get(),
+            )
+        }
     }
-}

@@ -9,21 +9,22 @@ import org.carlosgub.yt.rick.and.morty.data.remote.RickAndMortyApi
 import org.carlosgub.yt.rick.and.morty.data.remote.impl.RickAndMortyApiImpl
 import org.koin.dsl.module
 
-val networkModule = module {
-    single {
-        HttpClient {
-            install(ContentNegotiation) {
-                json(
-                    Json {
-                        ignoreUnknownKeys = true
-                        prettyPrint = true
-                    }
-                )
-            }
-            defaultRequest {
-                url("https://rickandmortyapi.com")
+val networkModule =
+    module {
+        single {
+            HttpClient {
+                install(ContentNegotiation) {
+                    json(
+                        Json {
+                            ignoreUnknownKeys = true
+                            prettyPrint = true
+                        },
+                    )
+                }
+                defaultRequest {
+                    url("https://rickandmortyapi.com")
+                }
             }
         }
+        single<RickAndMortyApi> { RickAndMortyApiImpl(get()) }
     }
-    single<RickAndMortyApi> { RickAndMortyApiImpl(get()) }
-}

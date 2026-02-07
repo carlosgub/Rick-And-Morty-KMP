@@ -33,11 +33,14 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun CharacterScreen(showSnackBar: (String) -> Unit) {
     val viewModel = koinViewModel<CharacterViewModel>()
-    val state = viewModel.container.stateFlow.collectAsStateWithLifecycle().value
+    val state =
+        viewModel.container.stateFlow
+            .collectAsStateWithLifecycle()
+            .value
 
     CharacterObserver(
         viewModel = viewModel,
-        showSnackBar = showSnackBar
+        showSnackBar = showSnackBar,
     )
     CharacterContent(
         state = state,
@@ -54,14 +57,16 @@ private fun CharacterContent(
 ) {
     val listState = rememberLazyListState()
 
-    val shouldLoadMore = remember {
-        derivedStateOf {
-            val lastVisibleItem = listState.layoutInfo.visibleItemsInfo.lastOrNull()
-                ?: return@derivedStateOf false
+    val shouldLoadMore =
+        remember {
+            derivedStateOf {
+                val lastVisibleItem =
+                    listState.layoutInfo.visibleItemsInfo.lastOrNull()
+                        ?: return@derivedStateOf false
 
-            lastVisibleItem.index >= listState.layoutInfo.totalItemsCount - 2
+                lastVisibleItem.index >= listState.layoutInfo.totalItemsCount - 2
+            }
         }
-    }
 
     LaunchedEffect(shouldLoadMore.value) {
         if (shouldLoadMore.value) {
@@ -70,19 +75,23 @@ private fun CharacterContent(
     }
 
     Box(
-        modifier = Modifier.fillMaxSize()
-            .background(Color.White),
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .background(Color.White),
     ) {
         if (state.isLoading) {
             CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
+                modifier = Modifier.align(Alignment.Center),
             )
         }
         state.errorMessage?.let { message ->
             Text(
                 message,
-                modifier = Modifier.align(Alignment.Center)
-                    .padding(16.dp)
+                modifier =
+                    Modifier
+                        .align(Alignment.Center)
+                        .padding(16.dp),
             )
         }
         if (state.characters.isNotEmpty()) {
@@ -90,7 +99,7 @@ private fun CharacterContent(
                 state = listState,
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(6.dp)
+                verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
                 items(
                     items = state.characters,
@@ -98,14 +107,14 @@ private fun CharacterContent(
                 ) { character ->
                     CharacterItem(
                         character = character,
-                        onClick = onCharacterClicked
+                        onClick = onCharacterClicked,
                     )
                 }
                 if (state.isLoadingNextPage) {
                     item {
                         Box(modifier = Modifier.fillMaxWidth()) {
                             CircularProgressIndicator(
-                                modifier = Modifier.align(Alignment.Center)
+                                modifier = Modifier.align(Alignment.Center),
                             )
                         }
                     }
@@ -127,3 +136,7 @@ private fun CharacterContentPreview(
     )
 }
 
+@Composable
+fun dummyComposable() {
+    Text("Hello")
+}

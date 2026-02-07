@@ -12,7 +12,7 @@ class MainApplication : Application() {
             appDeclaration = {
                 androidLogger()
                 androidContext(this@MainApplication)
-            }
+            },
         )
     }
 }

@@ -9,17 +9,16 @@ import org.carlosgub.yt.rick.and.morty.domain.repository.CharacterRepository
 class CharacterRepositoryImpl(
     private val api: RickAndMortyApi,
 ) : CharacterRepository {
-    override suspend fun getCharacters(page: Int): Result<CharacterPaging> {
-        return api.getCharacters(page).map { response ->
+    override suspend fun getCharacters(page: Int): Result<CharacterPaging> =
+        api.getCharacters(page).map { response ->
             CharacterPaging(
-                characters = response.results.map {
-                    it.toCharacter()
-                },
-                canLoadMore = response.info.next != null
+                characters =
+                    response.results.map {
+                        it.toCharacter()
+                    },
+                canLoadMore = response.info.next != null,
             )
         }
-    }
 
-    override suspend fun getCharacter(id: Int): Result<Character> =
-        api.getCharacter(id).map { it.toCharacter() }
+    override suspend fun getCharacter(id: Int): Result<Character> = api.getCharacter(id).map { it.toCharacter() }
 }
