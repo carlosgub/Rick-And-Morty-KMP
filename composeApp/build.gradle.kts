@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -26,17 +25,17 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosArm64(),
-        iosSimulatorArm64()
+        iosSimulatorArm64(),
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
         }
     }
-    
+
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
@@ -59,7 +58,7 @@ kotlin {
             implementation(libs.jetbrains.compose.ui)
             implementation(libs.jetbrains.compose.components.resources)
             implementation(libs.jetbrains.compose.ui.tooling.preview)
-            implementation (libs.jetbrains.compose.material.icons.extended)
+            implementation(libs.jetbrains.compose.material.icons.extended)
 
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
@@ -90,19 +89,18 @@ kotlin {
             implementation(libs.kotlin.coroutines.test)
             implementation(libs.ktor.client.mock)
         }
-        val androidUnitTest by getting {
-            dependencies {
-                implementation(libs.robolectric)
-                implementation(libs.roborazzi.compose)
-                implementation(libs.roborazzi.compose.preview.scanner.support)
-                implementation(libs.roborazzi.junit.rule)
-                implementation(libs.composable.preview.scanner.android)
-                implementation(libs.androidx.compose.ui.test.junit4)
-                implementation(libs.androidx.test.ext.junit)
-                implementation(libs.koin.test)
-                implementation(libs.koin.test.junit4)
-            }
+        androidUnitTest.dependencies {
+            implementation(libs.robolectric)
+            implementation(libs.roborazzi.compose)
+            implementation(libs.roborazzi.compose.preview.scanner.support)
+            implementation(libs.roborazzi.junit.rule)
+            implementation(libs.composable.preview.scanner.android)
+            implementation(libs.androidx.compose.ui.test.junit4)
+            implementation(libs.androidx.test.ext.junit)
+            implementation(libs.koin.test)
+            implementation(libs.koin.test.junit4)
         }
+
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
         }
@@ -111,12 +109,21 @@ kotlin {
 
 android {
     namespace = "org.carlosgub.yt.rick.and.morty"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk =
+        libs.versions.android.compileSdk
+            .get()
+            .toInt()
 
     defaultConfig {
         applicationId = "org.carlosgub.yt.rick.and.morty"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        minSdk =
+            libs.versions.android.minSdk
+                .get()
+                .toInt()
+        targetSdk =
+            libs.versions.android.targetSdk
+                .get()
+                .toInt()
         versionCode = 1
         versionName = "1.0"
     }
@@ -142,10 +149,26 @@ android {
             }
         }
     }
+    lint {
+        abortOnError = true
+        checkOnly +=
+            listOf(
+                "ComposeModifierMissing",
+                "ComposeViewModelForwarding",
+                "ComposeRememberMissing",
+                "ComposeMultipleContentEmitters",
+                "ComposePreviewNaming",
+                "ComposeParameterOrder",
+                "ComposeViewModelInjection",
+                "ComposePreviewPublic",
+                "ComposeModifierReused",
+                "ComposeModifierWithoutDefault",
+            )
+    }
 }
 
 dependencies {
     debugImplementation(compose.uiTooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    lintChecks(libs.slack.compose.lints)
 }
-

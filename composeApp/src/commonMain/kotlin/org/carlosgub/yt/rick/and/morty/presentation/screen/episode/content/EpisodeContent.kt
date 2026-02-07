@@ -26,45 +26,50 @@ import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.episode.EpisodeSta
 @Composable
 internal fun EpisodeContent(state: EpisodeState) {
     Box(
-        modifier = Modifier.fillMaxSize()
-            .background(Color.White),
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .background(Color.White),
     ) {
         if (state.isLoading) {
             CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
+                modifier = Modifier.align(Alignment.Center),
             )
         }
         state.errorMessage?.let { message ->
             Text(
                 message,
-                modifier = Modifier.align(Alignment.Center)
-                    .padding(16.dp)
+                modifier =
+                    Modifier
+                        .align(Alignment.Center)
+                        .padding(16.dp),
             )
         }
         if (state.episodes.isNotEmpty()) {
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(6.dp)
+                verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
                 state.episodesPerSeason.forEach { (season, episodes) ->
                     item {
-                        val seasonHeader = when (season) {
-                            "S01" -> "Season 1"
-                            "S02" -> "Season 2"
-                            "S03" -> "Season 3"
-                            "S04" -> "Season 4"
-                            "S05" -> "Season 5"
-                            "S06" -> "Season 6"
-                            else -> season
-                        }
+                        val seasonHeader =
+                            when (season) {
+                                "S01" -> "Season 1"
+                                "S02" -> "Season 2"
+                                "S03" -> "Season 3"
+                                "S04" -> "Season 4"
+                                "S05" -> "Season 5"
+                                "S06" -> "Season 6"
+                                else -> season
+                            }
 
                         Text(
                             text = seasonHeader,
                             color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.SemiBold,
                             fontSize = 22.sp,
-                            modifier = Modifier.padding(vertical = 12.dp, horizontal = 4.dp)
+                            modifier = Modifier.padding(vertical = 12.dp, horizontal = 4.dp),
                         )
                     }
                     items(
@@ -74,7 +79,6 @@ internal fun EpisodeContent(state: EpisodeState) {
                         EpisodeItem(episode = episode)
                     }
                 }
-
             }
         }
     }
@@ -86,6 +90,6 @@ private fun EpisodeContentPreview(
     @PreviewParameter(EpisodeStateParameterProvider::class) state: EpisodeState,
 ) {
     EpisodeContent(
-        state = state
+        state = state,
     )
 }

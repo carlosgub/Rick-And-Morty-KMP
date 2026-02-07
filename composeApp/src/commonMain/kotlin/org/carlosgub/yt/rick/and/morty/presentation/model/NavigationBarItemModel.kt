@@ -6,5 +6,5 @@ import org.carlosgub.yt.rick.and.morty.presentation.navigation.Screen
 data class NavigationBarItemModel(
     val icon: ImageVector,
     val label: String,
-    val route: Screen
+    val route: Screen,
 )

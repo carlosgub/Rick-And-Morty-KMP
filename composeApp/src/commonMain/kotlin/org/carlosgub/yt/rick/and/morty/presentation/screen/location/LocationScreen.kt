@@ -16,10 +16,13 @@ fun LocationScreen() {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         val viewModel = koinViewModel<LocationViewModel>()
-        val state = viewModel.container.stateFlow.collectAsStateWithLifecycle().value
+        val state =
+            viewModel.container.stateFlow
+                .collectAsStateWithLifecycle()
+                .value
 
         LocationContent(state)
     }

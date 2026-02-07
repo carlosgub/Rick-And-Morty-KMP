@@ -3,8 +3,8 @@ package org.carlosgub.yt.rick.and.morty.data.mapper
 import org.carlosgub.yt.rick.and.morty.data.model.CharacterResponse
 import org.carlosgub.yt.rick.and.morty.domain.model.Character
 
-fun CharacterResponse.CharacterData.toCharacter(): Character {
-    return Character(
+fun CharacterResponse.CharacterData.toCharacter(): Character =
+    Character(
         id = id,
         name = name,
         status = status,
@@ -14,4 +14,3 @@ fun CharacterResponse.CharacterData.toCharacter(): Character {
         location = location.name,
         image = image,
     )
-}

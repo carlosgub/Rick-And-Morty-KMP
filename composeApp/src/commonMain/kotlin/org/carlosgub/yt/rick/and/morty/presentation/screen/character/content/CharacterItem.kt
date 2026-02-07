@@ -32,80 +32,96 @@ import org.carlosgub.yt.rick.and.morty.presentation.utils.statusColor
 @Composable
 fun CharacterItem(
     character: Character,
-    onClick: (Int) -> Unit
+    onClick: (Int) -> Unit,
 ) {
     Card(
-        modifier = Modifier.fillMaxSize()
-            .padding(4.dp)
-            .clickable {
-                onClick(character.id)
-            },
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(4.dp)
+                .clickable {
+                    onClick(character.id)
+                },
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = Color.White
-        ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        colors =
+            CardDefaults.cardColors(
+                containerColor = Color.White,
+            ),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth()
-                .padding(12.dp),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(12.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             AsyncImage(
                 model = character.image,
                 contentDescription = character.name,
-                modifier = Modifier.width(100.dp)
-                    .clip(RoundedCornerShape(8.dp)),
+                modifier =
+                    Modifier
+                        .width(100.dp)
+                        .clip(RoundedCornerShape(8.dp)),
                 contentScale = ContentScale.Crop,
             )
             Column(
-                modifier = Modifier.weight(1f)
-                    .padding(start = 8.dp)
+                modifier =
+                    Modifier
+                        .weight(1f)
+                        .padding(start = 8.dp),
             ) {
                 Text(
                     text = character.name,
-                    style = MaterialTheme.typography.titleMedium.copy(
-                        color = Color.Black,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold
-                    )
+                    style =
+                        MaterialTheme.typography.titleMedium.copy(
+                            color = Color.Black,
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold,
+                        ),
                 )
 
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth()
-                        .padding(top = 4.dp)
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(top = 4.dp),
                 ) {
                     Box(
-                        modifier = Modifier
-                            .size(8.dp)
-                            .clip(CircleShape)
-                            .background(character.statusColor())
+                        modifier =
+                            Modifier
+                                .size(8.dp)
+                                .clip(CircleShape)
+                                .background(character.statusColor()),
                     )
                     Text(
                         text = "${character.status} - ${character.species}",
-                        style = MaterialTheme.typography.bodySmall.copy(
-                            color = Color.DarkGray
-                        ),
-                        modifier = Modifier.padding(start = 4.dp)
+                        style =
+                            MaterialTheme.typography.bodySmall.copy(
+                                color = Color.DarkGray,
+                            ),
+                        modifier = Modifier.padding(start = 4.dp),
                     )
                 }
 
                 Text(
                     text = "Last known location:",
-                    style = MaterialTheme.typography.labelSmall.copy(
-                        color = MaterialTheme.colorScheme.primary,
-                        fontWeight = FontWeight.SemiBold
-                    ),
-                    modifier = Modifier.padding(top = 8.dp)
+                    style =
+                        MaterialTheme.typography.labelSmall.copy(
+                            color = MaterialTheme.colorScheme.primary,
+                            fontWeight = FontWeight.SemiBold,
+                        ),
+                    modifier = Modifier.padding(top = 8.dp),
                 )
 
                 Text(
                     text = character.location,
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        color = MaterialTheme.colorScheme.onSurface,
-                    ),
-                    maxLines = 1
+                    style =
+                        MaterialTheme.typography.bodyMedium.copy(
+                            color = MaterialTheme.colorScheme.onSurface,
+                        ),
+                    maxLines = 1,
                 )
             }
         }

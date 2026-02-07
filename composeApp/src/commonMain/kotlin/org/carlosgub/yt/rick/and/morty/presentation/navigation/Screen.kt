@@ -3,13 +3,12 @@ package org.carlosgub.yt.rick.and.morty.presentation.navigation
 import kotlinx.serialization.Serializable
 
 sealed class Screen {
-
     @Serializable
     object Home : Screen()
 
     @Serializable
     data class CharacterDetail(
-        val id: Int
+        val id: Int,
     ) : Screen()
 
     @Serializable
