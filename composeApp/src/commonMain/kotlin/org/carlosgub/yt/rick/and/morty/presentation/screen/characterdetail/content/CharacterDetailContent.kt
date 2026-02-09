@@ -59,14 +59,16 @@ import rickandmortykmp.composeapp.generated.resources.character_detail_screen_to
 fun CharacterDetailContent(
     state: CharacterDetailState,
     onNavigateBack: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Scaffold(
         topBar = {
             CharacterDetailTopBar(
                 title = state.character?.name.orEmpty(),
-                onNavigateBack = onNavigateBack
+                onNavigateBack = onNavigateBack,
             )
         },
+        modifier = modifier,
     ) { paddingValues ->
         Box(
             modifier = Modifier
@@ -76,7 +78,7 @@ fun CharacterDetailContent(
         ) {
             if (state.isLoading) {
                 CircularProgressIndicator(
-                    modifier = Modifier.align(Alignment.Center)
+                    modifier = Modifier.align(Alignment.Center),
                 )
             }
             state.character?.let { character ->
@@ -85,57 +87,59 @@ fun CharacterDetailContent(
             state.errorMessage?.let { message ->
                 Text(
                     message,
-                    modifier = Modifier.align(Alignment.Center)
-                        .padding(16.dp)
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .padding(16.dp),
                 )
             }
         }
     }
-
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun CharacterDetailTopBar(
     title: String,
-    onNavigateBack: () -> Unit
+    onNavigateBack: () -> Unit,
 ) {
     TopAppBar(
         title = {
             Text(
                 title,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
             )
         },
         navigationIcon = {
             IconButton(onClick = onNavigateBack) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = stringResource(Res.string.character_detail_screen_toolbar_back_navigation)
+                    contentDescription = stringResource(Res.string.character_detail_screen_toolbar_back_navigation),
                 )
             }
         },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color.White
-        )
+            containerColor = Color.White,
+        ),
     )
 }
 
 @Composable
 private fun CharacterDetail(character: Character) {
     Column(
-        modifier = Modifier.fillMaxSize()
-            .verticalScroll(rememberScrollState())
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
     ) {
         Box(
-            modifier = Modifier.fillMaxWidth()
-                .height(350.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(350.dp),
         ) {
             AsyncImage(
                 model = character.image,
                 contentDescription = character.name,
                 modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Crop,
             )
             Column(
                 modifier = Modifier
@@ -145,36 +149,35 @@ private fun CharacterDetail(character: Character) {
                         Brush.verticalGradient(
                             colors = listOf(
                                 Color.Transparent,
-                                Color.Black
+                                Color.Black,
                             ),
-                        )
-                    )
-                    .padding(24.dp)
-
+                        ),
+                    ).padding(24.dp),
             ) {
                 Text(
                     text = character.name,
                     color = Color.White,
                     fontSize = 32.sp,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
                 )
 
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth()
-                        .padding(top = 4.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 4.dp),
                 ) {
                     Box(
                         modifier = Modifier
                             .size(14.dp)
                             .clip(CircleShape)
-                            .background(character.statusColor())
+                            .background(character.statusColor()),
                     )
                     Text(
                         text = "${character.status} - ${character.species}",
                         color = Color.White,
                         fontSize = 16.sp,
-                        modifier = Modifier.padding(start = 6.dp)
+                        modifier = Modifier.padding(start = 6.dp),
                     )
                 }
             }
@@ -183,22 +186,22 @@ private fun CharacterDetail(character: Character) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(24.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             InfoCard(
                 icon = Icons.Default.Transgender,
                 title = stringResource(Res.string.character_detail_screen_gender),
-                description = character.gender
+                description = character.gender,
             )
             InfoCard(
                 icon = Icons.Default.Person,
                 title = stringResource(Res.string.character_detail_screen_species),
-                description = character.species
+                description = character.species,
             )
             InfoCard(
                 icon = Icons.Default.LocationOn,
                 title = stringResource(Res.string.character_detail_screen_location),
-                description = character.location
+                description = character.location,
             )
         }
     }
@@ -214,12 +217,13 @@ private fun InfoCard(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color(0XFFF5F5F5)
+            containerColor = Color(0XFFF5F5F5),
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -227,22 +231,23 @@ private fun InfoCard(
                 imageVector = icon,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(32.dp)
+                modifier = Modifier.size(32.dp),
             )
             Column(
-                modifier = Modifier.weight(1f)
-                    .padding(start = 16.dp)
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(start = 16.dp),
             ) {
                 Text(
                     text = title,
                     color = Color.Gray,
-                    fontSize = 14.sp
+                    fontSize = 14.sp,
                 )
                 Text(
                     text = description,
                     color = Color.Black,
                     fontSize = 16.sp,
-                    fontWeight = FontWeight.SemiBold
+                    fontWeight = FontWeight.SemiBold,
                 )
             }
         }
@@ -256,6 +261,6 @@ private fun CharacterDetailContentPreview(
 ) {
     CharacterDetailContent(
         state = state,
-        onNavigateBack = {}
+        onNavigateBack = {},
     )
 }

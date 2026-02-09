@@ -26,26 +26,28 @@ import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.episode.EpisodeSta
 @Composable
 internal fun EpisodeContent(state: EpisodeState) {
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
             .background(Color.White),
     ) {
         if (state.isLoading) {
             CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
+                modifier = Modifier.align(Alignment.Center),
             )
         }
         state.errorMessage?.let { message ->
             Text(
                 message,
-                modifier = Modifier.align(Alignment.Center)
-                    .padding(16.dp)
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .padding(16.dp),
             )
         }
         if (state.episodes.isNotEmpty()) {
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(6.dp)
+                verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
                 state.episodesPerSeason.forEach { (season, episodes) ->
                     item {
@@ -64,7 +66,7 @@ internal fun EpisodeContent(state: EpisodeState) {
                             color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.SemiBold,
                             fontSize = 22.sp,
-                            modifier = Modifier.padding(vertical = 12.dp, horizontal = 4.dp)
+                            modifier = Modifier.padding(vertical = 12.dp, horizontal = 4.dp),
                         )
                     }
                     items(
@@ -74,7 +76,6 @@ internal fun EpisodeContent(state: EpisodeState) {
                         EpisodeItem(episode = episode)
                     }
                 }
-
             }
         }
     }
@@ -86,6 +87,6 @@ private fun EpisodeContentPreview(
     @PreviewParameter(EpisodeStateParameterProvider::class) state: EpisodeState,
 ) {
     EpisodeContent(
-        state = state
+        state = state,
     )
 }

@@ -1,7 +1,8 @@
 package org.carlosgub.yt.rick.and.morty.data.remote.responses
 
 object MockResponses {
-    val GET_CHARACTERS_RESPONSE = """
+    val GET_CHARACTERS_RESPONSE =
+        """
         {
           "info": {
             "count": 826,
@@ -282,9 +283,10 @@ object MockResponses {
             }
           ]
         }
-    """.trimIndent()
+        """.trimIndent()
 
-    val GET_CHARACTER_RESPONSE = """
+    val GET_CHARACTER_RESPONSE =
+        """
         {
           "id": 2,
           "name": "Morty Smith",
@@ -308,9 +310,10 @@ object MockResponses {
           "url": "https://rickandmortyapi.com/api/character/2",
           "created": "2017-11-04T18:50:21.651Z"
         }
-    """.trimIndent()
+        """.trimIndent()
 
-    val GET_LOCATIONS_RESPONSE = """
+    val GET_LOCATIONS_RESPONSE =
+        """
         {
           "info": {
             "count": 126,
@@ -333,9 +336,10 @@ object MockResponses {
             }
           ]
         }
-    """.trimIndent()
+        """.trimIndent()
 
-    val GET_EPISODES_RESPONSE = """
+    val GET_EPISODES_RESPONSE =
+        """
         {
           "info": {
             "count": 51,
@@ -358,5 +362,5 @@ object MockResponses {
             }
           ]
         }
-    """.trimIndent()
+        """.trimIndent()
 }

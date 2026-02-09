@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -29,7 +28,7 @@ kotlin {
 
     listOf(
         iosArm64(),
-        iosSimulatorArm64()
+        iosSimulatorArm64(),
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
@@ -109,12 +108,18 @@ kotlin {
 
 android {
     namespace = "org.carlosgub.yt.rick.and.morty"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk = libs.versions.android.compileSdk
+        .get()
+        .toInt()
 
     defaultConfig {
         applicationId = "org.carlosgub.yt.rick.and.morty"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk
+            .get()
+            .toInt()
+        targetSdk = libs.versions.android.targetSdk
+            .get()
+            .toInt()
         versionCode = 1
         versionName = "1.0"
     }
@@ -146,5 +151,5 @@ android {
 dependencies {
     debugImplementation(compose.uiTooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    ktlintRuleset(libs.compose.rules)
 }
-

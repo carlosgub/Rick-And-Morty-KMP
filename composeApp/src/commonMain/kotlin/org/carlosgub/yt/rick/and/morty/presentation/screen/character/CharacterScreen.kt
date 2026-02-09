@@ -15,7 +15,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,29 +25,27 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import org.carlosgub.yt.rick.and.morty.presentation.navigation.LocalNavController
-import org.carlosgub.yt.rick.and.morty.presentation.navigation.Screen
 import org.carlosgub.yt.rick.and.morty.presentation.screen.character.content.CharacterItem
 import org.carlosgub.yt.rick.and.morty.presentation.screen.character.observer.CharacterObserver
 import org.carlosgub.yt.rick.and.morty.presentation.screen.character.preview.CharacterStateParameterProvider
-import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.character.CharacterSideEffect
 import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.character.CharacterState
 import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.character.CharacterViewModel
 import org.koin.compose.viewmodel.koinViewModel
-import org.orbitmvi.orbit.compose.collectSideEffect
 
 @Composable
 fun CharacterScreen(showSnackBar: (String) -> Unit) {
     val viewModel = koinViewModel<CharacterViewModel>()
-    val state = viewModel.container.stateFlow.collectAsStateWithLifecycle().value
+    val state = viewModel.container.stateFlow
+        .collectAsStateWithLifecycle()
+        .value
 
     CharacterObserver(
         viewModel = viewModel,
-        showSnackBar = showSnackBar
+        showSnackBar = showSnackBar,
     )
     CharacterContent(
         state = state,
-        onCharacterClicked = viewModel::onCharacterClicked,
+        onCharacterClick = viewModel::onCharacterClicked,
         onLoadNextPage = viewModel::loadNextPage,
     )
 }
@@ -53,9 +53,10 @@ fun CharacterScreen(showSnackBar: (String) -> Unit) {
 @Composable
 private fun CharacterContent(
     state: CharacterState,
-    onCharacterClicked: (Int) -> Unit,
+    onCharacterClick: (Int) -> Unit,
     onLoadNextPage: () -> Unit,
 ) {
+    val latestOnLoadNextPage by rememberUpdatedState(onLoadNextPage)
     val listState = rememberLazyListState()
 
     val shouldLoadMore = remember {
@@ -69,24 +70,26 @@ private fun CharacterContent(
 
     LaunchedEffect(shouldLoadMore.value) {
         if (shouldLoadMore.value) {
-            onLoadNextPage()
+            latestOnLoadNextPage()
         }
     }
 
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
             .background(Color.White),
     ) {
         if (state.isLoading) {
             CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
+                modifier = Modifier.align(Alignment.Center),
             )
         }
         state.errorMessage?.let { message ->
             Text(
                 message,
-                modifier = Modifier.align(Alignment.Center)
-                    .padding(16.dp)
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .padding(16.dp),
             )
         }
         if (state.characters.isNotEmpty()) {
@@ -94,7 +97,7 @@ private fun CharacterContent(
                 state = listState,
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(6.dp)
+                verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
                 items(
                     items = state.characters,
@@ -102,14 +105,14 @@ private fun CharacterContent(
                 ) { character ->
                     CharacterItem(
                         character = character,
-                        onClick = onCharacterClicked
+                        onClick = onCharacterClick,
                     )
                 }
                 if (state.isLoadingNextPage) {
                     item {
                         Box(modifier = Modifier.fillMaxWidth()) {
                             CircularProgressIndicator(
-                                modifier = Modifier.align(Alignment.Center)
+                                modifier = Modifier.align(Alignment.Center),
                             )
                         }
                     }
@@ -126,8 +129,7 @@ private fun CharacterContentPreview(
 ) {
     CharacterContent(
         state = state,
-        onCharacterClicked = {},
+        onCharacterClick = {},
         onLoadNextPage = {},
     )
 }
-

@@ -8,5 +8,5 @@ data class CharacterState(
     val characters: List<Character> = emptyList(),
     val canLoadMore: Boolean = true,
     val page: Int = 1,
-    val errorMessage:String? = null
+    val errorMessage: String? = null,
 )

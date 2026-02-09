@@ -4,11 +4,11 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import org.carlosgub.yt.rick.and.morty.domain.model.Character
 import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.character.CharacterState
 
-class CharacterStateParameterProvider: PreviewParameterProvider<CharacterState> {
+class CharacterStateParameterProvider : PreviewParameterProvider<CharacterState> {
     override val values: Sequence<CharacterState> = sequenceOf(
         CharacterState(
             isLoading = true,
-            characters = emptyList()
+            characters = emptyList(),
         ),
         CharacterState(
             isLoading = false,
@@ -26,7 +26,7 @@ class CharacterStateParameterProvider: PreviewParameterProvider<CharacterState> 
                     type = "",
                     gender = "Male",
                     location = "Earth",
-                    image = ""
+                    image = "",
                 ),
                 Character(
                     id = 2,
@@ -36,11 +36,10 @@ class CharacterStateParameterProvider: PreviewParameterProvider<CharacterState> 
                     type = "",
                     gender = "Male",
                     location = "Earth",
-                    image = ""
+                    image = "",
                 ),
-            )
+            ),
         ),
-
         CharacterState(
             isLoading = false,
             characters = listOf(
@@ -52,7 +51,7 @@ class CharacterStateParameterProvider: PreviewParameterProvider<CharacterState> 
                     type = "",
                     gender = "Male",
                     location = "Earth",
-                    image = ""
+                    image = "",
                 ),
                 Character(
                     id = 2,
@@ -62,12 +61,10 @@ class CharacterStateParameterProvider: PreviewParameterProvider<CharacterState> 
                     type = "",
                     gender = "Male",
                     location = "Earth",
-                    image = ""
+                    image = "",
                 ),
             ),
-            isLoadingNextPage = true
-        )
-
+            isLoadingNextPage = true,
+        ),
     )
-
 }

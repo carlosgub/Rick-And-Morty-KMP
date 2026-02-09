@@ -10,7 +10,7 @@ object TestData {
         count = 1,
         pages = 1,
         next = null,
-        prev = null
+        prev = null,
     )
 
     val characterData = CharacterResponse.CharacterData(
@@ -22,11 +22,11 @@ object TestData {
         gender = "Male",
         origin = CharacterResponse.CharacterData.LocationData(
             name = "Earth",
-            url = ""
+            url = "",
         ),
         location = CharacterResponse.CharacterData.LocationData(
             name = "Earth",
-            url = ""
+            url = "",
         ),
         image = "",
         episode = listOf(),
@@ -36,7 +36,7 @@ object TestData {
 
     val characterResponse = CharacterResponse(
         info = info,
-        results = listOf(characterData)
+        results = listOf(characterData),
     )
 
     val locationResponse = LocationResponse(
@@ -47,8 +47,8 @@ object TestData {
                 name = "Earth",
                 type = "Planet",
                 dimension = "",
-            )
-        )
+            ),
+        ),
     )
 
     val episodeResponse = EpisodeResponse(
@@ -59,7 +59,7 @@ object TestData {
                 name = "Pilot",
                 airDate = "",
                 episode = "S0102",
-            )
-        )
+            ),
+        ),
     )
 }

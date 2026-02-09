@@ -2,14 +2,13 @@ package org.carlosgub.yt.rick.and.morty.presentation.screen.characterdetail.prev
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import org.carlosgub.yt.rick.and.morty.domain.model.Character
-import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.character.CharacterState
 import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.characterdetail.CharacterDetailState
 
 class CharacterDetailStateParameterProvider : PreviewParameterProvider<CharacterDetailState> {
     override val values: Sequence<CharacterDetailState> = sequenceOf(
         CharacterDetailState(
             isLoading = true,
-            character = null
+            character = null,
         ),
         CharacterDetailState(
             isLoading = false,
@@ -21,15 +20,13 @@ class CharacterDetailStateParameterProvider : PreviewParameterProvider<Character
                 type = "",
                 gender = "Male",
                 location = "Earth",
-                image = ""
-            )
+                image = "",
+            ),
         ),
         CharacterDetailState(
             isLoading = false,
             character = null,
-            errorMessage = "Hubo un error"
+            errorMessage = "Hubo un error",
         ),
-
     )
-
 }

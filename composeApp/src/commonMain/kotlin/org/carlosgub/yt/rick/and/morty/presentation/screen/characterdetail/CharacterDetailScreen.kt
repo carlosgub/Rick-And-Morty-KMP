@@ -12,12 +12,14 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun CharacterDetailScreen() {
     val viewModel = koinViewModel<CharacterDetailViewModel>()
-    val state = viewModel.container.stateFlow.collectAsStateWithLifecycle().value
+    val state = viewModel.container.stateFlow
+        .collectAsStateWithLifecycle()
+        .value
 
     CharacterDetailObserver(viewModel)
 
     CharacterDetailContent(
         state = state,
-        onNavigateBack = viewModel::navigateBack
+        onNavigateBack = viewModel::navigateBack,
     )
 }

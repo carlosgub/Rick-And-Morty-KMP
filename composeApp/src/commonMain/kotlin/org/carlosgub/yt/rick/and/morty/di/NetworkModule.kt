@@ -17,7 +17,7 @@ val networkModule = module {
                     Json {
                         ignoreUnknownKeys = true
                         prettyPrint = true
-                    }
+                    },
                 )
             }
             defaultRequest {

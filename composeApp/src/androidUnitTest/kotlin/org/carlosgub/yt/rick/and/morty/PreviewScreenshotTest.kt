@@ -23,9 +23,8 @@ import kotlin.test.Test
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(sdk = [33], qualifiers = RobolectricDeviceQualifiers.Pixel4a)
 class PreviewScreenshotTest(
-    private val preview: ComposablePreview<AndroidPreviewInfo>
+    private val preview: ComposablePreview<AndroidPreviewInfo>,
 ) : KoinTest {
-
     @get:Rule
     val composeTestRule = createComposeRule()
 
@@ -48,7 +47,8 @@ class PreviewScreenshotTest(
         composeTestRule.setContent {
             preview()
         }
-        val fileName = preview.toString()
+        val fileName = preview
+            .toString()
             .replace(" ", "_")
             .replace("(", "[")
             .replace(")", "]")

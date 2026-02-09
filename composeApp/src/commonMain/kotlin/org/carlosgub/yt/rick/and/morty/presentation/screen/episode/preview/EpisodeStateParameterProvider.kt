@@ -8,7 +8,7 @@ class EpisodeStateParameterProvider : PreviewParameterProvider<EpisodeState> {
     override val values: Sequence<EpisodeState> = sequenceOf(
         EpisodeState(
             isLoading = true,
-            episodes = emptyList()
+            episodes = emptyList(),
         ),
         EpisodeState(
             isLoading = false,
@@ -30,9 +30,7 @@ class EpisodeStateParameterProvider : PreviewParameterProvider<EpisodeState> {
         EpisodeState(
             isLoading = false,
             episodes = emptyList(),
-            errorMessage = "Hubo un error"
+            errorMessage = "Hubo un error",
         ),
-
     )
-
 }
