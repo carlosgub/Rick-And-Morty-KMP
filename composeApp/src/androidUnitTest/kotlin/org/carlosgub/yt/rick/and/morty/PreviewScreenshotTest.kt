@@ -23,7 +23,7 @@ import kotlin.test.Test
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(
     sdk = [33],
-    qualifiers = RobolectricDeviceQualifiers.Pixel4a
+    qualifiers = RobolectricDeviceQualifiers.Pixel4a,
 )
 class PreviewScreenshotTest(
     private val preview: ComposablePreview<AndroidPreviewInfo>,
@@ -33,7 +33,9 @@ class PreviewScreenshotTest(
 
     @BeforeTest
     fun setup() {
-        if (org.koin.core.context.GlobalContext.getOrNull() == null) {
+        if (org.koin.core.context.GlobalContext
+                .getOrNull() == null
+        ) {
             initKoin()
         }
     }
