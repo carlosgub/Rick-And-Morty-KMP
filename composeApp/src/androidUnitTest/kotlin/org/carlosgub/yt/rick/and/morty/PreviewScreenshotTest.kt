@@ -23,8 +23,7 @@ import kotlin.test.Test
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(
     sdk = [33],
-    qualifiers = RobolectricDeviceQualifiers.Pixel4a,
-    application = TestApplication::class
+    qualifiers = RobolectricDeviceQualifiers.Pixel4a
 )
 class PreviewScreenshotTest(
     private val preview: ComposablePreview<AndroidPreviewInfo>,
