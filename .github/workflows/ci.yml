@@ -27,7 +27,7 @@ jobs:
       run: ./gradlew ktlintCheck
 
     - name: Run unit tests
-      run: ./gradlew test
+      run: ./gradlew :composeApp:testDebugUnitTest
 
     - name: Verify Roborazzi Screenshots
       run: ./gradlew :composeApp:verifyRoborazziDebug

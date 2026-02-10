@@ -21,7 +21,11 @@ import kotlin.test.Test
 
 @RunWith(ParameterizedRobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
-@Config(sdk = [33], qualifiers = RobolectricDeviceQualifiers.Pixel4a)
+@Config(
+    sdk = [33],
+    qualifiers = RobolectricDeviceQualifiers.Pixel4a,
+    application = TestApplication::class
+)
 class PreviewScreenshotTest(
     private val preview: ComposablePreview<AndroidPreviewInfo>,
 ) : KoinTest {
@@ -30,10 +34,8 @@ class PreviewScreenshotTest(
 
     @BeforeTest
     fun setup() {
-        try {
+        if (org.koin.core.context.GlobalContext.getOrNull() == null) {
             initKoin()
-        } catch (e: Exception) {
-            // Koin already started
         }
     }
 
