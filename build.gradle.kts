@@ -16,3 +16,11 @@ subprojects {
         debug.set(true)
     }
 }
+
+tasks.register<Copy>("installGitHooks") {
+    from(file("${rootProject.rootDir}/scripts/pre-commit.sh")) {
+        rename { "pre-commit" }
+    }
+    into(file("${rootProject.rootDir}/.git/hooks"))
+    fileMode = 493
+}
