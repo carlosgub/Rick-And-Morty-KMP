@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit MVI - Curso KMP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'kmp-purple': '#7F52FF',
+                        'kmp-orange': '#E44857',
+                        'kmp-blue': '#00BDC7',
+                        'dark-bg': '#0C111D',
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #7F52FF, #E44857);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-mesh {
+            background-color: #0C111D;
+            background-image:
+                radial-gradient(at 50% 0%, rgba(127, 82, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(228, 72, 87, 0.1) 0px, transparent 50%);
+        }
+    </style>
+</head>
+
+<body class="bg-mesh min-h-screen font-display text-white flex items-center justify-center p-8">
+
+    <main class="w-full max-w-6xl">
+        <div class="glass rounded-3xl p-16 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-purple to-kmp-orange"></div>
+
+            <!-- Header -->
+            <div class="mb-12">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-purple/20 border border-kmp-purple/30 text-sm font-semibold text-kmp-purple uppercase tracking-wider mb-4">
+                    <span class="material-symbols-outlined text-lg">sync</span>
+                    State Management
+                </div>
+                <h1 class="text-7xl font-bold mb-4">
+                    Orbit <span class="gradient-text">MVI</span>
+                </h1>
+                <p class="text-2xl text-gray-400 font-light">
+                    Manejo predecible de estado y efectos secundarios
+                </p>
+            </div>
+
+            <!-- MVI Flow -->
+            <div class="mb-12">
+                <div class="flex items-center justify-between gap-4">
+                    <!-- Intent -->
+                    <div class="flex-1 glass rounded-2xl p-6 text-center border-2 border-kmp-purple/30">
+                        <div
+                            class="w-16 h-16 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple mx-auto mb-3">
+                            <span class="material-symbols-outlined text-4xl">touch_app</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Intent</h3>
+                        <p class="text-sm text-gray-400">Acción del usuario</p>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="text-kmp-purple text-4xl">→</div>
+
+                    <!-- Model/State -->
+                    <div class="flex-1 glass rounded-2xl p-6 text-center border-2 border-kmp-orange/30">
+                        <div
+                            class="w-16 h-16 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange mx-auto mb-3">
+                            <span class="material-symbols-outlined text-4xl">database</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Model</h3>
+                        <p class="text-sm text-gray-400">Estado actualizado</p>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="text-kmp-orange text-4xl">→</div>
+
+                    <!-- View -->
+                    <div class="flex-1 glass rounded-2xl p-6 text-center border-2 border-kmp-blue/30">
+                        <div
+                            class="w-16 h-16 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue mx-auto mb-3">
+                            <span class="material-symbols-outlined text-4xl">visibility</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">View</h3>
+                        <p class="text-sm text-gray-400">UI renderizada</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Features -->
+            <div class="grid grid-cols-2 gap-6 mb-8">
+                <div class="glass rounded-2xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple flex-shrink-0">
+                            <span class="material-symbols-outlined text-2xl">shield</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Estado Inmutable</h4>
+                            <p class="text-sm text-gray-400">El estado nunca se modifica directamente, solo se reemplaza
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange flex-shrink-0">
+                            <span class="material-symbols-outlined text-2xl">bolt</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Side Effects</h4>
+                            <p class="text-sm text-gray-400">Eventos únicos como navegación o mensajes de error</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue flex-shrink-0">
+                            <span class="material-symbols-outlined text-2xl">bug_report</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Fácil de Testear</h4>
+                            <p class="text-sm text-gray-400">Orbit Test permite verificar estados y efectos fácilmente
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple flex-shrink-0">
+                            <span class="material-symbols-outlined text-2xl">code</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Sintaxis Limpia</h4>
+                            <p class="text-sm text-gray-400">DSL intuitivo con reduce, postSideEffect, etc.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Example -->
+            <div class="glass rounded-2xl p-6">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="material-symbols-outlined text-kmp-orange">code</span>
+                    <h3 class="font-bold text-lg">Ejemplo de Intent</h3>
+                </div>
+                <pre class="bg-dark-bg/50 rounded-xl p-4 text-sm overflow-x-auto"><code class="text-gray-300">fun getCharacters() = intent {
+    reduce { state.copy(isLoading = true) }
+    
+    val result = repository.getCharacters()
+    
+    reduce { 
+        state.copy(
+            isLoading = false,
+            characters = result
+        ) 
+    }
+}</code></pre>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

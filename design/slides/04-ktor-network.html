@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ktor Network - Curso KMP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'kmp-purple': '#7F52FF',
+                        'kmp-orange': '#E44857',
+                        'kmp-blue': '#00BDC7',
+                        'dark-bg': '#0C111D',
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #00BDC7, #7F52FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-mesh {
+            background-color: #0C111D;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(0, 189, 199, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(127, 82, 255, 0.1) 0px, transparent 50%);
+        }
+    </style>
+</head>
+
+<body class="bg-mesh min-h-screen font-display text-white flex items-center justify-center p-8">
+
+    <main class="w-full max-w-6xl">
+        <div class="glass rounded-3xl p-16 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-blue to-kmp-purple"></div>
+
+            <!-- Header -->
+            <div class="mb-12">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-blue/20 border border-kmp-blue/30 text-sm font-semibold text-kmp-blue uppercase tracking-wider mb-4">
+                    <span class="material-symbols-outlined text-lg">cloud</span>
+                    Networking
+                </div>
+                <h1 class="text-7xl font-bold mb-4">
+                    Ktor <span class="gradient-text">Client</span>
+                </h1>
+                <p class="text-2xl text-gray-400 font-light">
+                    Cliente HTTP asíncrono y multiplataforma
+                </p>
+            </div>
+
+            <!-- API Integration -->
+            <div class="mb-12 glass rounded-2xl p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Rick and Morty API</h3>
+                        <p class="text-gray-400">https://rickandmortyapi.com/api</p>
+                    </div>
+                    <div class="w-20 h-20 rounded-2xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue">
+                        <span class="material-symbols-outlined text-5xl">api</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="bg-dark-bg/50 rounded-xl p-4 border border-kmp-blue/20">
+                        <div class="text-kmp-blue font-bold mb-1">GET</div>
+                        <div class="text-sm text-gray-400">/character</div>
+                    </div>
+                    <div class="bg-dark-bg/50 rounded-xl p-4 border border-kmp-purple/20">
+                        <div class="text-kmp-purple font-bold mb-1">GET</div>
+                        <div class="text-sm text-gray-400">/location</div>
+                    </div>
+                    <div class="bg-dark-bg/50 rounded-xl p-4 border border-kmp-orange/20">
+                        <div class="text-kmp-orange font-bold mb-1">GET</div>
+                        <div class="text-sm text-gray-400">/episode</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="grid grid-cols-2 gap-6 mb-8">
+                <div class="glass rounded-2xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue flex-shrink-0">
+                            <span class="material-symbols-outlined text-2xl">settings</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Content Negotiation</h4>
+                            <p class="text-sm text-gray-400">Serialización automática de JSON con kotlinx.serialization
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple flex-shrink-0">
+                            <span class="material-symbols-outlined text-2xl">science</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Mock Engine</h4>
+                            <p class="text-sm text-gray-400">Testing fácil con respuestas simuladas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange flex-shrink-0">
+                            <span class="material-symbols-outlined text-2xl">error</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Error Handling</h4>
+                            <p class="text-sm text-gray-400">Manejo robusto con Result&lt;T&gt; y safeApiCall</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue flex-shrink-0">
+                            <span class="material-symbols-outlined text-2xl">schedule</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Coroutines</h4>
+                            <p class="text-sm text-gray-400">Llamadas asíncronas con suspend functions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Example -->
+            <div class="glass rounded-2xl p-6">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="material-symbols-outlined text-kmp-blue">code</span>
+                    <h3 class="font-bold text-lg">Ejemplo de Request</h3>
+                </div>
+                <pre class="bg-dark-bg/50 rounded-xl p-4 text-sm overflow-x-auto"><code class="text-gray-300">suspend fun getCharacters(): Result&lt;List&lt;Character&gt;&gt; {
+    return safeApiCall {
+        client.get("https://rickandmortyapi.com/api/character") {
+            contentType(ContentType.Application.Json)
+        }.body&lt;CharacterResponse&gt;().results
+    }
+}</code></pre>
+            </div>
+
+            <!-- Platform Engines -->
+            <div class="mt-8 flex items-center justify-center gap-6">
+                <div class="glass rounded-xl px-6 py-3 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-kmp-blue">android</span>
+                    <span class="text-sm font-semibold">OkHttp (Android)</span>
+                </div>
+                <div class="glass rounded-xl px-6 py-3 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-kmp-purple">phone_iphone</span>
+                    <span class="text-sm font-semibold">Darwin (iOS)</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

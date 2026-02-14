@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing - Curso KMP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'kmp-purple': '#7F52FF',
+                        'kmp-orange': '#E44857',
+                        'kmp-blue': '#00BDC7',
+                        'dark-bg': '#0C111D',
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #7F52FF, #00BDC7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-mesh {
+            background-color: #0C111D;
+            background-image:
+                radial-gradient(at 50% 50%, rgba(127, 82, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 0%, rgba(0, 189, 199, 0.1) 0px, transparent 50%);
+        }
+    </style>
+</head>
+
+<body class="bg-mesh min-h-screen font-display text-white flex items-center justify-center p-8">
+
+    <main class="w-full max-w-6xl">
+        <div class="glass rounded-3xl p-16 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-purple to-kmp-blue"></div>
+
+            <!-- Header -->
+            <div class="mb-12">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-purple/20 border border-kmp-purple/30 text-sm font-semibold text-kmp-purple uppercase tracking-wider mb-4">
+                    <span class="material-symbols-outlined text-lg">bug_report</span>
+                    Quality Assurance
+                </div>
+                <h1 class="text-7xl font-bold mb-4">
+                    <span class="gradient-text">Testing</span> Strategy
+                </h1>
+                <p class="text-2xl text-gray-400 font-light">
+                    Pruebas unitarias y visuales automatizadas
+                </p>
+            </div>
+
+            <!-- Testing Types -->
+            <div class="grid grid-cols-2 gap-8 mb-12">
+                <!-- Unit Testing -->
+                <div class="glass rounded-2xl p-8 border-l-4 border-kmp-purple">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div
+                            class="w-16 h-16 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple">
+                            <span class="material-symbols-outlined text-4xl">code</span>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold">Unit Tests</h3>
+                            <p class="text-sm text-gray-400">Lógica de negocio</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-dark-bg/50 rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="material-symbols-outlined text-kmp-purple text-sm">check_circle</span>
+                                <h4 class="font-bold">ViewModels</h4>
+                            </div>
+                            <p class="text-sm text-gray-400">Orbit Test para verificar estados y side effects</p>
+                        </div>
+
+                        <div class="bg-dark-bg/50 rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="material-symbols-outlined text-kmp-purple text-sm">check_circle</span>
+                                <h4 class="font-bold">Repositories</h4>
+                            </div>
+                            <p class="text-sm text-gray-400">Fakes y Ktor Mock Engine para simular API</p>
+                        </div>
+
+                        <div class="bg-dark-bg/50 rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="material-symbols-outlined text-kmp-purple text-sm">check_circle</span>
+                                <h4 class="font-bold">Mappers</h4>
+                            </div>
+                            <p class="text-sm text-gray-400">Transformación de datos correcta</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Screenshot Testing -->
+                <div class="glass rounded-2xl p-8 border-l-4 border-kmp-blue">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue">
+                            <span class="material-symbols-outlined text-4xl">photo_camera</span>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold">Screenshot Tests</h3>
+                            <p class="text-sm text-gray-400">Regresión visual</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-dark-bg/50 rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="material-symbols-outlined text-kmp-blue text-sm">image</span>
+                                <h4 class="font-bold">Roborazzi</h4>
+                            </div>
+                            <p class="text-sm text-gray-400">Captura automática de pantallas</p>
+                        </div>
+
+                        <div class="bg-dark-bg/50 rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="material-symbols-outlined text-kmp-blue text-sm">preview</span>
+                                <h4 class="font-bold">Preview Scanner</h4>
+                            </div>
+                            <p class="text-sm text-gray-400">Escaneo de @Preview automático</p>
+                        </div>
+
+                        <div class="bg-dark-bg/50 rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="material-symbols-outlined text-kmp-blue text-sm">compare</span>
+                                <h4 class="font-bold">Golden Images</h4>
+                            </div>
+                            <p class="text-sm text-gray-400">Comparación pixel por pixel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commands -->
+            <div class="glass rounded-2xl p-6 mb-8">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-kmp-orange">terminal</span>
+                    Comandos
+                </h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-dark-bg/50 rounded-xl p-4">
+                        <div class="text-xs text-gray-500 mb-2">Unit Tests</div>
+                        <code class="text-sm text-kmp-purple">./gradlew :composeApp:testDebugUnitTest</code>
+                    </div>
+                    <div class="bg-dark-bg/50 rounded-xl p-4">
+                        <div class="text-xs text-gray-500 mb-2">Grabar Screenshots</div>
+                        <code class="text-sm text-kmp-blue">./gradlew :composeApp:recordRoborazziDebug</code>
+                    </div>
+                    <div class="bg-dark-bg/50 rounded-xl p-4">
+                        <div class="text-xs text-gray-500 mb-2">Verificar Screenshots</div>
+                        <code class="text-sm text-kmp-blue">./gradlew :composeApp:verifyRoborazziDebug</code>
+                    </div>
+                    <div class="bg-dark-bg/50 rounded-xl p-4">
+                        <div class="text-xs text-gray-500 mb-2">Comparar Screenshots</div>
+                        <code class="text-sm text-kmp-orange">./gradlew :composeApp:compareRoborazziDebug</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefits -->
+            <div class="grid grid-cols-3 gap-4">
+                <div class="glass rounded-xl p-4 text-center">
+                    <div class="text-3xl font-bold text-kmp-purple mb-1">95%+</div>
+                    <div class="text-sm text-gray-400">Cobertura de código</div>
+                </div>
+                <div class="glass rounded-xl p-4 text-center">
+                    <div class="text-3xl font-bold text-kmp-blue mb-1">0</div>
+                    <div class="text-sm text-gray-400">Regresiones visuales</div>
+                </div>
+                <div class="glass rounded-xl p-4 text-center">
+                    <div class="text-3xl font-bold text-kmp-orange mb-1">100%</div>
+                    <div class="text-sm text-gray-400">Confianza en deploys</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Architecture - Curso KMP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'kmp-purple': '#7F52FF',
+                        'kmp-orange': '#E44857',
+                        'kmp-blue': '#00BDC7',
+                        'dark-bg': '#0C111D',
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #7F52FF, #E44857);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-mesh {
+            background-color: #0C111D;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(127, 82, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(228, 72, 87, 0.1) 0px, transparent 50%);
+        }
+    </style>
+</head>
+
+<body class="bg-mesh min-h-screen font-display text-white flex items-center justify-center p-8">
+
+    <main class="w-full max-w-6xl">
+        <div class="glass rounded-3xl p-16 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-purple to-kmp-orange"></div>
+
+            <!-- Header -->
+            <div class="mb-12">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-purple/20 border border-kmp-purple/30 text-sm font-semibold text-kmp-purple uppercase tracking-wider mb-4">
+                    <span class="material-symbols-outlined text-lg">architecture</span>
+                    Arquitectura
+                </div>
+                <h1 class="text-7xl font-bold mb-4">
+                    Clean <span class="gradient-text">Architecture</span>
+                </h1>
+                <p class="text-2xl text-gray-400 font-light">
+                    Separación clara de responsabilidades en capas
+                </p>
+            </div>
+
+            <!-- Architecture Layers -->
+            <div class="grid grid-cols-3 gap-6 mb-12">
+                <!-- Presentation Layer -->
+                <div class="glass rounded-2xl p-8 border-l-4 border-kmp-purple hover:scale-105 transition-transform">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple mb-4">
+                        <span class="material-symbols-outlined text-3xl">visibility</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Presentation</h3>
+                    <p class="text-gray-400 mb-4 text-sm">UI y lógica de presentación</p>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-kmp-purple mt-1">▸</span>
+                            <span>ViewModels (Orbit MVI)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-kmp-purple mt-1">▸</span>
+                            <span>Screens (Compose)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-kmp-purple mt-1">▸</span>
+                            <span>State & SideEffects</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Domain Layer -->
+                <div class="glass rounded-2xl p-8 border-l-4 border-kmp-orange hover:scale-105 transition-transform">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange mb-4">
+                        <span class="material-symbols-outlined text-3xl">hub</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Domain</h3>
+                    <p class="text-gray-400 mb-4 text-sm">Lógica de negocio pura</p>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-kmp-orange mt-1">▸</span>
+                            <span>Modelos de dominio</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-kmp-orange mt-1">▸</span>
+                            <span>Casos de uso</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-kmp-orange mt-1">▸</span>
+                            <span>Interfaces de repositorio</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Data Layer -->
+                <div class="glass rounded-2xl p-8 border-l-4 border-kmp-blue hover:scale-105 transition-transform">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue mb-4">
+                        <span class="material-symbols-outlined text-3xl">storage</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Data</h3>
+                    <p class="text-gray-400 mb-4 text-sm">Fuentes de datos</p>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-kmp-blue mt-1">▸</span>
+                            <span>Repositorios</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-kmp-blue mt-1">▸</span>
+                            <span>Data Sources (Ktor)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-kmp-blue mt-1">▸</span>
+                            <span>Mappers</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Benefits -->
+            <div class="glass rounded-2xl p-8">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-kmp-purple">check_circle</span>
+                    Beneficios
+                </h3>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-kmp-purple mt-2"></div>
+                        <div>
+                            <h4 class="font-semibold mb-1">Testeable</h4>
+                            <p class="text-sm text-gray-400">Cada capa se puede probar de forma independiente</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-kmp-orange mt-2"></div>
+                        <div>
+                            <h4 class="font-semibold mb-1">Mantenible</h4>
+                            <p class="text-sm text-gray-400">Cambios aislados sin afectar otras capas</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-kmp-blue mt-2"></div>
+                        <div>
+                            <h4 class="font-semibold mb-1">Escalable</h4>
+                            <p class="text-sm text-gray-400">Fácil de extender con nuevas features</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 rounded-full bg-kmp-purple mt-2"></div>
+                        <div>
+                            <h4 class="font-semibold mb-1">Independiente</h4>
+                            <p class="text-sm text-gray-400">Sin dependencias de frameworks en el dominio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
