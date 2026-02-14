@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción - Curso KMP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'kmp-purple': '#7F52FF',
+                        'kmp-orange': '#E44857',
+                        'kmp-blue': '#00BDC7',
+                        'dark-bg': '#0C111D',
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #7F52FF, #E44857, #00BDC7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-mesh {
+            background-color: #0C111D;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(127, 82, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(228, 72, 87, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 189, 199, 0.1) 0px, transparent 50%);
+        }
+
+        .slide-in {
+            animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-mesh min-h-screen font-display text-white overflow-hidden flex items-center justify-center">
+
+    <!-- Decorative Elements -->
+    <div class="absolute top-20 left-1/4 w-64 h-64 bg-kmp-purple/20 rounded-full blur-[100px] animate-pulse-slow"></div>
+    <div class="absolute bottom-20 right-1/4 w-96 h-96 bg-kmp-blue/10 rounded-full blur-[120px] animate-pulse-slow"
+        style="animation-delay: 2s;"></div>
+
+    <!-- Floating Icons -->
+    <div class="absolute top-10 right-10 animate-float opacity-30" style="animation-duration: 8s;">
+        <span class="material-symbols-outlined text-[120px]">android</span>
+    </div>
+    <div class="absolute bottom-10 left-10 animate-float opacity-20"
+        style="animation-duration: 10s; animation-delay: 1s;">
+        <svg class="w-32 h-32" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 24H0V0h24L12 12z"></path>
+        </svg>
+    </div>
+
+    <!-- Main Content -->
+    <main class="relative z-10 w-full max-w-6xl px-8 slide-in">
+        <div class="glass rounded-3xl p-12 md:p-20 shadow-2xl relative overflow-hidden">
+            <!-- Accent Bar -->
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-purple via-kmp-orange to-kmp-blue">
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <!-- Left Content -->
+                <div class="flex-1 space-y-8">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-semibold tracking-widest text-kmp-blue uppercase">
+                        <span class="animate-pulse w-2 h-2 rounded-full bg-kmp-blue"></span>
+                        Nuevo Curso 2026
+                    </div>
+
+                    <h1 class="text-6xl md:text-8xl font-bold leading-tight">
+                        Kotlin <br>
+                        <span class="gradient-text">Multiplatform</span>
+                    </h1>
+
+                    <p class="text-xl md:text-2xl text-gray-400 max-w-xl font-light leading-relaxed">
+                        Domina el desarrollo multiplataforma profesional construyendo una aplicación real de <span
+                            class="text-white font-medium">Rick and Morty</span> con las mejores prácticas de la
+                        industria.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <div
+                            class="flex items-center gap-3 px-6 py-4 rounded-2xl glass hover:bg-white/5 transition-colors group">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">architecture</span>
+                            </div>
+                            <span class="font-medium">Clean Architecture</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-3 px-6 py-4 rounded-2xl glass hover:bg-white/5 transition-colors group">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">science</span>
+                            </div>
+                            <span class="font-medium">Unit & Screenshot Testing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content (Visual Representation) -->
+                <div class="hidden lg:flex flex-1 justify-center relative">
+                    <div
+                        class="relative w-80 h-[560px] glass rounded-[3rem] border-8 border-white/10 shadow-2xl overflow-hidden p-6 scale-110 rotate-3">
+                        <!-- Mock App Content -->
+                        <div class="w-full h-full bg-dark-bg rounded-[2rem] p-4 flex flex-col gap-4">
+                            <div class="w-full h-48 bg-white/5 rounded-2xl flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white/20 text-6xl">image</span>
+                            </div>
+                            <div class="h-4 w-3/4 bg-white/10 rounded-full"></div>
+                            <div class="h-3 w-1/2 bg-white/5 rounded-full"></div>
+                            <div class="mt-4 space-y-3">
+                                <div class="h-20 w-full glass rounded-xl"></div>
+                                <div class="h-20 w-full glass rounded-xl"></div>
+                                <div class="h-20 w-full glass rounded-xl"></div>
+                            </div>
+                        </div>
+                        <!-- Rick and Morty Placeholder Glow -->
+                        <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-kmp-blue/30 rounded-full blur-[40px]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Icons -->
+            <div
+                class="mt-20 pt-10 border-t border-white/5 flex flex-wrap items-center justify-between gap-8 opacity-60">
+                <div class="flex items-center gap-2 font-bold text-xl">
+                    <span class="text-kmp-purple">Orbit</span> MVI
+                </div>
+                <div class="flex items-center gap-2 font-bold text-xl">
+                    <span class="text-kmp-orange">Koin</span> DI
+                </div>
+                <div class="flex items-center gap-2 font-bold text-xl">
+                    <span class="text-kmp-blue">Ktor</span> Network
+                </div>
+                <div class="flex items-center gap-2 font-bold text-xl">
+                    Compose <span class="text-white">Multiplatform</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Instruction -->
+        <div class="mt-8 text-center text-gray-500 text-sm animate-pulse">
+            Presentado por CarlosGub • Suscríbete en YouTube
+        </div>
+    </main>
+
+</body>
+
+</html>
