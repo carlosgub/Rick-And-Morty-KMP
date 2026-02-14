@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI y Calidad - Curso KMP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols_Outlined:wght@400&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'kmp-purple': '#7F52FF',
+                        'kmp-orange': '#E44857',
+                        'kmp-blue': '#00BDC7',
+                        'dark-bg': '#0C111D',
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #E44857, #7F52FF);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-mesh {
+            background-color: #0C111D;
+            background-image:
+                radial-gradient(at 100% 0%, rgba(228, 72, 87, 0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(127, 82, 255, 0.1) 0px, transparent 50%);
+        }
+    </style>
+</head>
+
+<body class="bg-mesh min-h-screen font-display text-white flex items-center justify-center p-8">
+
+    <main class="w-full max-w-6xl">
+        <div class="glass rounded-3xl p-16 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-orange to-kmp-purple"></div>
+
+            <!-- Header -->
+            <div class="mb-12">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-orange/20 border border-kmp-orange/30 text-sm font-semibold text-kmp-orange uppercase tracking-wider mb-4">
+                    <span class="material-symbols-outlined text-lg">rocket_launch</span>
+                    Automatización
+                </div>
+                <h1 class="text-7xl font-bold mb-4">
+                    CI y <span class="gradient-text">Calidad</span>
+                </h1>
+                <p class="text-2xl text-gray-400 font-light">
+                    Integración continua y automatización de calidad
+                </p>
+            </div>
+
+            <!-- Automation Flow -->
+            <div class="mb-12">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="flex-1 glass rounded-2xl p-6 text-center border-2 border-kmp-orange/30">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange mx-auto mb-3">
+                            <span class="material-symbols-outlined text-3xl">edit</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-1">Código</h3>
+                        <p class="text-xs text-gray-400">Desarrollo local</p>
+                    </div>
+
+                    <div class="text-kmp-orange text-3xl">→</div>
+
+                    <div class="flex-1 glass rounded-2xl p-6 text-center border-2 border-kmp-purple/30">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple mx-auto mb-3">
+                            <span class="material-symbols-outlined text-3xl">commit</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-1">Pre-commit</h3>
+                        <p class="text-xs text-gray-400">Validación local</p>
+                    </div>
+
+                    <div class="text-kmp-purple text-3xl">→</div>
+
+                    <div class="flex-1 glass rounded-2xl p-6 text-center border-2 border-kmp-blue/30">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue mx-auto mb-3">
+                            <span class="material-symbols-outlined text-3xl">cloud_sync</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-1">GitHub CI</h3>
+                        <p class="text-xs text-gray-400">Validación remota</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="grid grid-cols-2 gap-8 mb-8">
+                <!-- ktlint -->
+                <div class="glass rounded-2xl p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div
+                            class="w-16 h-16 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange">
+                            <span class="material-symbols-outlined text-4xl">format_paint</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold">ktlint</h3>
+                            <p class="text-sm text-gray-400">Linter y Formateador</p>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start gap-2 text-sm">
+                            <span class="text-kmp-orange mt-1">▸</span>
+                            <span>Formato consistente de código Kotlin</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-sm">
+                            <span class="text-kmp-orange mt-1">▸</span>
+                            <span>Reglas de Compose para mejores prácticas</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-sm">
+                            <span class="text-kmp-orange mt-1">▸</span>
+                            <span>Corrección automática con ktlintFormat</span>
+                        </li>
+                    </ul>
+
+                    <div class="bg-dark-bg/50 rounded-xl p-3">
+                        <code class="text-xs text-kmp-orange">./gradlew ktlintCheck</code>
+                    </div>
+                </div>
+
+                <!-- Pre-commit Hook -->
+                <div class="glass rounded-2xl p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div
+                            class="w-16 h-16 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple">
+                            <span class="material-symbols-outlined text-4xl">shield_lock</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold">Pre-commit</h3>
+                            <p class="text-sm text-gray-400">Gancho de Git</p>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start gap-2 text-sm">
+                            <span class="text-kmp-purple mt-1">▸</span>
+                            <span>Ejecuta ktlintCheck antes de commit</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-sm">
+                            <span class="text-kmp-purple mt-1">▸</span>
+                            <span>Corre pruebas unitarias automáticamente</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-sm">
+                            <span class="text-kmp-purple mt-1">▸</span>
+                            <span>Verifica capturas de Roborazzi</span>
+                        </li>
+                    </ul>
+
+                    <div class="bg-dark-bg/50 rounded-xl p-3">
+                        <code class="text-xs text-kmp-purple">scripts/pre-commit.sh</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GitHub Actions -->
+            <div class="glass rounded-2xl p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue">
+                            <span class="material-symbols-outlined text-4xl">cloud_done</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold">GitHub Actions</h3>
+                            <p class="text-sm text-gray-400">Integración Continua</p>
+                        </div>
+                    </div>
+                    <div
+                        class="px-4 py-2 rounded-full bg-green-500/20 border border-green-500/30 text-green-400 text-sm font-bold">
+                        ✓ Pasando
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="bg-dark-bg/50 rounded-xl p-4 border-l-2 border-kmp-blue">
+                        <div class="text-xs text-gray-500 mb-2">Paso 1</div>
+                        <div class="font-bold text-sm mb-1">ktlintCheck</div>
+                        <div class="text-xs text-gray-400">Verifica formato</div>
+                    </div>
+                    <div class="bg-dark-bg/50 rounded-xl p-4 border-l-2 border-kmp-purple">
+                        <div class="text-xs text-gray-500 mb-2">Paso 2</div>
+                        <div class="font-bold text-sm mb-1">Pruebas Unitarias</div>
+                        <div class="text-xs text-gray-400">Ejecuta pruebas</div>
+                    </div>
+                    <div class="bg-dark-bg/50 rounded-xl p-4 border-l-2 border-kmp-orange">
+                        <div class="text-xs text-gray-500 mb-2">Paso 3</div>
+                        <div class="font-bold text-sm mb-1">Roborazzi</div>
+                        <div class="text-xs text-gray-400">Valida capturas</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefits -->
+            <div class="mt-8 grid grid-cols-3 gap-4">
+                <div class="glass rounded-xl p-4 flex items-center gap-3">
+                    <div class="w-2 h-2 rounded-full bg-kmp-orange"></div>
+                    <span class="text-sm">Código limpio y consistente</span>
+                </div>
+                <div class="glass rounded-xl p-4 flex items-center gap-3">
+                    <div class="w-2 h-2 rounded-full bg-kmp-purple"></div>
+                    <span class="text-sm">Prevención temprana de bugs</span>
+                </div>
+                <div class="glass rounded-xl p-4 flex items-center gap-3">
+                    <div class="w-2 h-2 rounded-full bg-kmp-blue"></div>
+                    <span class="text-sm">Despliegue con confianza</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-8 flex items-center justify-between">
+            <a href="05-testing.html"
+                class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span
+                    class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                <span class="font-semibold">Anterior</span>
+            </a>
+            <a href="intro.html"
+                class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span class="font-semibold">Volver al Inicio</span>
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">home</span>
+            </a>
+        </div>
+    </main>
+
+</body>
+
+</html>

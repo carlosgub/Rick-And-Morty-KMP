@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clean Architecture - Curso KMP</title>
+    <title>Arquitectura Limpia - Curso KMP</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -36,6 +36,7 @@
 
         .gradient-text {
             background: linear-gradient(45deg, #7F52FF, #E44857);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -63,7 +64,7 @@
                     Arquitectura
                 </div>
                 <h1 class="text-7xl font-bold mb-4">
-                    Clean <span class="gradient-text">Architecture</span>
+                    Arquitectura <span class="gradient-text">Limpia</span>
                 </h1>
                 <p class="text-2xl text-gray-400 font-light">
                     Separación clara de responsabilidades en capas
@@ -78,7 +79,7 @@
                         class="w-14 h-14 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple mb-4">
                         <span class="material-symbols-outlined text-3xl">visibility</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Presentation</h3>
+                    <h3 class="text-2xl font-bold mb-3">Presentación</h3>
                     <p class="text-gray-400 mb-4 text-sm">UI y lógica de presentación</p>
                     <ul class="space-y-2 text-sm">
                         <li class="flex items-start gap-2">
@@ -87,11 +88,11 @@
                         </li>
                         <li class="flex items-start gap-2">
                             <span class="text-kmp-purple mt-1">▸</span>
-                            <span>Screens (Compose)</span>
+                            <span>Pantallas (Compose)</span>
                         </li>
                         <li class="flex items-start gap-2">
                             <span class="text-kmp-purple mt-1">▸</span>
-                            <span>State & SideEffects</span>
+                            <span>Estado y Efectos</span>
                         </li>
                     </ul>
                 </div>
@@ -102,7 +103,7 @@
                         class="w-14 h-14 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange mb-4">
                         <span class="material-symbols-outlined text-3xl">hub</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Domain</h3>
+                    <h3 class="text-2xl font-bold mb-3">Dominio</h3>
                     <p class="text-gray-400 mb-4 text-sm">Lógica de negocio pura</p>
                     <ul class="space-y-2 text-sm">
                         <li class="flex items-start gap-2">
@@ -126,7 +127,7 @@
                         class="w-14 h-14 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue mb-4">
                         <span class="material-symbols-outlined text-3xl">storage</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Data</h3>
+                    <h3 class="text-2xl font-bold mb-3">Datos</h3>
                     <p class="text-gray-400 mb-4 text-sm">Fuentes de datos</p>
                     <ul class="space-y-2 text-sm">
                         <li class="flex items-start gap-2">
@@ -135,11 +136,11 @@
                         </li>
                         <li class="flex items-start gap-2">
                             <span class="text-kmp-blue mt-1">▸</span>
-                            <span>Data Sources (Ktor)</span>
+                            <span>Fuentes de datos (Ktor)</span>
                         </li>
                         <li class="flex items-start gap-2">
                             <span class="text-kmp-blue mt-1">▸</span>
-                            <span>Mappers</span>
+                            <span>Mapeadores</span>
                         </li>
                     </ul>
                 </div>
@@ -170,7 +171,7 @@
                         <div class="w-2 h-2 rounded-full bg-kmp-blue mt-2"></div>
                         <div>
                             <h4 class="font-semibold mb-1">Escalable</h4>
-                            <p class="text-sm text-gray-400">Fácil de extender con nuevas features</p>
+                            <p class="text-sm text-gray-400">Fácil de extender con nuevas funcionalidades</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
@@ -182,6 +183,22 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-8 flex items-center justify-between">
+            <a href="intro.html"
+                class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span
+                    class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                <span class="font-semibold">Anterior</span>
+            </a>
+            <a href="02-orbit-mvi.html"
+                class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span class="font-semibold">Siguiente</span>
+                <span
+                    class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
         </div>
     </main>
 

@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols_Outlined:wght@400&display=swap"
         rel="stylesheet">
     <script>
         tailwind.config = {
@@ -36,6 +36,7 @@
 
         .gradient-text {
             background: linear-gradient(45deg, #E44857, #00BDC7);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -60,7 +61,7 @@
                 <div
                     class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-orange/20 border border-kmp-orange/30 text-sm font-semibold text-kmp-orange uppercase tracking-wider mb-4">
                     <span class="material-symbols-outlined text-lg">extension</span>
-                    Dependency Injection
+                    Inyección de Dependencias
                 </div>
                 <h1 class="text-7xl font-bold mb-4">
                     Koin <span class="gradient-text">DI</span>
@@ -113,12 +114,12 @@
                                 class="w-10 h-10 rounded-lg bg-kmp-orange/20 flex items-center justify-center text-kmp-orange">
                                 <span class="material-symbols-outlined">storage</span>
                             </div>
-                            <h4 class="font-bold text-lg">Data Module</h4>
+                            <h4 class="font-bold text-lg">Módulo de Datos</h4>
                         </div>
                         <ul class="space-y-2 text-sm text-gray-400">
                             <li class="flex items-start gap-2">
                                 <span class="text-kmp-orange mt-1">•</span>
-                                <span>Ktor HttpClient</span>
+                                <span>Cliente HTTP Ktor</span>
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="text-kmp-orange mt-1">•</span>
@@ -126,7 +127,7 @@
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="text-kmp-orange mt-1">•</span>
-                                <span>Data Sources</span>
+                                <span>Fuentes de datos</span>
                             </li>
                         </ul>
                     </div>
@@ -137,7 +138,7 @@
                                 class="w-10 h-10 rounded-lg bg-kmp-blue/20 flex items-center justify-center text-kmp-blue">
                                 <span class="material-symbols-outlined">visibility</span>
                             </div>
-                            <h4 class="font-bold text-lg">Presentation Module</h4>
+                            <h4 class="font-bold text-lg">Módulo de Presentación</h4>
                         </div>
                         <ul class="space-y-2 text-sm text-gray-400">
                             <li class="flex items-start gap-2">
@@ -146,11 +147,11 @@
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="text-kmp-blue mt-1">•</span>
-                                <span>Use Cases</span>
+                                <span>Casos de uso</span>
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="text-kmp-blue mt-1">•</span>
-                                <span>Mappers</span>
+                                <span>Mapeadores</span>
                             </li>
                         </ul>
                     </div>
@@ -186,13 +187,29 @@ val viewModelModule = module {
             <div class="mt-8 grid grid-cols-2 gap-4">
                 <div class="flex items-center gap-3 glass rounded-xl p-4">
                     <div class="w-2 h-2 rounded-full bg-kmp-orange"></div>
-                    <span class="text-sm">Fácil de testear con módulos mock</span>
+                    <span class="text-sm">Fácil de probar con módulos simulados</span>
                 </div>
                 <div class="flex items-center gap-3 glass rounded-xl p-4">
                     <div class="w-2 h-2 rounded-full bg-kmp-blue"></div>
-                    <span class="text-sm">Scope management automático</span>
+                    <span class="text-sm">Gestión automática de alcances</span>
                 </div>
             </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-8 flex items-center justify-between">
+            <a href="02-orbit-mvi.html"
+                class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span
+                    class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                <span class="font-semibold">Anterior</span>
+            </a>
+            <a href="04-ktor-network.html"
+                class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span class="font-semibold">Siguiente</span>
+                <span
+                    class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
         </div>
     </main>
 
