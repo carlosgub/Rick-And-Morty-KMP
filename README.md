@@ -38,18 +38,51 @@ El proyecto sigue los principios de **Clean Architecture**:
 
 ## 🧪 Testing
 
-El proyecto incluye pruebas de captura de pantalla para verificar la interfaz de usuario:
+El proyecto incluye diferentes niveles de pruebas para asegurar la calidad y estabilidad:
 
+### Pruebas Unitarias
+Ejecuta las pruebas unitarias de la aplicación:
+- **Android/Common**: `./gradlew :composeApp:testDebugUnitTest`
+
+### Screenshot Testing (Roborazzi)
+Pruebas visuales automatizadas usando Roborazzi y Composable Preview Scanner:
 - **Grabar capturas (Golden Images)**: `./gradlew :composeApp:recordRoborazziDebug`
 - **Verificar cambios (Regresiones)**: `./gradlew :composeApp:verifyRoborazziDebug`
 - **Comparar y generar reportes**: `./gradlew :composeApp:compareRoborazziDebug`
+
+## 💎 Calidad de Código
+
+Para mantener un código limpio y consistente, utilizamos:
+- **[ktlint](https://pinterest.github.io/ktlint/)**: Linter y formateador de código para Kotlin.
+  - **Verificar formato**: `./gradlew ktlintCheck`
+  - **Corregir automáticamente**: `./gradlew ktlintFormat`
+- **Compose Rules**: Reglas adicionales de ktlint específicas para Jetpack Compose.
+
+## 🤖 Automatización y CI
+
+Hemos implementado flujos de trabajo para automatizar las tareas comunes:
+
+### Pre-commit Hook
+Un script local que se ejecuta automáticamente antes de cada `git commit` para asegurar que el código cumple con los estándares de calidad y pasa los tests:
+- **Ubicación**: `scripts/pre-commit.sh`
+- **Qué hace**: Ejecuta `ktlintCheck`, unit tests y verificación de Roborazzi.
+
+### GitHub Actions (CI)
+Integración continua configurada para ejecutarse en cada `push` o `pull request` a la rama `main`:
+- **Workflow**: `CI para nuestro proyecto de rick y morty`
+- **Tareas**: Verifica el formato con ktlint, ejecuta las pruebas unitarias y valida las capturas de pantalla de Roborazzi.
 
 ## 🚀 Cómo empezar
 
 1. Clonar el repositorio.
 2. Asegurarte de tener instalado **Android Studio** (Ladybug o superior) y **Xcode** (para iOS).
 3. Configurar el entorno siguiendo la [guía oficial de KMP](https://kotlinlang.org/docs/multiplatform-quickstart.html#set-up-the-environment).
-4. Ejecutar la app en Android o iOS desde Android Studio.
+4. **Opcional (Recomendado)**: Configura el pre-commit hook ejecutando:
+   ```bash
+   cp scripts/pre-commit.sh .git/hooks/pre-commit
+   chmod +x .git/hooks/pre-commit
+   ```
+5. Ejecutar la app en Android o iOS desde Android Studio.
 
 ## 📌 Sobre el curso
 
@@ -58,4 +91,4 @@ Este curso está pensado para developers que ya conocen Kotlin y quieren dominar
 - **YouTube**: [CarlosGub - Suscríbete](https://www.youtube.com/@carlosgub)
 
 ---
-#Kotlin #KotlinMultiplatform #KMP #ComposeMultiplatform #Ktor #Koin #OrbitMVI #Roborazzi #Android #iOS #RickAndMorty
+#Kotlin #KotlinMultiplatform #KMP #ComposeMultiplatform #Ktor #Koin #OrbitMVI #Roborazzi #Ktlint #CI #Android #iOS #RickAndMorty
