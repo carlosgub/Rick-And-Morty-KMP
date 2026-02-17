@@ -168,26 +168,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Code Example -->
-            <div class="glass rounded-2xl p-4">
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="material-symbols-outlined text-kmp-orange">code</span>
-                    <h3 class="font-bold text-sm">Ejemplo de Intención</h3>
-                </div>
-                <pre class="bg-dark-bg/50 rounded-xl p-3 text-xs overflow-x-auto"><code class="text-gray-300">fun getCharacters() = intent {
-    reduce { state.copy(isLoading = true) }
-    
-    val result = repository.getCharacters()
-    
-    reduce { 
-        state.copy(
-            isLoading = false,
-            characters = result
-        ) 
-    }
-}</code></pre>
-            </div>
         </div>
 
         <!-- Navigation -->
