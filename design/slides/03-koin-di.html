@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koin DI - Curso KMP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'kmp-purple': '#7F52FF',
+                        'kmp-orange': '#E44857',
+                        'kmp-blue': '#00BDC7',
+                        'dark-bg': '#0C111D',
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #E44857, #00BDC7);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-mesh {
+            background-color: #0C111D;
+            background-image:
+                radial-gradient(at 100% 0%, rgba(228, 72, 87, 0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(0, 189, 199, 0.1) 0px, transparent 50%);
+        }
+    </style>
+</head>
+
+<body class="bg-mesh min-h-screen font-display text-white overflow-y-auto flex items-center justify-center p-4">
+
+    <main class="w-full max-w-6xl">
+        <div class="glass rounded-3xl p-6 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-orange to-kmp-blue"></div>
+
+            <!-- Header -->
+            <div class="mb-4">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-orange/20 border border-kmp-orange/30 text-sm font-semibold text-kmp-orange uppercase tracking-wider mb-4">
+                    <span class="material-symbols-outlined text-lg">extension</span>
+                    Inyección de Dependencias
+                </div>
+                <h1 class="text-3xl font-bold mb-2">
+                    Koin <span class="gradient-text">DI</span>
+                </h1>
+                <p class="text-base text-gray-400 font-light">
+                    Inyección de dependencias pragmática para KMP
+                </p>
+            </div>
+
+            <!-- Why Koin -->
+            <div class="grid grid-cols-3 gap-3 mb-4">
+                <div class="glass rounded-2xl p-3 text-center hover:scale-105 transition-transform">
+                    <div
+                        class="w-16 h-16 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange mx-auto mb-4">
+                        <span class="material-symbols-outlined text-4xl">speed</span>
+                    </div>
+                    <h3 class="text-base font-bold mb-1">Simple</h3>
+                    <p class="text-sm text-gray-400">Sin generación de código ni anotaciones complejas</p>
+                </div>
+
+                <div class="glass rounded-2xl p-5 text-center hover:scale-105 transition-transform">
+                    <div
+                        class="w-16 h-16 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue mx-auto mb-4">
+                        <span class="material-symbols-outlined text-4xl">devices</span>
+                    </div>
+                    <h3 class="text-base font-bold mb-1">Multiplataforma</h3>
+                    <p class="text-sm text-gray-400">Funciona en Android, iOS, Desktop y Web</p>
+                </div>
+
+                <div class="glass rounded-2xl p-5 text-center hover:scale-105 transition-transform">
+                    <div
+                        class="w-16 h-16 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple mx-auto mb-4">
+                        <span class="material-symbols-outlined text-4xl">lightbulb</span>
+                    </div>
+                    <h3 class="text-base font-bold mb-1">Sintaxis Limpia</h3>
+                    <p class="text-sm text-gray-400">Sintaxis declarativa y fácil de leer</p>
+                </div>
+            </div>
+
+            <!-- Module Structure -->
+            <div class="mb-4">
+                <h3 class="text-base font-bold mb-3 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-kmp-orange">account_tree</span>
+                    Estructura de Módulos
+                </h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass rounded-2xl p-3">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-kmp-orange/20 flex items-center justify-center text-kmp-orange">
+                                <span class="material-symbols-outlined">storage</span>
+                            </div>
+                            <h4 class="font-bold text-sm">Módulo de Datos</h4>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-400">
+                            <li class="flex items-center gap-2">
+                                <span class="text-kmp-orange">•</span>
+                                <span>Cliente HTTP Ktor</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-kmp-orange">•</span>
+                                <span>Repositorios</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-kmp-orange">•</span>
+                                <span>Fuentes de datos</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="glass rounded-2xl p-5">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-kmp-blue/20 flex items-center justify-center text-kmp-blue">
+                                <span class="material-symbols-outlined">visibility</span>
+                            </div>
+                            <h4 class="font-bold text-sm">Módulo de Presentación</h4>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-400">
+                            <li class="flex items-center gap-2">
+                                <span class="text-kmp-blue">•</span>
+                                <span>ViewModels</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-kmp-blue">•</span>
+                                <span>Mapeadores</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Example -->
+            <div class="glass rounded-2xl p-4">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="material-symbols-outlined text-kmp-orange">code</span>
+                    <h3 class="font-bold text-sm">Ejemplo de Módulo</h3>
+                </div>
+                <pre class="bg-dark-bg/50 rounded-xl p-3 text-xs overflow-x-auto"><code class="text-gray-300">val dataModule = module {
+    single { 
+        HttpClient {
+            install(ContentNegotiation) {
+                json()
+            }
+        }
+    }
+    
+    single&lt;CharacterRepository&gt; { 
+        CharacterRepositoryImpl(get()) 
+    }
+}
+
+val viewModelModule = module {
+    viewModel { CharacterViewModel(get()) }
+}</code></pre>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-3 flex items-center justify-between">
+            <a href="02-orbit-mvi.html"
+                class="glass rounded-xl px-4 py-2 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span
+                    class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                <span class="font-semibold text-sm">Anterior</span>
+            </a>
+            <a href="04-ktor-network.html"
+                class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span class="font-semibold text-sm">Siguiente</span>
+                <span
+                    class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+        </div>
+    </main>
+
+</body>
+
+</html>

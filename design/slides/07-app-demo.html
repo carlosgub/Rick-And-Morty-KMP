@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Aplicación - Curso KMP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'kmp-purple': '#7F52FF',
+                        'kmp-orange': '#E44857',
+                        'kmp-blue': '#00BDC7',
+                        'dark-bg': '#0C111D',
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #E44857, #7F52FF);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-mesh {
+            background-color: #0C111D;
+            background-image:
+                radial-gradient(at 100% 0%, rgba(228, 72, 87, 0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(127, 82, 255, 0.1) 0px, transparent 50%);
+        }
+
+        .phone-frame {
+            border: 8px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body class="bg-mesh min-h-screen font-display text-white overflow-y-auto flex items-center justify-center p-4">
+
+    <main class="w-full max-w-6xl">
+        <div class="glass rounded-3xl p-6 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-blue to-kmp-purple"></div>
+
+            <!-- Header -->
+            <div class="mb-3">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-blue/20 border border-kmp-blue/30 text-sm font-semibold text-kmp-blue uppercase tracking-wider mb-2">
+                    <span class="material-symbols-outlined text-lg">smartphone</span>
+                    DEMO
+                </div>
+
+                <h1 class="text-3xl font-bold mb-1">
+                    La <span class="gradient-text">Aplicación</span>
+                </h1>
+                <p class="text-base text-gray-400 font-light">
+                    Interfaz moderna con Jetpack Compose Multiplatform
+                </p>
+            </div>
+
+            <!-- Screenshots Grid -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <!-- Characters Screen -->
+                <div class="glass rounded-2xl p-3">
+                    <div class="phone-frame bg-dark-bg">
+                        <img src="screenshot_characters.png" alt="Characters Screen" class="w-full h-auto">
+                    </div>
+                    <div class="text-center mt-3">
+                        <h3 class="text-sm font-bold text-kmp-purple">Personajes</h3>
+                        <p class="text-xs text-gray-400">Lista con scroll infinito</p>
+                    </div>
+                </div>
+
+                <!-- Character Detail Screen -->
+                <div class="glass rounded-2xl p-3">
+                    <div class="phone-frame bg-dark-bg">
+                        <img src="screenshot_detail.png" alt="Character Detail Screen" class="w-full h-auto">
+                    </div>
+                    <div class="text-center mt-3">
+                        <h3 class="text-sm font-bold text-kmp-orange">Detalle</h3>
+                        <p class="text-xs text-gray-400">Información completa</p>
+                    </div>
+                </div>
+
+                <!-- Episodes Screen -->
+                <div class="glass rounded-2xl p-3">
+                    <div class="phone-frame bg-dark-bg">
+                        <img src="screenshot_episodes.png" alt="Episodes Screen" class="w-full h-auto">
+                    </div>
+                    <div class="text-center mt-3">
+                        <h3 class="text-sm font-bold text-kmp-blue">Episodios</h3>
+                        <p class="text-xs text-gray-400">Navegación por tabs</p>
+                    </div>
+                </div>
+
+                <!-- Locations Screen -->
+                <div class="glass rounded-2xl p-3">
+                    <div class="phone-frame bg-dark-bg">
+                        <img src="screenshot_locations.png" alt="Locations Screen" class="w-full h-auto">
+                    </div>
+                    <div class="text-center mt-3">
+                        <h3 class="text-sm font-bold text-kmp-purple">Ubicaciones</h3>
+                        <p class="text-xs text-gray-400">Diseño consistente</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="glass rounded-2xl p-3 mb-3">
+                <h3 class="text-base font-bold mb-3 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-kmp-blue">star</span>
+                    Características de la UI
+                </h3>
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-kmp-purple"></div>
+                        <span class="text-xs">Diseño moderno</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-kmp-orange"></div>
+                        <span class="text-xs">Animaciones fluidas</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-kmp-blue"></div>
+                        <span class="text-xs">Modo oscuro</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-kmp-purple"></div>
+                        <span class="text-xs">Responsive</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-kmp-orange"></div>
+                        <span class="text-xs">Material Design 3</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-kmp-blue"></div>
+                        <span class="text-xs">100% Compose</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-3 flex items-center justify-between">
+            <a href="06-ci-quality.html"
+                class="glass rounded-xl px-4 py-2 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span
+                    class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                <span class="font-semibold text-sm">Anterior</span>
+            </a>
+            <a href="intro.html"
+                class="glass rounded-xl px-4 py-2 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span class="font-semibold text-sm">Volver al Inicio</span>
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">home</span>
+            </a>
+        </div>
+    </main>
+
+</body>
+
+</html>
