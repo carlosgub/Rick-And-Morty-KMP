@@ -50,77 +50,77 @@
     </style>
 </head>
 
-<body class="bg-mesh min-h-screen font-display text-white flex items-center justify-center p-4">
+<body class="bg-mesh min-h-screen font-display text-white overflow-y-auto flex items-center justify-center p-4">
 
     <main class="w-full max-w-6xl">
-        <div class="glass rounded-3xl p-8 shadow-2xl relative overflow-hidden">
+        <div class="glass rounded-3xl p-6 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-purple to-kmp-blue"></div>
 
             <!-- Header -->
-            <div class="mb-6">
+            <div class="mb-3">
                 <div
                     class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-purple/20 border border-kmp-purple/30 text-sm font-semibold text-kmp-purple uppercase tracking-wider mb-2">
                     <span class="material-symbols-outlined text-lg">bug_report</span>
                     Aseguramiento de Calidad
                 </div>
-                <h1 class="text-5xl font-bold mb-2">
+                <h1 class="text-3xl font-bold mb-1">
                     Estrategia de <span class="gradient-text">Pruebas</span>
                 </h1>
-                <p class="text-xl text-gray-400 font-light">
+                <p class="text-base text-gray-400 font-light">
                     Pruebas unitarias y visuales automatizadas
                 </p>
             </div>
 
             <!-- Testing Types -->
-            <div class="grid grid-cols-2 gap-4 mb-2">
+            <div class="grid grid-cols-2 gap-3 mb-2">
                 <!-- Unit Testing -->
-                <div class="glass rounded-2xl p-4 border-l-4 border-kmp-purple">
-                    <div class="flex items-center gap-4 mb-6">
+                <div class="glass rounded-2xl p-3 border-l-4 border-kmp-purple">
+                    <div class="flex items-center gap-3 mb-3">
                         <div
                             class="w-12 h-12 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple">
                             <span class="material-symbols-outlined text-2xl">code</span>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold">Pruebas Unitarias</h3>
+                            <h3 class="text-sm font-bold">Pruebas Unitarias</h3>
                             <p class="text-sm text-gray-400">Lógica de negocio</p>
                         </div>
                     </div>
 
-                    <div class="space-y-2">
-                        <div class="bg-dark-bg/50 rounded-xl p-4">
+                    <div class="space-y-1.5">
+                        <div class="bg-dark-bg/50 rounded-xl p-3">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="material-symbols-outlined text-kmp-purple text-sm">check_circle</span>
-                                <h4 class="font-bold">ViewModels</h4>
+                                <h4 class="font-bold text-xs">ViewModels</h4>
                             </div>
-                            <p class="text-sm text-gray-400">Orbit Test para verificar estados y efectos</p>
+                            <p class="text-xs text-gray-400">Orbit Test para verificar estados y efectos</p>
                         </div>
 
                         <div class="bg-dark-bg/50 rounded-xl p-4">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="material-symbols-outlined text-kmp-purple text-sm">check_circle</span>
-                                <h4 class="font-bold">Repositorios</h4>
+                                <h4 class="font-bold text-xs">Repositorios</h4>
                             </div>
-                            <p class="text-sm text-gray-400">Fakes y Motor Simulado de Ktor para simular API</p>
+                            <p class="text-xs text-gray-400">Fakes y Motor Simulado de Ktor para simular API</p>
                         </div>
 
                         <div class="bg-dark-bg/50 rounded-xl p-4">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="material-symbols-outlined text-kmp-purple text-sm">check_circle</span>
-                                <h4 class="font-bold">Mapeadores</h4>
+                                <h4 class="font-bold text-xs">Mapeadores</h4>
                             </div>
-                            <p class="text-sm text-gray-400">Transformación de datos correcta</p>
+                            <p class="text-xs text-gray-400">Transformación de datos correcta</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Screenshot Testing -->
                 <div class="glass rounded-2xl p-4 border-l-4 border-kmp-blue">
-                    <div class="flex items-center gap-4 mb-6">
+                    <div class="flex items-center gap-3 mb-3">
                         <div class="w-12 h-12 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue">
                             <span class="material-symbols-outlined text-2xl">photo_camera</span>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold">Pruebas Visuales</h3>
+                            <h3 class="text-sm font-bold">Pruebas Visuales</h3>
                             <p class="text-sm text-gray-400">Regresión visual</p>
                         </div>
                     </div>
@@ -129,84 +129,84 @@
                         <div class="bg-dark-bg/50 rounded-xl p-4">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="material-symbols-outlined text-kmp-blue text-sm">image</span>
-                                <h4 class="font-bold">Roborazzi</h4>
+                                <h4 class="font-bold text-xs">Roborazzi</h4>
                             </div>
-                            <p class="text-sm text-gray-400">Captura automática de pantallas</p>
+                            <p class="text-xs text-gray-400">Captura automática de pantallas</p>
                         </div>
 
                         <div class="bg-dark-bg/50 rounded-xl p-4">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="material-symbols-outlined text-kmp-blue text-sm">preview</span>
-                                <h4 class="font-bold">Escáner de Previews</h4>
+                                <h4 class="font-bold text-xs">Escáner de Previews</h4>
                             </div>
-                            <p class="text-sm text-gray-400">Escaneo de @Preview automático</p>
+                            <p class="text-xs text-gray-400">Escaneo de @Preview automático</p>
                         </div>
 
                         <div class="bg-dark-bg/50 rounded-xl p-4">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="material-symbols-outlined text-kmp-blue text-sm">compare</span>
-                                <h4 class="font-bold">Imágenes de Referencia</h4>
+                                <h4 class="font-bold text-xs">Imágenes de Referencia</h4>
                             </div>
-                            <p class="text-sm text-gray-400">Comparación pixel por pixel</p>
+                            <p class="text-xs text-gray-400">Comparación pixel por pixel</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Commands -->
-            <div class="glass rounded-2xl p-4 mb-2">
-                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+            <div class="glass rounded-2xl p-3 mb-2">
+                <h3 class="text-base font-bold mb-3 flex items-center gap-2">
                     <span class="material-symbols-outlined text-kmp-orange">terminal</span>
                     Comandos
                 </h3>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-dark-bg/50 rounded-xl p-4">
+                    <div class="bg-dark-bg/50 rounded-xl p-3">
                         <div class="text-xs text-gray-500 mb-2">Pruebas Unitarias</div>
-                        <code class="text-sm text-kmp-purple">./gradlew :composeApp:testDebugUnitTest</code>
+                        <code class="text-xs text-kmp-purple">./gradlew :composeApp:testDebugUnitTest</code>
                     </div>
                     <div class="bg-dark-bg/50 rounded-xl p-4">
                         <div class="text-xs text-gray-500 mb-2">Grabar Capturas</div>
-                        <code class="text-sm text-kmp-blue">./gradlew :composeApp:recordRoborazziDebug</code>
+                        <code class="text-xs text-kmp-blue">./gradlew :composeApp:recordRoborazziDebug</code>
                     </div>
                     <div class="bg-dark-bg/50 rounded-xl p-4">
                         <div class="text-xs text-gray-500 mb-2">Verificar Capturas</div>
-                        <code class="text-sm text-kmp-blue">./gradlew :composeApp:verifyRoborazziDebug</code>
+                        <code class="text-xs text-kmp-blue">./gradlew :composeApp:verifyRoborazziDebug</code>
                     </div>
                     <div class="bg-dark-bg/50 rounded-xl p-4">
                         <div class="text-xs text-gray-500 mb-2">Comparar Capturas</div>
-                        <code class="text-sm text-kmp-orange">./gradlew :composeApp:compareRoborazziDebug</code>
+                        <code class="text-xs text-kmp-orange">./gradlew :composeApp:compareRoborazziDebug</code>
                     </div>
                 </div>
             </div>
 
             <!-- Benefits -->
             <div class="grid grid-cols-3 gap-4">
-                <div class="glass rounded-xl p-4 text-center">
-                    <div class="text-lg font-bold text-kmp-purple mb-1">95%+</div>
+                <div class="glass rounded-xl p-3 text-center">
+                    <div class="text-base font-bold text-kmp-purple mb-1">95%+</div>
                     <div class="text-sm text-gray-400">Cobertura de código</div>
                 </div>
                 <div class="glass rounded-xl p-4 text-center">
-                    <div class="text-lg font-bold text-kmp-blue mb-1">0</div>
+                    <div class="text-base font-bold text-kmp-blue mb-1">0</div>
                     <div class="text-sm text-gray-400">Regresiones visuales</div>
                 </div>
                 <div class="glass rounded-xl p-4 text-center">
-                    <div class="text-lg font-bold text-kmp-orange mb-1">100%</div>
+                    <div class="text-base font-bold text-kmp-orange mb-1">100%</div>
                     <div class="text-sm text-gray-400">Confianza en despliegues</div>
                 </div>
             </div>
         </div>
 
         <!-- Navigation -->
-        <div class="mt-4 flex items-center justify-between">
+        <div class="mt-3 flex items-center justify-between">
             <a href="04-ktor-network.html"
-                class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                class="glass rounded-xl px-4 py-2 flex items-center gap-2 hover:bg-white/5 transition-colors group">
                 <span
                     class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
-                <span class="font-semibold">Anterior</span>
+                <span class="font-semibold text-sm">Anterior</span>
             </a>
             <a href="06-ci-quality.html"
                 class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
-                <span class="font-semibold">Siguiente</span>
+                <span class="font-semibold text-sm">Siguiente</span>
                 <span
                     class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </a>

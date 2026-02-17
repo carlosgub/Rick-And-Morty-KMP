@@ -50,36 +50,36 @@
     </style>
 </head>
 
-<body class="bg-mesh min-h-screen font-display text-white flex items-center justify-center p-4">
+<body class="bg-mesh min-h-screen font-display text-white overflow-y-auto flex items-center justify-center p-4">
 
     <main class="w-full max-w-6xl">
-        <div class="glass rounded-3xl p-8 shadow-2xl relative overflow-hidden">
+        <div class="glass rounded-3xl p-6 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-orange to-kmp-purple"></div>
 
             <!-- Header -->
-            <div class="mb-6">
+            <div class="mb-3">
                 <div
                     class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-orange/20 border border-kmp-orange/30 text-sm font-semibold text-kmp-orange uppercase tracking-wider mb-2">
                     <span class="material-symbols-outlined text-lg">rocket_launch</span>
                     Automatización
                 </div>
-                <h1 class="text-5xl font-bold mb-2">
+                <h1 class="text-3xl font-bold mb-1">
                     CI y <span class="gradient-text">Calidad</span>
                 </h1>
-                <p class="text-xl text-gray-400 font-light">
+                <p class="text-base text-gray-400 font-light">
                     Integración continua y automatización de calidad
                 </p>
             </div>
 
             <!-- Automation Flow -->
-            <div class="mb-6">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="flex-1 glass rounded-2xl p-5 text-center border-2 border-kmp-orange/30">
+            <div class="mb-3">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="flex-1 glass rounded-2xl p-3 text-center border-2 border-kmp-orange/30">
                         <div
                             class="w-14 h-14 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange mx-auto mb-2">
                             <span class="material-symbols-outlined text-lg">edit</span>
                         </div>
-                        <h3 class="text-lg font-bold mb-1">Código</h3>
+                        <h3 class="text-sm font-bold mb-1">Código</h3>
                         <p class="text-xs text-gray-400">Desarrollo local</p>
                     </div>
 
@@ -90,7 +90,7 @@
                             class="w-14 h-14 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple mx-auto mb-2">
                             <span class="material-symbols-outlined text-lg">commit</span>
                         </div>
-                        <h3 class="text-lg font-bold mb-1">Pre-commit</h3>
+                        <h3 class="text-sm font-bold mb-1">Pre-commit</h3>
                         <p class="text-xs text-gray-400">Validación local</p>
                     </div>
 
@@ -101,43 +101,43 @@
                             class="w-14 h-14 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue mx-auto mb-2">
                             <span class="material-symbols-outlined text-lg">cloud_sync</span>
                         </div>
-                        <h3 class="text-lg font-bold mb-1">GitHub CI</h3>
+                        <h3 class="text-sm font-bold mb-1">GitHub CI</h3>
                         <p class="text-xs text-gray-400">Validación remota</p>
                     </div>
                 </div>
             </div>
 
             <!-- Tools -->
-            <div class="grid grid-cols-2 gap-4 mb-2">
+            <div class="grid grid-cols-2 gap-3 mb-2">
                 <!-- ktlint -->
-                <div class="glass rounded-2xl p-4">
-                    <div class="flex items-center gap-4 mb-6">
+                <div class="glass rounded-2xl p-3">
+                    <div class="flex items-center gap-3 mb-3">
                         <div
                             class="w-12 h-12 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange">
                             <span class="material-symbols-outlined text-2xl">format_paint</span>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold">ktlint</h3>
+                            <h3 class="text-base font-bold">ktlint</h3>
                             <p class="text-sm text-gray-400">Linter y Formateador</p>
                         </div>
                     </div>
 
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-start gap-2 text-sm">
-                            <span class="text-kmp-orange mt-1">▸</span>
+                    <ul class="space-y-1.5 mb-3">
+                        <li class="flex items-center gap-2 text-sm">
+                            <span class="text-kmp-orange">▸</span>
                             <span>Formato consistente de código Kotlin</span>
                         </li>
-                        <li class="flex items-start gap-2 text-sm">
-                            <span class="text-kmp-orange mt-1">▸</span>
+                        <li class="flex items-center gap-2 text-sm">
+                            <span class="text-kmp-orange">▸</span>
                             <span>Reglas de Compose para mejores prácticas</span>
                         </li>
-                        <li class="flex items-start gap-2 text-sm">
-                            <span class="text-kmp-orange mt-1">▸</span>
+                        <li class="flex items-center gap-2 text-sm">
+                            <span class="text-kmp-orange">▸</span>
                             <span>Corrección automática con ktlintFormat</span>
                         </li>
                     </ul>
 
-                    <div class="bg-dark-bg/50 rounded-xl p-3">
+                    <div class="bg-dark-bg/50 rounded-xl p-2">
                         <code class="text-xs text-kmp-orange">./gradlew ktlintCheck</code>
                     </div>
                 </div>
@@ -150,22 +150,22 @@
                             <span class="material-symbols-outlined text-2xl">shield_lock</span>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold">Pre-commit</h3>
+                            <h3 class="text-base font-bold">Pre-commit</h3>
                             <p class="text-sm text-gray-400">Gancho de Git</p>
                         </div>
                     </div>
 
                     <ul class="space-y-2 mb-6">
-                        <li class="flex items-start gap-2 text-sm">
-                            <span class="text-kmp-purple mt-1">▸</span>
+                        <li class="flex items-center gap-2 text-sm">
+                            <span class="text-kmp-purple">▸</span>
                             <span>Ejecuta ktlintCheck antes de commit</span>
                         </li>
-                        <li class="flex items-start gap-2 text-sm">
-                            <span class="text-kmp-purple mt-1">▸</span>
+                        <li class="flex items-center gap-2 text-sm">
+                            <span class="text-kmp-purple">▸</span>
                             <span>Corre pruebas unitarias automáticamente</span>
                         </li>
-                        <li class="flex items-start gap-2 text-sm">
-                            <span class="text-kmp-purple mt-1">▸</span>
+                        <li class="flex items-center gap-2 text-sm">
+                            <span class="text-kmp-purple">▸</span>
                             <span>Verifica capturas de Roborazzi</span>
                         </li>
                     </ul>
@@ -177,14 +177,14 @@
             </div>
 
             <!-- GitHub Actions -->
-            <div class="glass rounded-2xl p-4">
-                <div class="flex items-center justify-between mb-6">
+            <div class="glass rounded-2xl p-3">
+                <div class="flex items-center justify-between mb-3">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue">
                             <span class="material-symbols-outlined text-2xl">cloud_done</span>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold">GitHub Actions</h3>
+                            <h3 class="text-base font-bold">GitHub Actions</h3>
                             <p class="text-sm text-gray-400">Integración Continua</p>
                         </div>
                     </div>
@@ -195,7 +195,7 @@
                 </div>
 
                 <div class="grid grid-cols-3 gap-4">
-                    <div class="bg-dark-bg/50 rounded-xl p-4 border-l-2 border-kmp-blue">
+                    <div class="bg-dark-bg/50 rounded-xl p-3 border-l-2 border-kmp-blue">
                         <div class="text-xs text-gray-500 mb-2">Paso 1</div>
                         <div class="font-bold text-sm mb-1">ktlintCheck</div>
                         <div class="text-xs text-gray-400">Verifica formato</div>
@@ -214,8 +214,8 @@
             </div>
 
             <!-- Benefits -->
-            <div class="mt-4 grid grid-cols-3 gap-4">
-                <div class="glass rounded-xl p-4 flex items-center gap-3">
+            <div class="mt-3 grid grid-cols-3 gap-3">
+                <div class="glass rounded-xl p-3 flex items-center gap-2">
                     <div class="w-2 h-2 rounded-full bg-kmp-orange"></div>
                     <span class="text-sm">Código limpio y consistente</span>
                 </div>
@@ -231,16 +231,16 @@
         </div>
 
         <!-- Navigation -->
-        <div class="mt-4 flex items-center justify-between">
+        <div class="mt-3 flex items-center justify-between">
             <a href="05-testing.html"
-                class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                class="glass rounded-xl px-4 py-2 flex items-center gap-2 hover:bg-white/5 transition-colors group">
                 <span
                     class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
-                <span class="font-semibold">Anterior</span>
+                <span class="font-semibold text-sm">Anterior</span>
             </a>
             <a href="intro.html"
                 class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
-                <span class="font-semibold">Volver al Inicio</span>
+                <span class="font-semibold text-sm">Volver al Inicio</span>
                 <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">home</span>
             </a>
         </div>

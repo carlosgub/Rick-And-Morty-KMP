@@ -76,7 +76,7 @@
     </style>
 </head>
 
-<body class="bg-mesh min-h-screen font-display text-white overflow-hidden flex items-center justify-center">
+<body class="bg-mesh min-h-screen font-display text-white overflow-y-auto flex items-center justify-center p-4">
 
     <!-- Decorative Elements -->
     <div class="absolute top-20 left-1/4 w-64 h-64 bg-kmp-purple/20 rounded-full blur-[100px] animate-pulse-slow"></div>
@@ -95,48 +95,48 @@
     </div>
 
     <!-- Main Content -->
-    <main class="relative z-10 w-full max-w-6xl px-8 slide-in">
-        <div class="glass rounded-3xl p-12 md:p-20 shadow-2xl relative overflow-hidden">
+    <main class="relative z-10 w-full max-w-6xl px-4 slide-in">
+        <div class="glass rounded-3xl p-6 md:p-12 shadow-2xl relative overflow-hidden">
             <!-- Accent Bar -->
             <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-purple via-kmp-orange to-kmp-blue">
             </div>
 
-            <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="flex flex-col md:flex-row items-center gap-4">
                 <!-- Left Content -->
-                <div class="flex-1 space-y-8">
+                <div class="flex-1 space-y-2">
                     <div
                         class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-semibold tracking-widest text-kmp-blue uppercase">
                         <span class="animate-pulse w-2 h-2 rounded-full bg-kmp-blue"></span>
                         Nuevo Curso 2026
                     </div>
 
-                    <h1 class="text-6xl md:text-8xl font-bold leading-tight">
+                    <h1 class="text-3xl md:text-4xl font-bold leading-tight">
                         Kotlin <br>
                         <span class="gradient-text">Multiplatform</span>
                     </h1>
 
-                    <p class="text-xl md:text-xl text-gray-400 max-w-xl font-light leading-relaxed">
+                    <p class="text-base md:text-lg text-gray-400 max-w-xl font-light leading-relaxed">
                         Domina el desarrollo multiplataforma profesional construyendo una aplicación real de <span
                             class="text-white font-medium">Rick and Morty</span> con las mejores prácticas de la
                         industria.
                     </p>
 
-                    <div class="flex flex-wrap gap-4 pt-4">
+                    <div class="flex flex-wrap gap-3 pt-2">
                         <div
-                            class="flex items-center gap-3 px-6 py-4 rounded-2xl glass hover:bg-white/5 transition-colors group">
+                            class="flex items-center gap-2 px-4 py-2 rounded-2xl glass hover:bg-white/5 transition-colors group">
                             <div
-                                class="w-10 h-10 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple group-hover:scale-110 transition-transform">
-                                <span class="material-symbols-outlined">architecture</span>
+                                class="w-8 h-8 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined text-lg">architecture</span>
                             </div>
-                            <span class="font-medium">Arquitectura Limpia</span>
+                            <span class="font-medium text-sm">Arquitectura Limpia</span>
                         </div>
                         <div
-                            class="flex items-center gap-3 px-6 py-4 rounded-2xl glass hover:bg-white/5 transition-colors group">
+                            class="flex items-center gap-2 px-4 py-2 rounded-2xl glass hover:bg-white/5 transition-colors group">
                             <div
-                                class="w-10 h-10 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange group-hover:scale-110 transition-transform">
-                                <span class="material-symbols-outlined">science</span>
+                                class="w-8 h-8 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined text-lg">science</span>
                             </div>
-                            <span class="font-medium">Pruebas Unitarias y Visuales</span>
+                            <span class="font-medium text-sm">Pruebas Unitarias y Visuales</span>
                         </div>
                     </div>
                 </div>
@@ -144,18 +144,18 @@
                 <!-- Right Content (Visual Representation) -->
                 <div class="hidden lg:flex flex-1 justify-center relative">
                     <div
-                        class="relative w-80 h-[560px] glass rounded-[3rem] border-8 border-white/10 shadow-2xl overflow-hidden p-5 scale-110 rotate-3">
+                        class="relative w-64 h-[420px] glass rounded-[2.5rem] border-6 border-white/10 shadow-2xl overflow-hidden p-4 scale-100 rotate-3">
                         <!-- Mock App Content -->
-                        <div class="w-full h-full bg-dark-bg rounded-[2rem] p-4 flex flex-col gap-4">
-                            <div class="w-full h-48 bg-white/5 rounded-2xl flex items-center justify-center">
-                                <span class="material-symbols-outlined text-white/20 text-6xl">image</span>
+                        <div class="w-full h-full bg-dark-bg rounded-[1.5rem] p-3 flex flex-col gap-2">
+                            <div class="w-full h-32 bg-white/5 rounded-xl flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white/20 text-4xl">image</span>
                             </div>
-                            <div class="h-4 w-3/4 bg-white/10 rounded-full"></div>
-                            <div class="h-3 w-1/2 bg-white/5 rounded-full"></div>
-                            <div class="mt-4 space-y-2">
-                                <div class="h-20 w-full glass rounded-xl"></div>
-                                <div class="h-20 w-full glass rounded-xl"></div>
-                                <div class="h-20 w-full glass rounded-xl"></div>
+                            <div class="h-3 w-3/4 bg-white/10 rounded-full"></div>
+                            <div class="h-2 w-1/2 bg-white/5 rounded-full"></div>
+                            <div class="mt-2 space-y-2">
+                                <div class="h-14 w-full glass rounded-lg"></div>
+                                <div class="h-14 w-full glass rounded-lg"></div>
+                                <div class="h-14 w-full glass rounded-lg"></div>
                             </div>
                         </div>
                         <!-- Rick and Morty Placeholder Glow -->
@@ -166,31 +166,30 @@
             </div>
 
             <!-- Footer Icons -->
-            <div
-                class="mt-20 pt-10 border-t border-white/5 flex flex-wrap items-center justify-between gap-5 opacity-60">
-                <div class="flex items-center gap-2 font-bold text-xl">
+            <div class="mt-6 pt-4 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 opacity-60">
+                <div class="flex items-center gap-1 font-bold text-sm">
                     <span class="text-kmp-purple">Orbit</span> MVI
                 </div>
-                <div class="flex items-center gap-2 font-bold text-xl">
+                <div class="flex items-center gap-1 font-bold text-sm">
                     <span class="text-kmp-orange">Koin</span> DI
                 </div>
-                <div class="flex items-center gap-2 font-bold text-xl">
+                <div class="flex items-center gap-1 font-bold text-sm">
                     <span class="text-kmp-blue">Ktor</span> Network
                 </div>
-                <div class="flex items-center gap-2 font-bold text-xl">
+                <div class="flex items-center gap-1 font-bold text-sm">
                     Compose <span class="text-white">Multiplatform</span>
                 </div>
             </div>
         </div>
 
         <!-- Navigation Buttons -->
-        <div class="mt-4 flex items-center justify-between">
-            <div class="text-gray-500 text-sm">
+        <div class="mt-3 flex items-center justify-between">
+            <div class="text-gray-500 text-xs">
                 Presentado por CarlosGub • Suscríbete en YouTube
             </div>
             <a href="01-clean-architecture.html"
-                class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
-                <span class="font-semibold">Siguiente</span>
+                class="glass rounded-xl px-4 py-2 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span class="font-semibold text-sm">Siguiente</span>
                 <span
                     class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </a>
