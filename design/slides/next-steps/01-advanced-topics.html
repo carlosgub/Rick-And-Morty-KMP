@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Próximos Pasos - Curso KMP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'kmp-purple': '#7F52FF',
+                        'kmp-orange': '#E44857',
+                        'kmp-blue': '#00BDC7',
+                        'dark-bg': '#0C111D',
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #7F52FF, #E44857, #00BDC7);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-mesh {
+            background-color: #0C111D;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(127, 82, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 189, 199, 0.1) 0px, transparent 50%);
+        }
+    </style>
+</head>
+
+<body class="bg-mesh min-h-screen font-display text-white overflow-y-auto flex items-center justify-center p-4">
+
+    <main class="w-full max-w-6xl">
+        <div class="glass rounded-3xl p-6 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-purple via-kmp-orange to-kmp-blue">
+            </div>
+
+            <!-- Header -->
+            <div class="mb-4">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-purple/20 border border-kmp-purple/30 text-sm font-semibold text-kmp-purple uppercase tracking-wider mb-2">
+                    <span class="material-symbols-outlined text-lg">rocket_launch</span>
+                    PRÓXIMOS PASOS
+                </div>
+
+                <h1 class="text-3xl font-bold mb-2">
+                    Continúa tu <span class="gradient-text">Aprendizaje</span>
+                </h1>
+                <p class="text-base text-gray-400 font-light">
+                    Temas avanzados para profundizar después del curso
+                </p>
+            </div>
+
+            <!-- Topics Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+                <!-- Topic 1 -->
+                <div class="glass rounded-2xl p-4 hover:bg-white/5 transition-all group">
+                    <div class="flex items-start gap-3">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-2xl">storage</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold mb-1">Persistencia Local</h3>
+                            <p class="text-sm text-gray-400 mb-2">
+                                Almacenamiento de datos offline con SQLDelight o Room
+                            </p>
+                            <div class="flex flex-wrap gap-1">
+                                <span
+                                    class="text-xs px-2 py-1 rounded-full bg-kmp-purple/10 text-kmp-purple">SQLDelight</span>
+                                <span class="text-xs px-2 py-1 rounded-full bg-kmp-purple/10 text-kmp-purple">Room
+                                    KMP</span>
+                                <span
+                                    class="text-xs px-2 py-1 rounded-full bg-kmp-purple/10 text-kmp-purple">DataStore</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic 2 -->
+                <div class="glass rounded-2xl p-4 hover:bg-white/5 transition-all group">
+                    <div class="flex items-start gap-3">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-2xl">sync</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold mb-1">Manejo de Estado Reactivo</h3>
+                            <p class="text-sm text-gray-400 mb-2">
+                                Arquitecturas avanzadas con Kotlin Flow y StateFlow
+                            </p>
+                            <div class="flex flex-wrap gap-1">
+                                <span
+                                    class="text-xs px-2 py-1 rounded-full bg-kmp-orange/10 text-kmp-orange">Flow</span>
+                                <span
+                                    class="text-xs px-2 py-1 rounded-full bg-kmp-orange/10 text-kmp-orange">SharedFlow</span>
+                                <span
+                                    class="text-xs px-2 py-1 rounded-full bg-kmp-orange/10 text-kmp-orange">StateFlow</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic 3 -->
+                <div class="glass rounded-2xl p-4 hover:bg-white/5 transition-all group">
+                    <div class="flex items-start gap-3">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-2xl">widgets</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold mb-1">Compose Multiplatform a Profundidad</h3>
+                            <p class="text-sm text-gray-400 mb-2">
+                                Componentes avanzados, animaciones y optimización
+                            </p>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="text-xs px-2 py-1 rounded-full bg-kmp-purple/10 text-kmp-purple">Custom
+                                    Layouts</span>
+                                <span
+                                    class="text-xs px-2 py-1 rounded-full bg-kmp-purple/10 text-kmp-purple">Animations</span>
+                                <span
+                                    class="text-xs px-2 py-1 rounded-full bg-kmp-purple/10 text-kmp-purple">Performance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic 5 -->
+
+                <!-- Topic 5 -->
+                <div class="glass rounded-2xl p-4 hover:bg-white/5 transition-all group">
+                    <div class="flex items-start gap-3">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-2xl">code</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold mb-1">Coroutinas a Profundidad</h3>
+                            <p class="text-sm text-gray-400 mb-2">
+                                Concurrencia avanzada con Kotlin Coroutines
+                            </p>
+                            <div class="flex flex-wrap gap-1">
+                                <span
+                                    class="text-xs px-2 py-1 rounded-full bg-kmp-orange/10 text-kmp-orange">Dispatchers</span>
+                                <span
+                                    class="text-xs px-2 py-1 rounded-full bg-kmp-orange/10 text-kmp-orange">Channels</span>
+                                <span class="text-xs px-2 py-1 rounded-full bg-kmp-orange/10 text-kmp-orange">Structured
+                                    Concurrency</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="glass rounded-2xl p-4 border-2 border-kmp-purple/30">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-4xl text-kmp-purple">lightbulb</span>
+                    <div>
+                        <h3 class="text-lg font-bold mb-1">¿Por dónde empezar?</h3>
+                        <p class="text-sm text-gray-400">
+                            Elige el tema que más te interese y comienza a explorar. Cada uno de estos temas tiene su
+                            propia
+                            diapositiva con recursos y recomendaciones.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-3 flex items-center justify-end">
+            <a href="02-persistence.html"
+                class="glass rounded-xl px-4 py-2 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span class="font-semibold text-sm">Siguiente</span>
+                <span
+                    class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+        </div>
+    </main>
+
+</body>
+
+</html>
