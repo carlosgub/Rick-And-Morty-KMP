@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persistencia Local - Curso KMP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'kmp-purple': '#7F52FF',
+                        'kmp-orange': '#E44857',
+                        'kmp-blue': '#00BDC7',
+                        'dark-bg': '#0C111D',
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #7F52FF, #E44857);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-mesh {
+            background-color: #0C111D;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(127, 82, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(228, 72, 87, 0.1) 0px, transparent 50%);
+        }
+    </style>
+</head>
+
+<body class="bg-mesh min-h-screen font-display text-white overflow-y-auto flex items-center justify-center p-4">
+
+    <main class="w-full max-w-6xl">
+        <div class="glass rounded-3xl p-6 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-purple to-kmp-orange"></div>
+
+            <!-- Header -->
+            <div class="mb-4">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-purple/20 border border-kmp-purple/30 text-sm font-semibold text-kmp-purple uppercase tracking-wider mb-2">
+                    <span class="material-symbols-outlined text-lg">storage</span>
+                    PERSISTENCIA
+                </div>
+
+                <h1 class="text-3xl font-bold mb-2">
+                    <span class="gradient-text">Persistencia Local</span>
+                </h1>
+                <p class="text-base text-gray-400 font-light">
+                    Almacenamiento de datos offline con SQLDelight o Room
+                </p>
+            </div>
+
+            <!-- Main Content -->
+            <div class="space-y-3 mb-3">
+                <!-- SQLDelight -->
+                <div class="glass rounded-2xl p-4">
+                    <div class="flex items-start gap-3 mb-3">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple flex-shrink-0">
+                            <span class="material-symbols-outlined text-2xl">database</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-1">SQLDelight</h3>
+                            <p class="text-sm text-gray-400">
+                                Genera código Kotlin type-safe desde SQL. Ideal para KMP.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-kmp-purple">✓ Ventajas</h4>
+                            <ul class="text-xs text-gray-400 space-y-1">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-kmp-purple mt-0.5">•</span>
+                                    <span>SQL puro, sin ORM</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-kmp-purple mt-0.5">•</span>
+                                    <span>Type-safe queries</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-kmp-purple mt-0.5">•</span>
+                                    <span>Soporte Flow nativo</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-kmp-purple mt-0.5">•</span>
+                                    <span>Multiplataforma desde el inicio</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-kmp-orange">⚠ Consideraciones</h4>
+                            <ul class="text-xs text-gray-400 space-y-1">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-kmp-orange mt-0.5">•</span>
+                                    <span>Requiere conocimiento de SQL</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-kmp-orange mt-0.5">•</span>
+                                    <span>Configuración inicial más compleja</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-kmp-orange mt-0.5">•</span>
+                                    <span>Migraciones manuales</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room KMP -->
+                <div class="glass rounded-2xl p-4">
+                    <div class="flex items-start gap-3 mb-3">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange flex-shrink-0">
+                            <span class="material-symbols-outlined text-2xl">home_storage</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-1">Room KMP</h3>
+                            <p class="text-sm text-gray-400">
+                                La popular librería de Android ahora en KMP (Alpha).
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-kmp-purple">✓ Ventajas</h4>
+                            <ul class="text-xs text-gray-400 space-y-1">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-kmp-purple mt-0.5">•</span>
+                                    <span>Familiar para devs Android</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-kmp-purple mt-0.5">•</span>
+                                    <span>Anotaciones simples</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-kmp-purple mt-0.5">•</span>
+                                    <span>Migraciones automáticas</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-kmp-purple mt-0.5">•</span>
+                                    <span>Integración con Flow</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="text-sm font-bold text-kmp-orange">⚠ Consideraciones</h4>
+                            <ul class="text-xs text-gray-400 space-y-1">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-kmp-orange mt-0.5">•</span>
+                                    <span>Aún en fase Alpha</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-kmp-orange mt-0.5">•</span>
+                                    <span>Menos control sobre SQL</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-kmp-orange mt-0.5">•</span>
+                                    <span>Posibles cambios en API</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DataStore -->
+                <div class="glass rounded-2xl p-4">
+                    <div class="flex items-start gap-3 mb-3">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue flex-shrink-0">
+                            <span class="material-symbols-outlined text-2xl">settings</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-1">DataStore (Preferences)</h3>
+                            <p class="text-sm text-gray-400">
+                                Para preferencias simples y configuración de usuario.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h4 class="text-sm font-bold text-kmp-blue">Casos de uso ideales</h4>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="text-xs px-3 py-2 rounded-lg bg-kmp-blue/10 border border-kmp-blue/20">
+                                Tema de la app (claro/oscuro)
+                            </div>
+                            <div class="text-xs px-3 py-2 rounded-lg bg-kmp-blue/10 border border-kmp-blue/20">
+                                Idioma preferido
+                            </div>
+                            <div class="text-xs px-3 py-2 rounded-lg bg-kmp-blue/10 border border-kmp-blue/20">
+                                Tokens de autenticación
+                            </div>
+                            <div class="text-xs px-3 py-2 rounded-lg bg-kmp-blue/10 border border-kmp-blue/20">
+                                Configuración de notificaciones
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resources -->
+            <div class="glass rounded-2xl p-4 border-2 border-kmp-purple/30">
+                <h3 class="text-base font-bold mb-3 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-kmp-purple">school</span>
+                    Recursos Recomendados
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                    <div class="text-xs px-3 py-2 rounded-lg bg-white/5">
+                        📚 Documentación oficial SQLDelight
+                    </div>
+                    <div class="text-xs px-3 py-2 rounded-lg bg-white/5">
+                        🎥 Tutorial Room KMP de Google
+                    </div>
+                    <div class="text-xs px-3 py-2 rounded-lg bg-white/5">
+                        💡 Ejemplos en GitHub
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-3 flex items-center justify-between">
+            <a href="01-advanced-topics.html"
+                class="glass rounded-xl px-4 py-2 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span
+                    class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                <span class="font-semibold text-sm">Anterior</span>
+            </a>
+            <a href="03-reactive-state.html"
+                class="glass rounded-xl px-4 py-2 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span class="font-semibold text-sm">Siguiente</span>
+                <span
+                    class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+        </div>
+    </main>
+
+</body>
+
+</html>
