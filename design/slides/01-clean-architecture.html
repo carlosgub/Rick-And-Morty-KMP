@@ -50,38 +50,38 @@
     </style>
 </head>
 
-<body class="bg-mesh min-h-screen font-display text-white flex items-center justify-center p-8">
+<body class="bg-mesh min-h-screen font-display text-white flex items-center justify-center p-4">
 
     <main class="w-full max-w-6xl">
-        <div class="glass rounded-3xl p-16 shadow-2xl relative overflow-hidden">
+        <div class="glass rounded-3xl p-8 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-purple to-kmp-orange"></div>
 
             <!-- Header -->
-            <div class="mb-12">
+            <div class="mb-6">
                 <div
-                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-purple/20 border border-kmp-purple/30 text-sm font-semibold text-kmp-purple uppercase tracking-wider mb-4">
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-purple/20 border border-kmp-purple/30 text-sm font-semibold text-kmp-purple uppercase tracking-wider mb-3">
                     <span class="material-symbols-outlined text-lg">architecture</span>
                     Arquitectura
                 </div>
-                <h1 class="text-7xl font-bold mb-4">
+                <h1 class="text-5xl font-bold mb-3">
                     Arquitectura <span class="gradient-text">Limpia</span>
                 </h1>
-                <p class="text-2xl text-gray-400 font-light">
+                <p class="text-xl text-gray-400 font-light">
                     Separación clara de responsabilidades en capas
                 </p>
             </div>
 
             <!-- Architecture Layers -->
-            <div class="grid grid-cols-3 gap-6 mb-12">
+            <div class="grid grid-cols-3 gap-4 mb-6">
                 <!-- Presentation Layer -->
-                <div class="glass rounded-2xl p-8 border-l-4 border-kmp-purple hover:scale-105 transition-transform">
+                <div class="glass rounded-2xl p-5 border-l-4 border-kmp-purple hover:scale-105 transition-transform">
                     <div
-                        class="w-14 h-14 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple mb-4">
-                        <span class="material-symbols-outlined text-3xl">visibility</span>
+                        class="w-12 h-12 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple mb-3">
+                        <span class="material-symbols-outlined text-2xl">visibility</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Presentación</h3>
-                    <p class="text-gray-400 mb-4 text-sm">UI y lógica de presentación</p>
-                    <ul class="space-y-2 text-sm">
+                    <h3 class="text-xl font-bold mb-2">Presentación</h3>
+                    <p class="text-gray-400 mb-3 text-xs">UI y lógica de presentación</p>
+                    <ul class="space-y-1.5 text-xs">
                         <li class="flex items-start gap-2">
                             <span class="text-kmp-purple mt-1">▸</span>
                             <span>ViewModels (Orbit MVI)</span>
@@ -98,14 +98,14 @@
                 </div>
 
                 <!-- Domain Layer -->
-                <div class="glass rounded-2xl p-8 border-l-4 border-kmp-orange hover:scale-105 transition-transform">
+                <div class="glass rounded-2xl p-5 border-l-4 border-kmp-orange hover:scale-105 transition-transform">
                     <div
-                        class="w-14 h-14 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange mb-4">
-                        <span class="material-symbols-outlined text-3xl">hub</span>
+                        class="w-12 h-12 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange mb-3">
+                        <span class="material-symbols-outlined text-2xl">hub</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Dominio</h3>
-                    <p class="text-gray-400 mb-4 text-sm">Lógica de negocio pura</p>
-                    <ul class="space-y-2 text-sm">
+                    <h3 class="text-xl font-bold mb-2">Dominio</h3>
+                    <p class="text-gray-400 mb-3 text-xs">Lógica de negocio pura</p>
+                    <ul class="space-y-1.5 text-xs">
                         <li class="flex items-start gap-2">
                             <span class="text-kmp-orange mt-1">▸</span>
                             <span>Modelos de dominio</span>
@@ -122,14 +122,14 @@
                 </div>
 
                 <!-- Data Layer -->
-                <div class="glass rounded-2xl p-8 border-l-4 border-kmp-blue hover:scale-105 transition-transform">
+                <div class="glass rounded-2xl p-5 border-l-4 border-kmp-blue hover:scale-105 transition-transform">
                     <div
-                        class="w-14 h-14 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue mb-4">
-                        <span class="material-symbols-outlined text-3xl">storage</span>
+                        class="w-12 h-12 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue mb-3">
+                        <span class="material-symbols-outlined text-2xl">storage</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Datos</h3>
-                    <p class="text-gray-400 mb-4 text-sm">Fuentes de datos</p>
-                    <ul class="space-y-2 text-sm">
+                    <h3 class="text-xl font-bold mb-2">Datos</h3>
+                    <p class="text-gray-400 mb-3 text-xs">Fuentes de datos</p>
+                    <ul class="space-y-1.5 text-xs">
                         <li class="flex items-start gap-2">
                             <span class="text-kmp-blue mt-1">▸</span>
                             <span>Repositorios</span>
@@ -147,38 +147,38 @@
             </div>
 
             <!-- Benefits -->
-            <div class="glass rounded-2xl p-8">
-                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+            <div class="glass rounded-2xl p-5">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
                     <span class="material-symbols-outlined text-kmp-purple">check_circle</span>
                     Beneficios
                 </h3>
-                <div class="grid grid-cols-2 gap-6">
+                <div class="grid grid-cols-2 gap-4">
                     <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-kmp-purple mt-2"></div>
+                        <div class="w-2 h-2 rounded-full bg-kmp-purple mt-1.5"></div>
                         <div>
-                            <h4 class="font-semibold mb-1">Testeable</h4>
-                            <p class="text-sm text-gray-400">Cada capa se puede probar de forma independiente</p>
+                            <h4 class="font-semibold mb-1 text-sm">Testeable</h4>
+                            <p class="text-xs text-gray-400">Cada capa se puede probar de forma independiente</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-kmp-orange mt-2"></div>
+                        <div class="w-2 h-2 rounded-full bg-kmp-orange mt-1.5"></div>
                         <div>
-                            <h4 class="font-semibold mb-1">Mantenible</h4>
-                            <p class="text-sm text-gray-400">Cambios aislados sin afectar otras capas</p>
+                            <h4 class="font-semibold mb-1 text-sm">Mantenible</h4>
+                            <p class="text-xs text-gray-400">Cambios aislados sin afectar otras capas</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-kmp-blue mt-2"></div>
+                        <div class="w-2 h-2 rounded-full bg-kmp-blue mt-1.5"></div>
                         <div>
-                            <h4 class="font-semibold mb-1">Escalable</h4>
-                            <p class="text-sm text-gray-400">Fácil de extender con nuevas funcionalidades</p>
+                            <h4 class="font-semibold mb-1 text-sm">Escalable</h4>
+                            <p class="text-xs text-gray-400">Fácil de extender con nuevas funcionalidades</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
-                        <div class="w-2 h-2 rounded-full bg-kmp-purple mt-2"></div>
+                        <div class="w-2 h-2 rounded-full bg-kmp-purple mt-1.5"></div>
                         <div>
-                            <h4 class="font-semibold mb-1">Independiente</h4>
-                            <p class="text-sm text-gray-400">Sin dependencias de frameworks en el dominio</p>
+                            <h4 class="font-semibold mb-1 text-sm">Independiente</h4>
+                            <p class="text-xs text-gray-400">Sin dependencias de frameworks en el dominio</p>
                         </div>
                     </div>
                 </div>
@@ -186,7 +186,7 @@
         </div>
 
         <!-- Navigation -->
-        <div class="mt-8 flex items-center justify-between">
+        <div class="mt-4 flex items-center justify-between">
             <a href="intro.html"
                 class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
                 <span

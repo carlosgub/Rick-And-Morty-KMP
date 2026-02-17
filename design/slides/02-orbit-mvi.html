@@ -6,7 +6,7 @@
     <title>Orbit MVI - Curso KMP</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols_Outlined:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -44,31 +44,31 @@
         }
     </style>
 </head>
-<body class="bg-mesh min-h-screen font-display text-white flex items-center justify-center p-8">
+<body class="bg-mesh min-h-screen font-display text-white flex items-center justify-center p-4">
 
     <main class="w-full max-w-6xl">
-        <div class="glass rounded-3xl p-16 shadow-2xl relative overflow-hidden">
+        <div class="glass rounded-3xl p-8 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-purple to-kmp-orange"></div>
 
             <!-- Header -->
-            <div class="mb-12">
+            <div class="mb-6">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-purple/20 border border-kmp-purple/30 text-sm font-semibold text-kmp-purple uppercase tracking-wider mb-4">
                     <span class="material-symbols-outlined text-lg">sync</span>
                     Manejo de Estado
                 </div>
-                <h1 class="text-7xl font-bold mb-4">
+                <h1 class="text-5xl font-bold mb-4">
                     Orbit <span class="gradient-text">MVI</span>
                 </h1>
-                <p class="text-2xl text-gray-400 font-light">
+                <p class="text-xl text-gray-400 font-light">
                     Manejo predecible de estado y efectos secundarios
                 </p>
             </div>
 
             <!-- MVI Flow -->
-            <div class="mb-12">
+            <div class="mb-6">
                 <div class="flex items-center justify-between gap-4">
                     <!-- Intent -->
-                    <div class="flex-1 glass rounded-2xl p-6 text-center border-2 border-kmp-purple/30">
+                    <div class="flex-1 glass rounded-2xl p-5 text-center border-2 border-kmp-purple/30">
                         <div class="w-16 h-16 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple mx-auto mb-3">
                             <span class="material-symbols-outlined text-4xl">touch_app</span>
                         </div>
@@ -80,7 +80,7 @@
                     <div class="text-kmp-purple text-4xl">→</div>
 
                     <!-- Model/State -->
-                    <div class="flex-1 glass rounded-2xl p-6 text-center border-2 border-kmp-orange/30">
+                    <div class="flex-1 glass rounded-2xl p-5 text-center border-2 border-kmp-orange/30">
                         <div class="w-16 h-16 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange mx-auto mb-3">
                             <span class="material-symbols-outlined text-4xl">database</span>
                         </div>
@@ -92,7 +92,7 @@
                     <div class="text-kmp-orange text-4xl">→</div>
 
                     <!-- View -->
-                    <div class="flex-1 glass rounded-2xl p-6 text-center border-2 border-kmp-blue/30">
+                    <div class="flex-1 glass rounded-2xl p-5 text-center border-2 border-kmp-blue/30">
                         <div class="w-16 h-16 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue mx-auto mb-3">
                             <span class="material-symbols-outlined text-4xl">visibility</span>
                         </div>
@@ -103,11 +103,11 @@
             </div>
 
             <!-- Key Features -->
-            <div class="grid grid-cols-2 gap-6 mb-8">
-                <div class="glass rounded-2xl p-6">
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="glass rounded-2xl p-5">
                     <div class="flex items-start gap-4">
                         <div class="w-12 h-12 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple flex-shrink-0">
-                            <span class="material-symbols-outlined text-2xl">shield</span>
+                            <span class="material-symbols-outlined text-xl">shield</span>
                         </div>
                         <div>
                             <h4 class="font-bold text-lg mb-2">Estado Inmutable</h4>
@@ -116,10 +116,10 @@
                     </div>
                 </div>
 
-                <div class="glass rounded-2xl p-6">
+                <div class="glass rounded-2xl p-5">
                     <div class="flex items-start gap-4">
                         <div class="w-12 h-12 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange flex-shrink-0">
-                            <span class="material-symbols-outlined text-2xl">bolt</span>
+                            <span class="material-symbols-outlined text-xl">bolt</span>
                         </div>
                         <div>
                             <h4 class="font-bold text-lg mb-2">Efectos Secundarios</h4>
@@ -128,10 +128,10 @@
                     </div>
                 </div>
 
-                <div class="glass rounded-2xl p-6">
+                <div class="glass rounded-2xl p-5">
                     <div class="flex items-start gap-4">
                         <div class="w-12 h-12 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue flex-shrink-0">
-                            <span class="material-symbols-outlined text-2xl">bug_report</span>
+                            <span class="material-symbols-outlined text-xl">bug_report</span>
                         </div>
                         <div>
                             <h4 class="font-bold text-lg mb-2">Fácil de Probar</h4>
@@ -140,10 +140,10 @@
                     </div>
                 </div>
 
-                <div class="glass rounded-2xl p-6">
+                <div class="glass rounded-2xl p-5">
                     <div class="flex items-start gap-4">
                         <div class="w-12 h-12 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple flex-shrink-0">
-                            <span class="material-symbols-outlined text-2xl">code</span>
+                            <span class="material-symbols-outlined text-xl">code</span>
                         </div>
                         <div>
                             <h4 class="font-bold text-lg mb-2">Sintaxis Limpia</h4>
@@ -154,7 +154,7 @@
             </div>
 
             <!-- Code Example -->
-            <div class="glass rounded-2xl p-6">
+            <div class="glass rounded-2xl p-5">
                 <div class="flex items-center gap-2 mb-4">
                     <span class="material-symbols-outlined text-kmp-orange">code</span>
                     <h3 class="font-bold text-lg">Ejemplo de Intención</h3>
@@ -175,7 +175,7 @@
         </div>
 
         <!-- Navigation -->
-        <div class="mt-8 flex items-center justify-between">
+        <div class="mt-4 flex items-center justify-between">
             <a href="01-clean-architecture.html" class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
                 <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
                 <span class="font-semibold">Anterior</span>

@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols_Outlined:wght@400&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap"
         rel="stylesheet">
     <script>
         tailwind.config = {
@@ -50,30 +50,30 @@
     </style>
 </head>
 
-<body class="bg-mesh min-h-screen font-display text-white flex items-center justify-center p-8">
+<body class="bg-mesh min-h-screen font-display text-white flex items-center justify-center p-4">
 
     <main class="w-full max-w-6xl">
-        <div class="glass rounded-3xl p-16 shadow-2xl relative overflow-hidden">
+        <div class="glass rounded-3xl p-8 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-orange to-kmp-blue"></div>
 
             <!-- Header -->
-            <div class="mb-12">
+            <div class="mb-6">
                 <div
                     class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-orange/20 border border-kmp-orange/30 text-sm font-semibold text-kmp-orange uppercase tracking-wider mb-4">
                     <span class="material-symbols-outlined text-lg">extension</span>
                     Inyección de Dependencias
                 </div>
-                <h1 class="text-7xl font-bold mb-4">
+                <h1 class="text-5xl font-bold mb-4">
                     Koin <span class="gradient-text">DI</span>
                 </h1>
-                <p class="text-2xl text-gray-400 font-light">
+                <p class="text-xl text-gray-400 font-light">
                     Inyección de dependencias pragmática para KMP
                 </p>
             </div>
 
             <!-- Why Koin -->
-            <div class="grid grid-cols-3 gap-6 mb-12">
-                <div class="glass rounded-2xl p-6 text-center hover:scale-105 transition-transform">
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <div class="glass rounded-2xl p-5 text-center hover:scale-105 transition-transform">
                     <div
                         class="w-16 h-16 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange mx-auto mb-4">
                         <span class="material-symbols-outlined text-4xl">speed</span>
@@ -82,7 +82,7 @@
                     <p class="text-sm text-gray-400">Sin generación de código ni anotaciones complejas</p>
                 </div>
 
-                <div class="glass rounded-2xl p-6 text-center hover:scale-105 transition-transform">
+                <div class="glass rounded-2xl p-5 text-center hover:scale-105 transition-transform">
                     <div
                         class="w-16 h-16 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue mx-auto mb-4">
                         <span class="material-symbols-outlined text-4xl">devices</span>
@@ -91,7 +91,7 @@
                     <p class="text-sm text-gray-400">Funciona en Android, iOS, Desktop y Web</p>
                 </div>
 
-                <div class="glass rounded-2xl p-6 text-center hover:scale-105 transition-transform">
+                <div class="glass rounded-2xl p-5 text-center hover:scale-105 transition-transform">
                     <div
                         class="w-16 h-16 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple mx-auto mb-4">
                         <span class="material-symbols-outlined text-4xl">lightbulb</span>
@@ -102,13 +102,13 @@
             </div>
 
             <!-- Module Structure -->
-            <div class="mb-8">
-                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+            <div class="mb-6">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
                     <span class="material-symbols-outlined text-kmp-orange">account_tree</span>
                     Estructura de Módulos
                 </h3>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="glass rounded-2xl p-6">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass rounded-2xl p-5">
                         <div class="flex items-center gap-3 mb-4">
                             <div
                                 class="w-10 h-10 rounded-lg bg-kmp-orange/20 flex items-center justify-center text-kmp-orange">
@@ -132,7 +132,7 @@
                         </ul>
                     </div>
 
-                    <div class="glass rounded-2xl p-6">
+                    <div class="glass rounded-2xl p-5">
                         <div class="flex items-center gap-3 mb-4">
                             <div
                                 class="w-10 h-10 rounded-lg bg-kmp-blue/20 flex items-center justify-center text-kmp-blue">
@@ -159,7 +159,7 @@
             </div>
 
             <!-- Code Example -->
-            <div class="glass rounded-2xl p-6">
+            <div class="glass rounded-2xl p-5">
                 <div class="flex items-center gap-2 mb-4">
                     <span class="material-symbols-outlined text-kmp-orange">code</span>
                     <h3 class="font-bold text-lg">Ejemplo de Módulo</h3>
@@ -184,7 +184,7 @@ val viewModelModule = module {
             </div>
 
             <!-- Benefits -->
-            <div class="mt-8 grid grid-cols-2 gap-4">
+            <div class="mt-4 grid grid-cols-2 gap-4">
                 <div class="flex items-center gap-3 glass rounded-xl p-4">
                     <div class="w-2 h-2 rounded-full bg-kmp-orange"></div>
                     <span class="text-sm">Fácil de probar con módulos simulados</span>
@@ -197,7 +197,7 @@ val viewModelModule = module {
         </div>
 
         <!-- Navigation -->
-        <div class="mt-8 flex items-center justify-between">
+        <div class="mt-4 flex items-center justify-between">
             <a href="02-orbit-mvi.html"
                 class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
                 <span

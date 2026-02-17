@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols_Outlined:wght@400&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap"
         rel="stylesheet">
     <script>
         tailwind.config = {
@@ -50,56 +50,56 @@
     </style>
 </head>
 
-<body class="bg-mesh min-h-screen font-display text-white flex items-center justify-center p-8">
+<body class="bg-mesh min-h-screen font-display text-white flex items-center justify-center p-4">
 
     <main class="w-full max-w-6xl">
-        <div class="glass rounded-3xl p-16 shadow-2xl relative overflow-hidden">
+        <div class="glass rounded-3xl p-8 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-orange to-kmp-purple"></div>
 
             <!-- Header -->
-            <div class="mb-12">
+            <div class="mb-6">
                 <div
                     class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-orange/20 border border-kmp-orange/30 text-sm font-semibold text-kmp-orange uppercase tracking-wider mb-4">
                     <span class="material-symbols-outlined text-lg">rocket_launch</span>
                     Automatización
                 </div>
-                <h1 class="text-7xl font-bold mb-4">
+                <h1 class="text-5xl font-bold mb-4">
                     CI y <span class="gradient-text">Calidad</span>
                 </h1>
-                <p class="text-2xl text-gray-400 font-light">
+                <p class="text-xl text-gray-400 font-light">
                     Integración continua y automatización de calidad
                 </p>
             </div>
 
             <!-- Automation Flow -->
-            <div class="mb-12">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="flex-1 glass rounded-2xl p-6 text-center border-2 border-kmp-orange/30">
+            <div class="mb-6">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="flex-1 glass rounded-2xl p-5 text-center border-2 border-kmp-orange/30">
                         <div
                             class="w-14 h-14 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange mx-auto mb-3">
-                            <span class="material-symbols-outlined text-3xl">edit</span>
+                            <span class="material-symbols-outlined text-2xl">edit</span>
                         </div>
                         <h3 class="text-lg font-bold mb-1">Código</h3>
                         <p class="text-xs text-gray-400">Desarrollo local</p>
                     </div>
 
-                    <div class="text-kmp-orange text-3xl">→</div>
+                    <div class="text-kmp-orange text-2xl">→</div>
 
-                    <div class="flex-1 glass rounded-2xl p-6 text-center border-2 border-kmp-purple/30">
+                    <div class="flex-1 glass rounded-2xl p-5 text-center border-2 border-kmp-purple/30">
                         <div
                             class="w-14 h-14 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple mx-auto mb-3">
-                            <span class="material-symbols-outlined text-3xl">commit</span>
+                            <span class="material-symbols-outlined text-2xl">commit</span>
                         </div>
                         <h3 class="text-lg font-bold mb-1">Pre-commit</h3>
                         <p class="text-xs text-gray-400">Validación local</p>
                     </div>
 
-                    <div class="text-kmp-purple text-3xl">→</div>
+                    <div class="text-kmp-purple text-2xl">→</div>
 
-                    <div class="flex-1 glass rounded-2xl p-6 text-center border-2 border-kmp-blue/30">
+                    <div class="flex-1 glass rounded-2xl p-5 text-center border-2 border-kmp-blue/30">
                         <div
                             class="w-14 h-14 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue mx-auto mb-3">
-                            <span class="material-symbols-outlined text-3xl">cloud_sync</span>
+                            <span class="material-symbols-outlined text-2xl">cloud_sync</span>
                         </div>
                         <h3 class="text-lg font-bold mb-1">GitHub CI</h3>
                         <p class="text-xs text-gray-400">Validación remota</p>
@@ -108,21 +108,21 @@
             </div>
 
             <!-- Tools -->
-            <div class="grid grid-cols-2 gap-8 mb-8">
+            <div class="grid grid-cols-2 gap-5 mb-6">
                 <!-- ktlint -->
-                <div class="glass rounded-2xl p-8">
+                <div class="glass rounded-2xl p-4">
                     <div class="flex items-center gap-4 mb-6">
                         <div
                             class="w-16 h-16 rounded-xl bg-kmp-orange/20 flex items-center justify-center text-kmp-orange">
                             <span class="material-symbols-outlined text-4xl">format_paint</span>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold">ktlint</h3>
+                            <h3 class="text-xl font-bold">ktlint</h3>
                             <p class="text-sm text-gray-400">Linter y Formateador</p>
                         </div>
                     </div>
 
-                    <ul class="space-y-3 mb-6">
+                    <ul class="space-y-2 mb-6">
                         <li class="flex items-start gap-2 text-sm">
                             <span class="text-kmp-orange mt-1">▸</span>
                             <span>Formato consistente de código Kotlin</span>
@@ -143,19 +143,19 @@
                 </div>
 
                 <!-- Pre-commit Hook -->
-                <div class="glass rounded-2xl p-8">
+                <div class="glass rounded-2xl p-4">
                     <div class="flex items-center gap-4 mb-6">
                         <div
                             class="w-16 h-16 rounded-xl bg-kmp-purple/20 flex items-center justify-center text-kmp-purple">
                             <span class="material-symbols-outlined text-4xl">shield_lock</span>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold">Pre-commit</h3>
+                            <h3 class="text-xl font-bold">Pre-commit</h3>
                             <p class="text-sm text-gray-400">Gancho de Git</p>
                         </div>
                     </div>
 
-                    <ul class="space-y-3 mb-6">
+                    <ul class="space-y-2 mb-6">
                         <li class="flex items-start gap-2 text-sm">
                             <span class="text-kmp-purple mt-1">▸</span>
                             <span>Ejecuta ktlintCheck antes de commit</span>
@@ -177,14 +177,14 @@
             </div>
 
             <!-- GitHub Actions -->
-            <div class="glass rounded-2xl p-8">
+            <div class="glass rounded-2xl p-4">
                 <div class="flex items-center justify-between mb-6">
                     <div class="flex items-center gap-4">
                         <div class="w-16 h-16 rounded-xl bg-kmp-blue/20 flex items-center justify-center text-kmp-blue">
                             <span class="material-symbols-outlined text-4xl">cloud_done</span>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold">GitHub Actions</h3>
+                            <h3 class="text-xl font-bold">GitHub Actions</h3>
                             <p class="text-sm text-gray-400">Integración Continua</p>
                         </div>
                     </div>
@@ -214,7 +214,7 @@
             </div>
 
             <!-- Benefits -->
-            <div class="mt-8 grid grid-cols-3 gap-4">
+            <div class="mt-4 grid grid-cols-3 gap-4">
                 <div class="glass rounded-xl p-4 flex items-center gap-3">
                     <div class="w-2 h-2 rounded-full bg-kmp-orange"></div>
                     <span class="text-sm">Código limpio y consistente</span>
@@ -231,7 +231,7 @@
         </div>
 
         <!-- Navigation -->
-        <div class="mt-8 flex items-center justify-between">
+        <div class="mt-4 flex items-center justify-between">
             <a href="05-testing.html"
                 class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
                 <span
