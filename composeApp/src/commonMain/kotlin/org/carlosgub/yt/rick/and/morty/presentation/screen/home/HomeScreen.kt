@@ -71,8 +71,13 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         label = { Text(item.label) },
                         onClick = {
                             if (currentDestination != item.route) {
-                                backStack.clear()
-                                backStack.add(item.route)
+                                while (backStack.size > 1) {
+                                    backStack.removeAt(backStack.size - 1)
+                                }
+
+                                if (item.route != Screen.Characters) {
+                                    backStack.add(item.route)
+                                }
                             }
                         },
                         icon = {
