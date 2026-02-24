@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Gracias! - Curso KMP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'kmp-purple': '#7F52FF',
+                        'kmp-orange': '#E44857',
+                        'kmp-blue': '#00BDC7',
+                        'dark-bg': '#0C111D',
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #7F52FF, #E44857, #00BDC7);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-mesh {
+            background-color: #0C111D;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(127, 82, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(228, 72, 87, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 189, 199, 0.15) 0px, transparent 50%);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-mesh min-h-screen font-display text-white overflow-y-auto flex items-center justify-center p-4">
+
+    <main class="w-full max-w-6xl">
+        <div class="glass rounded-3xl p-12 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-purple via-kmp-orange to-kmp-blue">
+            </div>
+
+            <!-- Content -->
+            <div class="text-center space-y-8">
+                <!-- Icon -->
+                <div class="flex justify-center">
+                    <div
+                        class="w-32 h-32 rounded-full bg-gradient-to-br from-kmp-purple via-kmp-orange to-kmp-blue p-1 float-animation">
+                        <div class="w-full h-full rounded-full bg-dark-bg flex items-center justify-center">
+                            <span class="material-symbols-outlined text-7xl gradient-text">celebration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Message -->
+                <div class="space-y-4">
+                    <h1 class="text-5xl font-bold">
+                        ¡<span class="gradient-text">Gracias</span> por completar el curso!
+                    </h1>
+                    <p class="text-2xl text-gray-300 font-light">
+                        Has dado un gran paso en tu camino como desarrollador multiplataforma
+                    </p>
+                </div>
+
+                <!-- Next Steps -->
+                <div class="glass rounded-2xl p-6 border-2 border-kmp-purple/30">
+                    <h3 class="text-xl font-bold mb-4 flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-kmp-purple">rocket_launch</span>
+                        ¿Qué sigue?
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-kmp-purple mt-1">check_circle</span>
+                            <div>
+                                <div class="font-semibold text-sm">Practica constantemente</div>
+                                <div class="text-xs text-gray-400">Crea proyectos personales con KMP</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-kmp-orange mt-1">check_circle</span>
+                            <div>
+                                <div class="font-semibold text-sm">Explora los temas avanzados</div>
+                                <div class="text-xs text-gray-400">Profundiza en las tecnologías que viste</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-kmp-blue mt-1">check_circle</span>
+                            <div>
+                                <div class="font-semibold text-sm">Únete a la comunidad</div>
+                                <div class="text-xs text-gray-400">Comparte y aprende con otros devs</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-kmp-purple mt-1">check_circle</span>
+                            <div>
+                                <div class="font-semibold text-sm">Mantente actualizado</div>
+                                <div class="text-xs text-gray-400">KMP evoluciona constantemente</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Message -->
+                <div class="pt-6">
+                    <p class="text-lg text-gray-300 italic">
+                        "El conocimiento que has adquirido es solo el comienzo.<br>
+                        Ahora es tu turno de crear algo increíble."
+                    </p>
+                </div>
+
+                <!-- Social/Contact (Optional) -->
+                <div class="pt-4">
+                    <p class="text-sm text-gray-500">
+                        ¡Nos vemos en el próximo curso! 🚀
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-3 flex items-center justify-center">
+            <a href="01-advanced-topics.html"
+                class="glass rounded-xl px-6 py-3 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span
+                    class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                <span class="font-semibold">Volver a Próximos Pasos</span>
+            </a>
+        </div>
+    </main>
+
+</body>
+
+</html>

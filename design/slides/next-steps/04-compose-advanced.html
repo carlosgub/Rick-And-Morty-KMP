@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compose Multiplatform a Profundidad - Curso KMP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'kmp-purple': '#7F52FF',
+                        'kmp-orange': '#E44857',
+                        'kmp-blue': '#00BDC7',
+                        'dark-bg': '#0C111D',
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #7F52FF, #E44857);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-mesh {
+            background-color: #0C111D;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(127, 82, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(228, 72, 87, 0.1) 0px, transparent 50%);
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-mesh min-h-screen font-display text-white overflow-y-auto flex items-center justify-center p-4">
+
+    <main class="w-full max-w-6xl">
+        <div class="glass rounded-3xl p-6 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-kmp-purple to-kmp-orange"></div>
+
+            <!-- Header -->
+            <div class="mb-4">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kmp-purple/20 border border-kmp-purple/30 text-sm font-semibold text-kmp-purple uppercase tracking-wider mb-2">
+                    <span class="material-symbols-outlined text-lg">widgets</span>
+                    COMPOSE AVANZADO
+                </div>
+
+                <h1 class="text-3xl font-bold mb-2">
+                    <span class="gradient-text">Compose Multiplatform</span> a Profundidad
+                </h1>
+                <p class="text-base text-gray-400 font-light">
+                    Componentes avanzados, animaciones y optimización
+                </p>
+            </div>
+
+            <!-- Custom Layouts -->
+            <div class="glass rounded-2xl p-4 mb-3">
+                <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-kmp-purple">dashboard_customize</span>
+                    Layouts Personalizados
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="glass rounded-xl p-3">
+                        <h4 class="text-sm font-bold text-kmp-purple mb-2">Layout Modifier</h4>
+                        <p class="text-xs text-gray-400 mb-2">
+                            Crea tus propios modificadores para controlar el tamaño y posición de componentes
+                        </p>
+                        <div class="space-y-1 text-xs">
+                            <div class="flex items-start gap-2">
+                                <span class="text-kmp-purple mt-0.5">•</span>
+                                <span class="text-gray-300">Measure: define cómo medir el componente</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-kmp-purple mt-0.5">•</span>
+                                <span class="text-gray-300">Place: posiciona elementos hijos</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-kmp-purple mt-0.5">•</span>
+                                <span class="text-gray-300">Constraints: maneja restricciones de tamaño</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-3">
+                        <h4 class="text-sm font-bold text-kmp-orange mb-2">SubcomposeLayout</h4>
+                        <p class="text-xs text-gray-400 mb-2">
+                            Mide componentes hijos antes de decidir el layout final
+                        </p>
+                        <div class="space-y-1 text-xs">
+                            <div class="flex items-start gap-2">
+                                <span class="text-kmp-orange mt-0.5">•</span>
+                                <span class="text-gray-300">Ideal para layouts adaptativos</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-kmp-orange mt-0.5">•</span>
+                                <span class="text-gray-300">Usado en Scaffold, BottomSheet</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-kmp-orange mt-0.5">•</span>
+                                <span class="text-gray-300">Permite layouts dinámicos complejos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Animations -->
+            <div class="glass rounded-2xl p-4 mb-3">
+                <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-kmp-orange">animation</span>
+                    Animaciones Avanzadas
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div class="glass rounded-xl p-3">
+                        <h4 class="text-sm font-bold text-kmp-purple mb-2">AnimatedVisibility</h4>
+                        <p class="text-xs text-gray-400 mb-2">
+                            Transiciones de entrada y salida
+                        </p>
+                        <div class="space-y-1 text-xs text-gray-300">
+                            <div>• fadeIn / fadeOut</div>
+                            <div>• slideIn / slideOut</div>
+                            <div>• expandIn / shrinkOut</div>
+                            <div>• Combinaciones personalizadas</div>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-3">
+                        <h4 class="text-sm font-bold text-kmp-orange mb-2">Animatable</h4>
+                        <p class="text-xs text-gray-400 mb-2">
+                            Control total sobre animaciones
+                        </p>
+                        <div class="space-y-1 text-xs text-gray-300">
+                            <div>• Animaciones basadas en suspensión</div>
+                            <div>• Cancelación automática</div>
+                            <div>• Interpolación personalizada</div>
+                            <div>• Ideal para gestos</div>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-3">
+                        <h4 class="text-sm font-bold text-kmp-blue mb-2">Transition</h4>
+                        <p class="text-xs text-gray-400 mb-2">
+                            Múltiples valores animados
+                        </p>
+                        <div class="space-y-1 text-xs text-gray-300">
+                            <div>• updateTransition</div>
+                            <div>• Múltiples propiedades</div>
+                            <div>• Estados complejos</div>
+                            <div>• Sincronización perfecta</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Advanced Topics -->
+            <div class="glass rounded-2xl p-4 border-2 border-kmp-purple/30">
+                <h3 class="text-base font-bold mb-3 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-kmp-purple">school</span>
+                    Temas para Explorar
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div class="flex items-start gap-2 text-xs">
+                        <span class="text-kmp-purple mt-0.5">✓</span>
+                        <span class="text-gray-300">Canvas API para gráficos personalizados</span>
+                    </div>
+                    <div class="flex items-start gap-2 text-xs">
+                        <span class="text-kmp-purple mt-0.5">✓</span>
+                        <span class="text-gray-300">Gestos avanzados con PointerInput</span>
+                    </div>
+                    <div class="flex items-start gap-2 text-xs">
+                        <span class="text-kmp-purple mt-0.5">✓</span>
+                        <span class="text-gray-300">Side effects: LaunchedEffect, DisposableEffect</span>
+                    </div>
+                    <div class="flex items-start gap-2 text-xs">
+                        <span class="text-kmp-purple mt-0.5">✓</span>
+                        <span class="text-gray-300">CompositionLocal para dependency injection</span>
+                    </div>
+                    <div class="flex items-start gap-2 text-xs">
+                        <span class="text-kmp-purple mt-0.5">✓</span>
+                        <span class="text-gray-300">Shared Element Transitions</span>
+                    </div>
+                    <div class="flex items-start gap-2 text-xs">
+                        <span class="text-kmp-purple mt-0.5">✓</span>
+                        <span class="text-gray-300">Compose Compiler Metrics para debugging</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-3 flex items-center justify-between">
+            <a href="01-advanced-topics.html"
+                class="glass rounded-xl px-4 py-2 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span
+                    class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                <span class="font-semibold text-sm">Anterior</span>
+            </a>
+            <a href="05-coroutines.html"
+                class="glass rounded-xl px-4 py-2 flex items-center gap-2 hover:bg-white/5 transition-colors group">
+                <span class="font-semibold text-sm">Siguiente</span>
+                <span
+                    class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+        </div>
+    </main>
+
+</body>
+
+</html>
