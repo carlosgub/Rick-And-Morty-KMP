@@ -1,6 +1,5 @@
 package org.carlosgub.yt.rick.and.morty.presentation.viewmodel.characterdetail
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import org.carlosgub.yt.rick.and.morty.domain.repository.CharacterRepository
@@ -12,7 +11,6 @@ class CharacterDetailViewModel(
     private val characterId: Int,
 ) : ViewModel(),
     ContainerHost<CharacterDetailState, CharacterDetailSideEffect> {
-
     override val container =
         viewModelScope.container<CharacterDetailState, CharacterDetailSideEffect>(
             CharacterDetailState(),

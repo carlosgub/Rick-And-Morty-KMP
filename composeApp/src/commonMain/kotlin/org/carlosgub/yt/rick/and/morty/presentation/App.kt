@@ -4,6 +4,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
+import androidx.navigation3.runtime.NavEntry
+import androidx.navigation3.ui.NavDisplay
 import coil3.ImageLoader
 import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.setSingletonImageLoaderFactory
@@ -12,9 +15,6 @@ import org.carlosgub.yt.rick.and.morty.presentation.navigation.LocalNavControlle
 import org.carlosgub.yt.rick.and.morty.presentation.navigation.Screen
 import org.carlosgub.yt.rick.and.morty.presentation.screen.characterdetail.CharacterDetailScreen
 import org.carlosgub.yt.rick.and.morty.presentation.screen.home.HomeScreen
-import androidx.compose.runtime.remember
-import androidx.navigation3.runtime.NavEntry
-import androidx.navigation3.ui.NavDisplay
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable

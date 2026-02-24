@@ -1,6 +1,5 @@
 package org.carlosgub.yt.rick.and.morty.presentation.viewmodel.characterdetail
 
-import androidx.lifecycle.SavedStateHandle
 import kotlinx.coroutines.test.runTest
 import org.carlosgub.yt.rick.and.morty.data.mapper.toCharacter
 import org.carlosgub.yt.rick.and.morty.data.repository.fake.CharacterRepositoryFake
