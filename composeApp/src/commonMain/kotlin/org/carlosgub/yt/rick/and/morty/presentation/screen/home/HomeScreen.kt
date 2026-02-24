@@ -14,18 +14,13 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.navigation.NavDestination.Companion.hasRoute
-import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation3.runtime.NavEntry
+import androidx.navigation3.ui.NavDisplay
 import kotlinx.coroutines.launch
 import org.carlosgub.yt.rick.and.morty.presentation.model.NavigationBarItemModel
 import org.carlosgub.yt.rick.and.morty.presentation.navigation.Screen
@@ -40,9 +35,9 @@ import rickandmortykmp.composeapp.generated.resources.home_screen_locations
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
-    val navController = rememberNavController()
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentDestination = navBackStackEntry?.destination
+    val backStack = remember { mutableStateListOf<Any>(Screen.Characters) }
+    val currentDestination = backStack.lastOrNull()
+
     val snackBarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
 
@@ -72,15 +67,17 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             NavigationBar {
                 items.forEach { item ->
                     NavigationBarItem(
-                        selected = currentDestination?.hierarchy?.any { it.hasRoute(item.route::class) } == true,
+                        selected = currentDestination?.let { it::class == item.route::class } == true,
                         label = { Text(item.label) },
                         onClick = {
-                            navController.navigate(item.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
+                            if (currentDestination != item.route) {
+                                while (backStack.size > 1) {
+                                    backStack.removeAt(backStack.size - 1)
                                 }
-                                launchSingleTop = true
-                                restoreState = true
+
+                                if (item.route != Screen.Characters) {
+                                    backStack.add(item.route)
+                                }
                             }
                         },
                         icon = {
@@ -91,25 +88,25 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             }
         },
     ) { paddingValues ->
-        NavHost(
-            navController = navController,
-            startDestination = Screen.Characters,
+        NavDisplay(
+            backStack = backStack,
             modifier = Modifier.padding(paddingValues),
-        ) {
-            composable<Screen.Characters> {
-                CharacterScreen(
-                    showSnackBar = { message ->
-                        scope.launch {
-                            snackBarHostState.showSnackbar(message)
-                        }
-                    },
-                )
-            }
-            composable<Screen.Locations> {
-                LocationScreen()
-            }
-            composable<Screen.Episodes> {
-                EpisodeScreen()
+        ) { key ->
+            NavEntry(key) {
+                when (key) {
+                    is Screen.Characters -> {
+                        CharacterScreen(
+                            showSnackBar = { message ->
+                                scope.launch {
+                                    snackBarHostState.showSnackbar(message)
+                                }
+                            },
+                        )
+                    }
+
+                    is Screen.Locations -> LocationScreen()
+                    is Screen.Episodes -> EpisodeScreen()
+                }
             }
         }
     }
