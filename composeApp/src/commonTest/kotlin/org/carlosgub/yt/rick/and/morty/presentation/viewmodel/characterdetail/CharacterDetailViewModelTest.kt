@@ -10,8 +10,7 @@ import kotlin.test.Test
 
 class CharacterDetailViewModelTest {
     val repository = CharacterRepositoryFake()
-    val savedStateHandle = SavedStateHandle(mapOf("id" to 1))
-    val viewModel = CharacterDetailViewModel(repository, savedStateHandle)
+    val viewModel = CharacterDetailViewModel(repository, 1)
 
     @Test
     fun `initial load success`() =

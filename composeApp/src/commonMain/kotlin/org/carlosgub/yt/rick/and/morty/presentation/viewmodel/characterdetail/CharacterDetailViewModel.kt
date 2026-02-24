@@ -9,12 +9,9 @@ import org.orbitmvi.orbit.container
 
 class CharacterDetailViewModel(
     private val characterRepository: CharacterRepository,
-    savedStateHandle: SavedStateHandle,
+    private val characterId: Int,
 ) : ViewModel(),
     ContainerHost<CharacterDetailState, CharacterDetailSideEffect> {
-    private val characterId: Int = requireNotNull(savedStateHandle["id"]) {
-        "Character id is required"
-    }
 
     override val container =
         viewModelScope.container<CharacterDetailState, CharacterDetailSideEffect>(

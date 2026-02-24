@@ -17,7 +17,7 @@ fun CharacterObserver(
     viewModel.collectSideEffect { sideEffect ->
         when (sideEffect) {
             is CharacterSideEffect.NavigateToCharacterDetail -> {
-                navController.navigate(Screen.CharacterDetail(sideEffect.id))
+                navController.add(Screen.CharacterDetail(sideEffect.id))
             }
 
             is CharacterSideEffect.ShowSnackBar -> showSnackBar(sideEffect.message)
