@@ -12,11 +12,7 @@ fun CharacterDetailObserver(viewModel: CharacterDetailViewModel) {
 
     viewModel.collectSideEffect { sideEffect ->
         when (sideEffect) {
-            CharacterDetailSideEffect.NavigateBack -> {
-                if (navController.isNotEmpty()) {
-                    navController.removeAt(navController.size - 1)
-                }
-            }
+            CharacterDetailSideEffect.NavigateBack -> navController.removeLastOrNull()
         }
     }
 }

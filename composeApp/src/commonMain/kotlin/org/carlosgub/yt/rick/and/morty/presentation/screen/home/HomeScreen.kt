@@ -72,7 +72,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         onClick = {
                             if (currentDestination != item.route) {
                                 while (backStack.size > 1) {
-                                    backStack.removeAt(backStack.size - 1)
+                                    backStack.removeLastOrNull()
                                 }
 
                                 if (item.route != Screen.Characters) {
