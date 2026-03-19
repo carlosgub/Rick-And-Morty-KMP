@@ -12,7 +12,7 @@ fun CharacterDetailObserver(viewModel: CharacterDetailViewModel) {
 
     viewModel.collectSideEffect { sideEffect ->
         when (sideEffect) {
-            CharacterDetailSideEffect.NavigateBack -> navController.popBackStack()
+            CharacterDetailSideEffect.NavigateBack -> navController.removeLastOrNull()
         }
     }
 }

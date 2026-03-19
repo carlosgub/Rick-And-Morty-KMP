@@ -62,7 +62,7 @@ kotlin {
 
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
-            implementation(libs.androidx.navigation)
+            implementation(libs.androidx.navigation3.ui)
 
             // Ktor
             implementation(libs.ktor.client.core)
@@ -149,7 +149,7 @@ android {
 }
 
 dependencies {
-    debugImplementation(compose.uiTooling)
+    debugImplementation(libs.jetbrains.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     ktlintRuleset(libs.compose.rules)
 }

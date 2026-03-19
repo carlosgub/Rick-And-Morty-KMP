@@ -7,11 +7,12 @@ import org.carlosgub.yt.rick.and.morty.presentation.screen.characterdetail.conte
 import org.carlosgub.yt.rick.and.morty.presentation.screen.characterdetail.observer.CharacterDetailObserver
 import org.carlosgub.yt.rick.and.morty.presentation.viewmodel.characterdetail.CharacterDetailViewModel
 import org.koin.compose.viewmodel.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CharacterDetailScreen() {
-    val viewModel = koinViewModel<CharacterDetailViewModel>()
+fun CharacterDetailScreen(characterId: Int) {
+    val viewModel = koinViewModel<CharacterDetailViewModel>(parameters = { parametersOf(characterId) })
     val state = viewModel.container.stateFlow
         .collectAsStateWithLifecycle()
         .value

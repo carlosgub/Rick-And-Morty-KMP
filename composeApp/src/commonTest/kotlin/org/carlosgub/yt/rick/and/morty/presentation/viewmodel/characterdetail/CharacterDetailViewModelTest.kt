@@ -1,6 +1,5 @@
 package org.carlosgub.yt.rick.and.morty.presentation.viewmodel.characterdetail
 
-import androidx.lifecycle.SavedStateHandle
 import kotlinx.coroutines.test.runTest
 import org.carlosgub.yt.rick.and.morty.data.mapper.toCharacter
 import org.carlosgub.yt.rick.and.morty.data.repository.fake.CharacterRepositoryFake
@@ -10,8 +9,7 @@ import kotlin.test.Test
 
 class CharacterDetailViewModelTest {
     val repository = CharacterRepositoryFake()
-    val savedStateHandle = SavedStateHandle(mapOf("id" to 1))
-    val viewModel = CharacterDetailViewModel(repository, savedStateHandle)
+    val viewModel = CharacterDetailViewModel(repository, 1)
 
     @Test
     fun `initial load success`() =

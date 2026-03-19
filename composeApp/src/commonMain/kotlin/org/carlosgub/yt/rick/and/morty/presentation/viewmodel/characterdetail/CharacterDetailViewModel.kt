@@ -1,6 +1,5 @@
 package org.carlosgub.yt.rick.and.morty.presentation.viewmodel.characterdetail
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import org.carlosgub.yt.rick.and.morty.domain.repository.CharacterRepository
@@ -9,13 +8,9 @@ import org.orbitmvi.orbit.container
 
 class CharacterDetailViewModel(
     private val characterRepository: CharacterRepository,
-    savedStateHandle: SavedStateHandle,
+    private val characterId: Int,
 ) : ViewModel(),
     ContainerHost<CharacterDetailState, CharacterDetailSideEffect> {
-    private val characterId: Int = requireNotNull(savedStateHandle["id"]) {
-        "Character id is required"
-    }
-
     override val container =
         viewModelScope.container<CharacterDetailState, CharacterDetailSideEffect>(
             CharacterDetailState(),

@@ -11,10 +11,10 @@ val viewModelModule = module {
     viewModel { CharacterViewModel(get()) }
     viewModel { LocationViewModel(get()) }
     viewModel { EpisodeViewModel(get()) }
-    viewModel {
+    viewModel { params ->
         CharacterDetailViewModel(
             characterRepository = get(),
-            savedStateHandle = get(),
+            characterId = params.get(),
         )
     }
 }
